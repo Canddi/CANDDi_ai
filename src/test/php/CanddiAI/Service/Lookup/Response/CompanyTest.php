@@ -60,6 +60,7 @@ class CompanyTest
     public function testGetLocation()
     {
         $testData = $this->_getTestData();
+
         $response = new CanddiAI\Response\Company($testData);
 
         $arrExpectedLocation = [
@@ -93,6 +94,8 @@ class CompanyTest
 
         $intExpectedLat = 15.4;
         $intReturnedLat = $response->getLat();
+
+        $this->assertEquals($intExpectedLat, $intReturnedLat);
     }
     public function testGetLon()
     {
@@ -101,6 +104,7 @@ class CompanyTest
 
         $strExpectedLon = 12.3;
         $strReturnedLon = $response->getLon();
+        $this->assertEquals($strExpectedLon, $strReturnedLon);
     }
     public function testGetCity()
     {
@@ -109,6 +113,7 @@ class CompanyTest
 
         $strExpectedCity = "Manchester";
         $strReturnedCity = $response->getCity();
+        $this->assertEquals($strExpectedCity, $strReturnedCity);
     }
     public function testGetCountryCode()
     {
@@ -117,6 +122,7 @@ class CompanyTest
 
         $strExpectedCountryCode = "GB";
         $strReturnedCountryCode = $response->getCountryCode();
+        $this->assertEquals($strExpectedCountryCode, $strReturnedCountryCode);
     }
     public function testGetDescription()
     {
@@ -125,6 +131,7 @@ class CompanyTest
 
         $strExpectedDescription = "CANDDi tells you which businesses and people are on your website - helping you convert your visitors into sales! Book a free online demo today. ";
         $strReturnedDescription = $response->getDescription();
+        $this->assertEquals($strExpectedDescription, $strReturnedDescription);
     }
     public function testGetWebsite()
     {
@@ -133,6 +140,7 @@ class CompanyTest
 
         $strExpectedWebsite = "http:\/\/canddi.com";
         $strReturnedWebsite = $response->getWebsite();
+        $this->assertEquals($strExpectedWebsite, $strReturnedWebsite);
     }
     public function testGetEmailAddresses()
     {
@@ -144,6 +152,7 @@ class CompanyTest
             "goodbye@canddi.com"
         ];
         $strReturnedEmailAddresses = $response->getEmailAddresses();
+        $this->assertEquals($strExpectedEmailAddresses, $strReturnedEmailAddresses);
     }
     public function testGetSocialProfiles()
     {
@@ -151,20 +160,24 @@ class CompanyTest
         $response = new CanddiAI\Response\Company($testData);
 
         $strExpectedSocialProfiles = [
-                "Facebook" => [
-                    "url" => "facebook.com\/pages\/Canddi\/126078980739722",
-                    "handle" => "Canddi",
-                    "id" => "126078980739722",
-                    "username" => "thisiscanddi"
-                ],
-                "Twitter" => [
-                    "url" => "twitter.com\/CANDDi",
-                    "handle" => "CANDDi",
-                    "id" => "50582574",
-                    "followers" => 19751,
-                    "verified" => false
-                ]
-            ];
+          new CanddiAI\Response\Item\Social([
+            'url' => 'facebook.com\\/pages\\/Canddi\\/126078980739722',
+            'handle' => 'Canddi',
+            'id' => '126078980739722',
+            'username' => 'thisiscanddi',
+            'typeId' => 'Facebook',
+          ]),
+          new CanddiAI\Response\Item\Social([
+            'url' => 'twitter.com\\/CANDDi',
+            'handle' => 'CANDDi',
+            'id' => '50582574',
+            'followers' => 19751,
+            'verified' => false,
+            'typeId' => 'Twitter',
+          ]),
+        ];
         $strReturnedSocialProfiles = $response->getSocialProfiles();
+
+        $this->assertEquals($strExpectedSocialProfiles, $strReturnedSocialProfiles);
     }
 }

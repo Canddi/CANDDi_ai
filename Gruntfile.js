@@ -20,7 +20,6 @@ module.exports = function (grunt) {
     //remap classmaps so it actually generates classmaps
     _.each(objBasePaths, function (val, key) {
         var strLibraryDir = './src/main/php/' + val;
-        console.log(strLibraryDir);
 
         objClassMaps[key] = 'php src/site/resources/ZendClassmaps/classmap_generator.php -w -l ' + strLibraryDir + ' -o ' + strLibraryDir + '/.classmap.php';
         arrConcurrentClassmaps.push('exec:' + key);

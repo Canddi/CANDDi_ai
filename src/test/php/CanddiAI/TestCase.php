@@ -4,23 +4,7 @@ class Canddi_TestCase extends Zend_Test_PHPUnit_ControllerTestCase
 {
     public function setUp()
     {
-        //I don't want to be testing logs all the time
-        $mockLog = Mockery::mock("Canddi_Helper_Log");
 
-        //Canddi_Helper_Log::inject($mockLog);
-
-/*
-        $mockGateway    = Mockery::mock("Canddi_Gateway");
-        Canddi_Gateway::inject($mockGateway);
-*/
-        $mockConn       = Mockery::mock("Canddi_Helper_Database_Mongo_Client")
-            ->shouldReceive('getCursorTimeout')
-            ->mock();
-        Canddi_Dao_Mongo_Contact::setMongoConnection($mockConn);
-/*
-        $mockMessage        = Mockery::mock("Canddi_Message");
-        Canddi_Message::inject($mockMessage);
-*/
         $this->_postSetUp();
     }
     public function _postSetUp()
