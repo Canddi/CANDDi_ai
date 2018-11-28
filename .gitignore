@@ -1,0 +1,8 @@
+/target/
+/.DS_Store
+/*.idea/
+/atlassian-ide-plugin.xml
+/node_modules/
+/*.zip/
+/canddi/
+vendor
