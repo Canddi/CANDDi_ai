@@ -5,13 +5,9 @@ class Canddi_TestCase extends Zend_Test_PHPUnit_ControllerTestCase
     public function setUp()
     {
         //I don't want to be testing logs all the time
-        $mockLog = Mockery::mock("Canddi_Helper_Log")
-            ->shouldReceive('debug')
-            ->shouldReceive('log')
-            ->shouldReceive('logException')
-            ->mock();
+        $mockLog = Mockery::mock("Canddi_Helper_Log");
 
-        Canddi_Helper_Log::inject($mockLog);
+        //Canddi_Helper_Log::inject($mockLog);
 
 /*
         $mockGateway    = Mockery::mock("Canddi_Gateway");
@@ -43,27 +39,9 @@ class Canddi_TestCase extends Zend_Test_PHPUnit_ControllerTestCase
      **/
     public final function tearDown()
     {
-        $intCount       = Canddi_StoreItems::getInstance()->count();
-        //This looks wierd but this required so taht we don't break every unit test after breaking a count
-        // If you get a unit test break on line 34 (the assert) then it means you have triggered
-        // some messages into StoreItems BUT not processed them properly
-        Canddi_StoreItems::getInstance()->reset();
-        $this->assertEquals($intCount, Canddi_StoreItems::getInstance()->count());
-
-        Canddi_Gateway::inject(null);
-        Canddi_Service::inject(null);
-        Canddi_Message::inject(null);
-        Canddi_Helper_Config_Abstract::reset();
-        Canddi_Helper_Database_Mongo_Client::reset();
-
-        Canddi_StoreItems::resetItems();
-
-        Canddi_Model_Auth::inject(null);
-        Canddi_Helper_Log::inject(null);
         Mockery::close();
         Zend_Registry::_unsetInstance();
         $this->_postTearDown();
-
     }
 
     /**
