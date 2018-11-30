@@ -1,6 +1,8 @@
 <?php
 
-class Canddi_TestCase extends Zend_Test_PHPUnit_ControllerTestCase
+namespace CanddiAI;
+
+class CanddiAI_TestCase extends \Zend_Test_PHPUnit_ControllerTestCase
 {
     public function setUp()
     {
@@ -23,8 +25,8 @@ class Canddi_TestCase extends Zend_Test_PHPUnit_ControllerTestCase
      **/
     public final function tearDown()
     {
-        Mockery::close();
-        Zend_Registry::_unsetInstance();
+        \Mockery::close();
+        \Zend_Registry::_unsetInstance();
         $this->_postTearDown();
     }
 
@@ -50,31 +52,10 @@ class Canddi_TestCase extends Zend_Test_PHPUnit_ControllerTestCase
      **/
     protected function _getProtAttr($obj, $attr)
     {
-        $reflection = new ReflectionClass($obj);
+        $reflection = new \ReflectionClass($obj);
         $prop = $reflection->getProperty($attr);
         $prop->setAccessible(true);
         return $prop->getValue($obj);
-    }
-    /**
-     * This function is very funky
-     * this resets the data array on a Model so that we can measure
-     * what has changed in an interaction
-     *
-     * @param   Canddi_Model_Abstract $modelAbstract
-     * @param   Array $arrDataToSet = []
-     *
-     * @return  void
-     *
-     * @author  Tim Langley
-     **/
-    protected function _resetModelDataArray(
-        Canddi_Model_Abstract $modelAbstract,
-        Array $arrDataToSet = []
-    ) {
-        $reflection = new ReflectionClass($modelAbstract);
-        $prop = $reflection->getProperty('_arrData');
-        $prop->setAccessible(true);
-        $prop->setValue($modelAbstract, $arrDataToSet);
     }
 
     /**
@@ -88,7 +69,7 @@ class Canddi_TestCase extends Zend_Test_PHPUnit_ControllerTestCase
      **/
     protected function _setProtAttr($obj, $attr, $value)
     {
-        $reflectedClass     = new ReflectionClass($obj);
+        $reflectedClass     = new \ReflectionClass($obj);
         $reflectedProperty  = $reflectedClass->getProperty($attr);
         $reflectedProperty->setAccessible(true);
         $reflectedProperty->setValue($obj, $value);
@@ -105,7 +86,7 @@ class Canddi_TestCase extends Zend_Test_PHPUnit_ControllerTestCase
      **/
     protected function _invokeProtMethod($obj, $method, $arg = null)
     {
-        $reflection = new ReflectionClass($obj);
+        $reflection = new \ReflectionClass($obj);
         $refMethod = $reflection->getMethod($method);
         $refMethod->setAccessible(true);
         return $refMethod->invoke($obj, $arg);
