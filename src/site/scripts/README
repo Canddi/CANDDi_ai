@@ -1,0 +1,11 @@
+All the scripts for a live or dev canddi instance (e.g. for daemons, NOT for tests) should go in here.
+It should include things like:
+
+CLI
+Node
+Rabbit
+Etc.
+
+Eventually make these into init scripts (although how they would work on mac is another matter).
+
+TODO: Make a status script for each of these.

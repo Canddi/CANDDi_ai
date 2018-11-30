@@ -1,0 +1,68 @@
+<phpunit backupGlobals="true"
+         backupStaticAttributes="false"
+         cacheTokens="true"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         forceCoversAnnotation="false"
+         mapTestClassNameToCoveredClassName="false"
+         processIsolation="false"
+         stopOnError="false"
+         stopOnFailure="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         verbose="true">
+
+   <filter>
+      <whitelist addUncoveredFilesFromWhitelist="true">
+         <directory suffix=".php">../../main/php/auth.canddi.com</directory>
+         <directory suffix=".php">../../main/php/Canddi</directory>
+         <directory suffix=".php">../../main/php/canddi.com</directory>
+         <directory suffix=".php">../../main/php/cdn.canddi.com</directory>
+         <directory suffix=".php">../../main/php/cli</directory>
+
+         <exclude>
+            <file>../../main/php/Canddi/.classmap.php</file>
+
+            <file>../../main/php/canddi.com/application.php</file>
+            <file>../../main/php/canddi.com/.classmap.php</file>
+
+            <file>../../main/php/cli/cli.php</file>
+            <file>../../main/php/cli/.classmap.php</file>
+
+            <file>../../main/php/cdn.canddi.com/application.php</file>
+            <file>../../main/php/cdn.canddi.com/.classmap.php</file>
+         </exclude>
+      </whitelist>
+   </filter>
+   <logging>
+      <log
+         type="coverage-html"
+         target="../../../target/reports/php-coverage"
+         charset="UTF-8"
+         yui="true"
+         highlight="true"
+         lowUpperBound="35"
+         highLowerBound="70"/>
+      <filter>
+
+         <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../../main/php/Canddi</directory>
+            <exclude>
+               <file>../../main/php/Canddi/.classmap.php</file>
+
+               <file>../../main/php/canddi.com/application.php</file>
+               <file>../../main/php/canddi.com/.classmap.php</file>
+
+               <file>../../main/php/cli/cli.php</file>
+               <file>../../main/php/cli/.classmap.php</file>
+
+               <file>../../main/php/cdn.canddi.com/application.php</file>
+               <file>../../main/php/cdn.canddi.com/.classmap.php</file>
+            </exclude>
+         </whitelist>
+      </filter>
+   </logging>
+</phpunit>
+
