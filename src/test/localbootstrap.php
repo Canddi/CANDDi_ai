@@ -25,7 +25,7 @@ set_time_limit(0);
 // It may eventually get them from the .profile of the user
 putenv('APPLICATION_PATH='.realpath("./src/main/php"));
 putenv('APPLICATION_ENV=unit-test');
-putenv('APPLICATION_CONFIG_PATH='.realpath("./src/main/php/CanddiAI/Helper/Config/config/canddi"));
+putenv('APPLICATION_CONFIG_PATH='.realpath("./src/main/php/CanddiAI/"));
 putenv('VENDOR_PATH='.realpath("./src/main/php/vendor/"));
 
 define('APPLICATION_PATH',   realpath("src/main/php"));

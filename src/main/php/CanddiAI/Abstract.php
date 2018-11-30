@@ -14,11 +14,25 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
 abstract class LookupAbstract
-    implements \Canddi_Interface_Singleton
 {
-    use \Canddi_Traits_Singleton;
-
     private static $_guzzleConnection       = null;
+
+    private static $_strBaseUri = null;
+    private static $_strApiKey = null;
+
+    /**
+     *
+     *
+     * @author Luke Roberts
+     **/
+    private function __construct(
+        $strBaseUri,
+        $strApiKey
+    )
+    {
+        $this->_strBaseUri = $strBaseUri;
+        $this->_strApiKey = $strApiKey;
+    }
 
     /**
      * Used for testing
@@ -38,19 +52,16 @@ abstract class LookupAbstract
         Array $arrQuery                 = []
     ) {
         if(!self::$_guzzleConnection) {
-
             $helperServers = \Canddi_Helper_Config_Servers::getInstance();
 
             $arrDefaults                = [
-                'base_uri'              => $helperServers
-                    ->getHostLookupServiceURL(),
+                'base_uri'              => $this->$strBaseUri,
                 'timeout'               => 5,
                 'connect_timeout'       => 5,
                 'headers'               => [
                     'Accept'            => 'application/json',
                     'Accept-Encoding'   => 'gzip, deflate',
-                    'x-api-key'         => $helperServers
-                        ->getLookupAPIKey()
+                    'x-api-key'         => $this->$strApiKey
                 ],
                 "verify"                => false
             ];
@@ -75,5 +86,61 @@ abstract class LookupAbstract
         return json_decode(
             (string)$response->getBody(), true
         );
+    }
+
+
+    /**
+     * The following functions belong in a singleton trait but for some reason
+     *     traits aren't loading
+    **/
+
+    final protected function __clone()
+    {
+        throw new Exception('Cannot clone');
+    }
+
+    /**
+     *  Implements the singleton pattern
+     *  @return:$this       - this is a fluent interface
+    **/
+    protected static $_locater;
+
+    /**
+     * Gets an instance of the current class
+     *
+     * @return static
+     * @author Tim Langley
+    **/
+    public static function getInstance(
+        $strBaseUri,
+        $strApiKey
+    )
+    {
+        if (is_null(static::$_locater)) {
+            static::$_locater   = new static($strBaseUri, $strApiKey);
+        }
+
+        return static::$_locater;
+    }
+
+    /**
+     * This method is used for testing
+     *  @param: $locator    - this is mainly for testing
+     *                      - it allows a mock version of the
+     *                          Common_Gateway to be injected
+    **/
+    public static function inject(
+        Canddi_Interface_Singleton $locator = null
+    )
+    {
+        static::$_locater   = $locator;
+    }
+    /**
+     * This wipes out anything cached
+     *
+     **/
+    public static function reset()
+    {
+        static::$_locater = null;
     }
 }
