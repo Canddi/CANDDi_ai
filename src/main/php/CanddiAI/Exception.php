@@ -6,11 +6,14 @@
  * @license
  * @author     Tim Langley
  **/
-class Canddi_Exception extends Exception
+
+namespace CanddiAI;
+
+class CanddiAI_Exception extends Exception
 {
     const HTTP_500 = 500;
 
-    public function __construct($strMessage, $intCode = Canddi_Exception::HTTP_500)
+    public function __construct($strMessage, $intCode = CanddiAI_Exception::HTTP_500)
     {
         parent::__construct($strMessage, $intCode);
     }

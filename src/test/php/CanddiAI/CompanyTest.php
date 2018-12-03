@@ -1,4 +1,7 @@
 <?php
+/**
+ * @author Luke Roberts
+ **/
 
 namespace CanddiAI;
 

@@ -1,10 +1,5 @@
 <?php
 /**
- * Wrapper for CANDDi Lookup
- * https://api.canddi.net
- *
- * @TODO REFACTOR THIS TO a separate composer package
- *
  * @author Tim Langley
  **/
 
@@ -52,8 +47,6 @@ abstract class LookupAbstract
         Array $arrQuery                 = []
     ) {
         if(!self::$_guzzleConnection) {
-            $helperServers = \Canddi_Helper_Config_Servers::getInstance();
-
             $arrDefaults                = [
                 'base_uri'              => $this->$strBaseUri,
                 'timeout'               => 5,
@@ -78,7 +71,7 @@ abstract class LookupAbstract
             );
 
         if(200 !== intval($response->getStatusCode())) {
-            throw new \Exception(
+            throw new Exception(
                 $response->getStatusCode().'-'.$response->getReasonPhrase()
             );
         }
@@ -130,7 +123,7 @@ abstract class LookupAbstract
      *                          Common_Gateway to be injected
     **/
     public static function inject(
-        Canddi_Interface_Singleton $locator = null
+        LookupAbstract $locator = null
     )
     {
         static::$_locater   = $locator;

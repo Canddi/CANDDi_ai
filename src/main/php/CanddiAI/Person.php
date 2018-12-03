@@ -1,10 +1,5 @@
 <?php
 /**
- * Service for CANDDi Person Lookup
- * https://api.canddi.net/person/....
- *
- * @TODO REFACTOR THIS TO a separate composer package
- *
  * @author Tim Langley
  **/
 

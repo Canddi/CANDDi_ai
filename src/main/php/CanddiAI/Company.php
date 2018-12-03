@@ -1,10 +1,5 @@
 <?php
 /**
- * Service for CANDDi Company Lookup
- * https://api.canddi.net/lookup/....
- *
- * @TODO REFACTOR THIS TO a separate composer package
- *
  * @author Tim Langley
  **/
 
@@ -34,9 +29,7 @@ class Company
      * @param   optional string $strAccountURL
      * @param   optional string $guidContactId
      *
-     * @return  array  structure as
-     *              ** TODO REFACTOR THIS TO RETURN OBJECT **
-     *
+     * @return  object Response\Company
     **/
     public function lookupHost(
         $strHostName,
@@ -72,9 +65,7 @@ class Company
      * @param   optional string $strAccountURL
      * @param   optional string $guidContactId
      *
-     * @return  array  structure as
-     *              ** TODO REFACTOR THIS TO RETURN OBJECT **
-     *
+     * @return  object Response\Company
     **/
     public function lookupIP(
         $mixedIPAddress,
