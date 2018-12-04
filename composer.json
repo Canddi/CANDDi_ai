@@ -1,0 +1,22 @@
+{
+    "name"                              : "canddi/CANDDi_ai",
+    "description"                       : "CANDDi AI repo",
+    "license"                           : "proprietary",
+    "require"                           : {
+        "guzzlehttp/guzzle"             : "6.3.0"
+    },
+    "require-dev"                       : {
+        "phpunit/phpunit"               : "4.8.36",
+        "mockery/mockery"               : "0.9.9",
+        "zircote/swagger-php"           : "^2.0"
+    },
+    "config"                            : {
+        "preferred-install"             : "dist"
+    },
+    "authors"                           : [
+        {
+            "name": "CANDDi",
+            "email": "hello@canddi.com"
+        }
+    ]
+}
