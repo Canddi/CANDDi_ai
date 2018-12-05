@@ -1,0 +1,7 @@
+parameters:
+  autoload_files:
+    - src/vendor/autoload.php
+  excludes_analyse:
+    - src/vendor
+
+  ignoreErrors:
