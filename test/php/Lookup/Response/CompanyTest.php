@@ -62,6 +62,7 @@ class CompanyTest
                     "Line2" => "",
                     "City" => "Manchester",
                     "PostalCode" => "M1 1FT",
+                    "PostCode" => "m1 1ft",
                     "Country" => "United Kingdom"
                 )
             ),
@@ -75,104 +76,53 @@ class CompanyTest
             "MarketCap" => 1000000,
             "Raised" => 500000,
             "Revenue" => 700000,
-            "RevenueEstimated" => '$1m'
+            "RevenueEstimated" => '$1m',
+            "Type" => 3
         );
     }
-
-    public function testGetLocation()
+    public function testBasicGetters()
     {
         $testData = $this->_getTestData();
         $response = new Company($testData);
 
-        $arrExpectedLocation = [
-            "FormattedAddress" => "47 Newton St, Manchester M1 1FT, UK",
-            "Lat" => 53.4818762,
-            "Lng" => -2.2331668,
-            "Address" => [
-                "Line1" => "47 Newton Street",
-                "Line2" => "",
-                "City" => "Manchester",
-                "PostalCode" => "M1 1FT",
-                "Country" => "United Kingdom"
-            ]
-        ];
-        $arrReturnedLocation = $response->getLocation();
+        $testData_Location = $testData['Location'];
+        $testData_Address = $testData_Location['Address'];
 
-        $this->assertEquals($arrExpectedLocation, $arrReturnedLocation);
-
-        // Test to make sure it returns an empty array when there's no location
-        unset($testData["Location"]);
-        $response = new Company($testData);
-
-        $this->assertEquals([], $response->getLocation());
-    }
-
-    public function testGetLat()
-    {
-        // This (along with Lon, City & CountryCode) is for IP lookup data, so it's not from the location object
-        $testData = $this->_getTestData();
-        $response = new Company($testData);
-
-        $intExpectedLat = 15.4;
-        $intReturnedLat = $response->getLat();
-        $this->assertEquals($intExpectedLat, $intReturnedLat);
-    }
-    public function testGetLon()
-    {
-        $testData = $this->_getTestData();
-        $response = new Company($testData);
-
-        $intExpectedLon = 12.3;
-        $intReturnedLon = $response->getLon();
-        $this->assertEquals($intExpectedLon, $intReturnedLon);
-    }
-    public function testGetCity()
-    {
-        $testData = $this->_getTestData();
-        $response = new Company($testData);
-
-        $strExpectedCity = "Manchester";
-        $strReturnedCity = $response->getCity();
-        $this->assertEquals($strExpectedCity, $strReturnedCity);
-    }
-    public function testGetCountryCode()
-    {
-        $testData = $this->_getTestData();
-        $response = new Company($testData);
-
-        $strExpectedCountryCode = "GB";
-        $strReturnedCountryCode = $response->getCountryCode();
-        $this->assertEquals($strExpectedCountryCode, $strReturnedCountryCode);
-    }
-    public function testGetDescription()
-    {
-        $testData = $this->_getTestData();
-        $response = new Company($testData);
-
-        $strExpectedDescription = "CANDDi tells you which businesses and people are on your website - helping you convert your visitors into sales! Book a free online demo today.";
-        $strReturnedDescription = $response->getDescription();
-        $this->assertEquals($strExpectedDescription, $strReturnedDescription);
-    }
-    public function testGetWebsite()
-    {
-        $testData = $this->_getTestData();
-        $response = new Company($testData);
-
-        $strExpectedWebsite = "http:\/\/canddi.com";
-        $strReturnedWebsite = $response->getWebsite();
-        $this->assertEquals($strExpectedWebsite, $strReturnedWebsite);
-    }
-    public function testGetEmailAddresses()
-    {
-        $testData = $this->_getTestData();
-        $response = new Company($testData);
-
-        $strExpectedEmailAddresses = [
-            "hello@canddi.com",
-            "goodbye@canddi.com"
-        ];
-        $strReturnedEmailAddresses = $response->getEmailAddresses();
-        $this->assertEquals($strExpectedEmailAddresses, $strReturnedEmailAddresses);
+        $this->assertEquals($testData_Address['City'], $response->getAddressCity());
+        $this->assertEquals($testData_Location['Lat'], $response->getAddressLat());
+        $this->assertEquals($testData_Location['Lng'], $response->getAddressLon());
+        $this->assertEquals($testData_Address['Line1'], $response->getAddressLine1());
+        $this->assertEquals($testData_Address['Line2'], $response->getAddressLine2());
+        $this->assertEquals($testData_Address['PostalCode'], $response->getAddressPostCode());
+        $this->assertEquals($testData['AlexaRank'], $response->getAlexaRank());
+        $this->assertEquals($testData['City'], $response->getCity());
+        $this->assertEquals($testData['CountryCode'], $response->getCountryCode());
+        $this->assertEquals($testData['Description'], $response->getDescription());
+        $this->assertEquals($testData['Logo'], $response->getLogo());
+        $this->assertEquals($testData['EmailAddresses'], $response->getEmailAddresses());
+        $this->assertEquals($testData['Employees'], $response->getEmployees());
+        $this->assertEquals($testData['EmployeeRange'], $response->getEmployeeRange());
+        $this->assertEquals($testData['Industry'], $response->getIndustry());
+        $this->assertEquals($testData['IndustryGroup'], $response->getIndustryGroup());
+        $this->assertEquals($testData['IndustryNAICS'], $response->getIndustryNAICS());
+        $this->assertEquals($testData['IndustrySIC'], $response->getIndustrySIC());
+        $this->assertEquals($testData['IndustrySector'], $response->getIndustrySector());
+        $this->assertEquals($testData['Lat'], $response->getLat());
+        $this->assertEquals($testData_Location, $response->getLocation());
+        $this->assertEquals($testData_Address, $response->getLocationAddress());
+        $this->assertEquals($testData['Lon'], $response->getLon());
+        $this->assertEquals($testData['MarketCap'], $response->getMarketCap());
+        $this->assertEquals($testData['CompanyName'], $response->getName());
+        $this->assertEquals($testData['PhoneNumbers'], $response->getPhones());
+        $this->assertEquals($testData_Address['PostCode'], $response->getPostCode());
+        $this->assertEquals($testData['Raised'], $response->getRaised());
+        $this->assertEquals($testData['Region'], $response->getRegion());
+        $this->assertEquals($testData['Revenue'], $response->getRevenue());
+        $this->assertEquals($testData['RevenueEstimated'], $response->getRevenueEstimated());
+        $this->assertEquals($testData['Tags'], $response->getTags());
+        $this->assertEquals($testData['Type'], $response->getType());
+        $this->assertEquals($testData['WebsiteURL'], $response->getWebsite());
+        $this->assertEquals($testData['bIsISP'], $response->isISP());
     }
     public function testGetSocialProfiles()
     {
@@ -203,15 +153,7 @@ class CompanyTest
             "typeId" => "LinkedIn"
         ], $arrReturnedLinkedIn);
     }
-    public function testIsISP()
-    {
-        $testData = $this->_getTestData();
-        $response = new Company($testData);
 
-        $bExpectedIsISP = false;
-        $bReturnedIsISP = $response->isISP();
-        $this->assertEquals($bExpectedIsISP, $bReturnedIsISP);
-    }
     // public function testGetCoreCompany()
     // {
     //     // First lets test that missing company name results in null return

@@ -33,7 +33,7 @@ module.exports = function(grunt) {
             },
             "phpunit-runner": {
                 options: {
-                    bootsrap: "test/php/localbootstrap.php",
+                    bootstrap: "test/localbootstrap.php",
                     colours: true,
                     configuration: "coverage.xml",
                     phpunit: "vendor/bin/phpunit",
