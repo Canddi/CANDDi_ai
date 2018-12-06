@@ -121,6 +121,6 @@ class Company
             );
         }
 
-        return new ResponseCompany($arrResponse);
+        return new Response\Company($arrResponse);
     }
 }
