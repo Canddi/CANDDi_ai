@@ -1,7 +1,7 @@
 <?php
-namespace CanddiAi\Lookup;
+namespace CanddiAi\Lookup\Response;
 
-use CanddiAi\TestCase as TestCase;
+use \CanddiAi\TestCase as TestCase;
 
 class CompanyTest
     extends TestCase
@@ -82,7 +82,7 @@ class CompanyTest
     public function testGetLocation()
     {
         $testData = $this->_getTestData();
-        $response = new Canddi\Service\Lookup\Response\Company($testData);
+        $response = new Company($testData);
 
         $arrExpectedLocation = [
             "FormattedAddress" => "47 Newton St, Manchester M1 1FT, UK",
@@ -102,7 +102,7 @@ class CompanyTest
 
         // Test to make sure it returns an empty array when there's no location
         unset($testData["Location"]);
-        $response = new Canddi\Service\Lookup\Response\Company($testData);
+        $response = new Company($testData);
 
         $this->assertEquals([], $response->getLocation());
     }
@@ -111,7 +111,7 @@ class CompanyTest
     {
         // This (along with Lon, City & CountryCode) is for IP lookup data, so it's not from the location object
         $testData = $this->_getTestData();
-        $response = new Canddi\Service\Lookup\Response\Company($testData);
+        $response = new Company($testData);
 
         $intExpectedLat = 15.4;
         $intReturnedLat = $response->getLat();
@@ -120,7 +120,7 @@ class CompanyTest
     public function testGetLon()
     {
         $testData = $this->_getTestData();
-        $response = new Canddi\Service\Lookup\Response\Company($testData);
+        $response = new Company($testData);
 
         $intExpectedLon = 12.3;
         $intReturnedLon = $response->getLon();
@@ -129,7 +129,7 @@ class CompanyTest
     public function testGetCity()
     {
         $testData = $this->_getTestData();
-        $response = new Canddi\Service\Lookup\Response\Company($testData);
+        $response = new Company($testData);
 
         $strExpectedCity = "Manchester";
         $strReturnedCity = $response->getCity();
@@ -138,7 +138,7 @@ class CompanyTest
     public function testGetCountryCode()
     {
         $testData = $this->_getTestData();
-        $response = new Canddi\Service\Lookup\Response\Company($testData);
+        $response = new Company($testData);
 
         $strExpectedCountryCode = "GB";
         $strReturnedCountryCode = $response->getCountryCode();
@@ -147,7 +147,7 @@ class CompanyTest
     public function testGetDescription()
     {
         $testData = $this->_getTestData();
-        $response = new Canddi\Service\Lookup\Response\Company($testData);
+        $response = new Company($testData);
 
         $strExpectedDescription = "CANDDi tells you which businesses and people are on your website - helping you convert your visitors into sales! Book a free online demo today.";
         $strReturnedDescription = $response->getDescription();
@@ -156,7 +156,7 @@ class CompanyTest
     public function testGetWebsite()
     {
         $testData = $this->_getTestData();
-        $response = new Canddi\Service\Lookup\Response\Company($testData);
+        $response = new Company($testData);
 
         $strExpectedWebsite = "http:\/\/canddi.com";
         $strReturnedWebsite = $response->getWebsite();
@@ -165,7 +165,7 @@ class CompanyTest
     public function testGetEmailAddresses()
     {
         $testData = $this->_getTestData();
-        $response = new Canddi\Service\Lookup\Response\Company($testData);
+        $response = new Company($testData);
 
         $strExpectedEmailAddresses = [
             "hello@canddi.com",
@@ -177,7 +177,7 @@ class CompanyTest
     public function testGetSocialProfiles()
     {
         $testData = $this->_getTestData();
-        $response = new Canddi\Service\Lookup\Response\Company($testData);
+        $response = new Company($testData);
 
         $arrReturnedSocialProfiles = $response->getSocialProfiles();
         $arrReturnedFacebook = $this->_getProtAttr($arrReturnedSocialProfiles[0], '_arrResponse');
@@ -206,7 +206,7 @@ class CompanyTest
     public function testIsISP()
     {
         $testData = $this->_getTestData();
-        $response = new Canddi\Service\Lookup\Response\Company($testData);
+        $response = new Company($testData);
 
         $bExpectedIsISP = false;
         $bReturnedIsISP = $response->isISP();
@@ -215,12 +215,12 @@ class CompanyTest
     public function testGetCoreCompany()
     {
         // First lets test that missing company name results in null return
-        $responseEmpty = new Canddi\Service\Lookup\Response\Company([]);
+        $responseEmpty = new Company([]);
         $this->assertNull($responseEmpty->getCoreCompany());
 
         // Now lets test that all the data gets into the core properly
         $testData = $this->_getTestData();
-        $response = new Canddi\Service\Lookup\Response\Company($testData);
+        $response = new Company($testData);
         $coreCompany = $response->getCoreCompany();
 
         $testDataSocial = $testData['SocialMedia'];
@@ -256,18 +256,18 @@ class CompanyTest
     public function testGetCoreLocation()
     {
         // First lets test that no location object means null return value
-        $responseEmpty = new Canddi\Service\Lookup\Response\Company(['Location' => []]);
+        $responseEmpty = new Company(['Location' => []]);
         $this->assertNull($responseEmpty->getCoreLocation());
 
         // Now test that missing Lat or Lng means null return value
-        $responseNoLat = new Canddi\Service\Lookup\Response\Company([
+        $responseNoLat = new Company([
             'Location' => [
                 'Lng' => 10,
                 'Lat' => null
             ]
         ]);
         $this->assertNull($responseNoLat->getCoreLocation());
-        $responseNoLng = new Canddi\Service\Lookup\Response\Company([
+        $responseNoLng = new Company([
             'Location' => [
                 'Lng' => null,
                 'Lat' => 10
@@ -277,7 +277,7 @@ class CompanyTest
 
         // Now test that the core location is created properly
         $testData = $this->_getTestData();
-        $response = new Canddi\Service\Lookup\Response\Company($testData);
+        $response = new Company($testData);
         $coreLocation = $response->getCoreLocation();
 
         $testDataLocation = $testData['Location'];

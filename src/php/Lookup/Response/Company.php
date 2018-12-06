@@ -8,7 +8,7 @@
  * @author Tim Langley
  **/
 
-namespace CanddiAi\Response;
+namespace CanddiAi\Lookup\Response;
 
 use CanddiAi\Traits\GetArrayValue as NS_traitArrayValue;
 

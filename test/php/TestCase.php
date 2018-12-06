@@ -24,8 +24,8 @@ class TestCase extends \Zend_Test_PHPUnit_ControllerTestCase
      **/
     public final function tearDown()
     {
-        Mockery::close();
-        Zend_Registry::_unsetInstance();
+        \Mockery::close();
+        \Zend_Registry::_unsetInstance();
         $this->_postTearDown();
 
     }
@@ -52,7 +52,7 @@ class TestCase extends \Zend_Test_PHPUnit_ControllerTestCase
      **/
     protected function _getProtAttr($obj, $attr)
     {
-        $reflection = new ReflectionClass($obj);
+        $reflection = new \ReflectionClass($obj);
         $prop = $reflection->getProperty($attr);
         $prop->setAccessible(true);
         return $prop->getValue($obj);
@@ -68,7 +68,7 @@ class TestCase extends \Zend_Test_PHPUnit_ControllerTestCase
      **/
     protected function _setProtAttr($obj, $attr, $value)
     {
-        $reflectedClass     = new ReflectionClass($obj);
+        $reflectedClass     = new \ReflectionClass($obj);
         $reflectedProperty  = $reflectedClass->getProperty($attr);
         $reflectedProperty->setAccessible(true);
         $reflectedProperty->setValue($obj, $value);
@@ -85,7 +85,7 @@ class TestCase extends \Zend_Test_PHPUnit_ControllerTestCase
      **/
     protected function _invokeProtMethod($obj, $method, $arg = null, $arg2 = null)
     {
-        $reflection = new ReflectionClass($obj);
+        $reflection = new \ReflectionClass($obj);
         $refMethod = $reflection->getMethod($method);
         $refMethod->setAccessible(true);
         return $refMethod->invoke($obj, $arg, $arg2);
