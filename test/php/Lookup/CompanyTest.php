@@ -1,6 +1,6 @@
 <?php
 /**
- * @author Luke Roberts
+ * @author Matty Glancy
  **/
 namespace CanddiAi\Lookup;
 class CompanyTest
@@ -90,7 +90,7 @@ class CompanyTest
     {
         $strBaseUri = 'baseuri.com';
         $strApiKey = 'api_key_v4387yt876y745';
-        $strName = 'Tim Langley';
+        $strName = 'CANDDi';
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
         $strURL             = sprintf(Company::c_URL_Name, $strName);
@@ -125,5 +125,88 @@ class CompanyTest
         $actualCompanyResponse = $companyInstance->lookupName($strName, $strAccountURL, $guidContactId);
         $expectedCompanyResponse = new Response\Company([]);
         $this->assertEquals($expectedCompanyResponse, $actualCompanyResponse);
+    }
+    public function testLookups_Fail()
+    {
+        $strBaseUri = 'baseuri.com';
+        $strApiKey = 'api_key_v4387yt876y745';
+        $strAccountURL = 'anAccount';
+        $guidContactId = md5(1);
+        $arrQuery           = [
+            'accounturl'    => $strAccountURL,
+            'contactid'     => $guidContactId
+        ];
+
+        $strName = 'CANDDi';
+        $intIP = 12345;
+        $strHost = 'canddi.com';
+
+        $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
+            ->shouldReceive('getStatusCode')
+            ->times(6)
+            ->withNoArgs()
+            ->andReturn(400)
+            ->shouldReceive('getReasonPhrase')
+            ->times(3)
+            ->withNoArgs()
+            ->andReturn('Bad Request')
+            ->mock();
+
+        $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
+            ->shouldReceive('request')
+            ->times(3)
+            ->with(
+                'GET',
+                \Mockery::type('string'),
+                [
+                    'query'         => $arrQuery
+                ]
+            )
+            ->andReturn($mockResponse)
+            ->mock();
+
+        Company::injectGuzzle($mockGuzzle);
+        $lookupCompany = Company::getInstance($strBaseUri, $strApiKey);
+
+        $returnedException = null;
+
+        try {
+            $lookupCompany->lookupHost($strHost, $strAccountURL, $guidContactId);
+        } catch(\Exception $e) {
+            $returnedException = $e;
+        }
+
+        $this->assertEquals(
+            "Service:Company:Host returned error for ($strHost) ".
+            " on Account ($strAccountURL), Contact ($guidContactId) ".
+            "400-Bad Request",
+            $returnedException->getMessage()
+        );
+
+        try {
+            $lookupCompany->lookupIP($intIP, $strAccountURL, $guidContactId);
+        } catch(\Exception $e) {
+            $returnedException = $e;
+        }
+
+        $this->assertEquals(
+            "Service:Company:IP returned error for ($intIP) ".
+            " on Account ($strAccountURL), Contact ($guidContactId) ".
+            "400-Bad Request",
+            $returnedException->getMessage()
+        );
+
+        try {
+            $lookupCompany->lookupName($strName, $strAccountURL, $guidContactId);
+        } catch(\Exception $e) {
+            $returnedException = $e;
+        }
+
+        $this->assertEquals(
+            "Service:Company:Name returned error for ($strName) ".
+            " on Account ($strAccountURL), Contact ($guidContactId) ".
+            "400-Bad Request",
+            $returnedException->getMessage()
+        );
     }
 }

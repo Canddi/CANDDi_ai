@@ -115,7 +115,7 @@ class Company
             );
         } catch(\Exception $e) {
             throw new \Exception(
-                "Service:Company:Name returned error for ($mixedIPAddress) ".
+                "Service:Company:Name returned error for ($strCompanyName) ".
                 " on Account ($strAccountURL), Contact ($guidContactId) ".
                 $e->getMessage()
             );
