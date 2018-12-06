@@ -54,7 +54,7 @@ class Person
             );
         } catch(\Exception $e) {
             throw new \Exception(
-                "Service:Person returned error for ($strEmailAddress) ".
+                "Service:Person:Email returned error for ($strEmailAddress) ".
                 " on Account ($strAccountURL), Contact ($guidContactId) ".
                 $e->getMessage()
             );
