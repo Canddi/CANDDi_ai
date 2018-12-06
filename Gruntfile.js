@@ -13,7 +13,9 @@ module.exports = function(grunt) {
                 autoload: {
                     options: {
                         usePhp: true,
-                        cwd: ".",
+                        cwd: [
+                            "."
+                        ],
                         composerLocation: "/usr/local/bin/composer"
                     }
                 }
