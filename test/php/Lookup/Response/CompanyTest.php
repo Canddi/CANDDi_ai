@@ -212,77 +212,77 @@ class CompanyTest
         $bReturnedIsISP = $response->isISP();
         $this->assertEquals($bExpectedIsISP, $bReturnedIsISP);
     }
-    public function testGetCoreCompany()
-    {
-        // First lets test that missing company name results in null return
-        $responseEmpty = new Company([]);
-        $this->assertNull($responseEmpty->getCoreCompany());
+    // public function testGetCoreCompany()
+    // {
+    //     // First lets test that missing company name results in null return
+    //     $responseEmpty = new Company([]);
+    //     $this->assertNull($responseEmpty->getCoreCompany());
 
-        // Now lets test that all the data gets into the core properly
-        $testData = $this->_getTestData();
-        $response = new Company($testData);
-        $coreCompany = $response->getCoreCompany();
+    //     // Now lets test that all the data gets into the core properly
+    //     $testData = $this->_getTestData();
+    //     $response = new Company($testData);
+    //     $coreCompany = $response->getCoreCompany();
 
-        $testDataSocial = $testData['SocialMedia'];
-        $testDataAddress = $testData['Location']['Address'];
-        $this->assertInstanceOf(Canddi_Core_Company::class, $coreCompany);
-        $this->assertEquals($testData['CompanyName'], $coreCompany->getCompanyName());
-        $this->assertEquals($testData['Description'], $coreCompany->getCompanyDescription());
-        $this->assertEquals($testDataSocial['Facebook']['url'], $coreCompany->getCompanyFacebook());
-        $this->assertEquals($testDataSocial['Twitter']['url'], $coreCompany->getCompanyTwitter());
-        $this->assertEquals($testDataSocial['LinkedIn']['url'], $coreCompany->getCompanyLinkedIn());
-        $this->assertEquals($testData['Logo'], $coreCompany->getCompanyLogo());
-        $this->assertEquals($testData['Industry'], $coreCompany->getCompanyIndustry());
-        $this->assertEquals($testData['WebsiteURL'], $coreCompany->getCompanyWebsite());
-        $this->assertEquals($testData['PhoneNumbers'], $coreCompany->getCompanyPhones());
-        $this->assertEquals($testData['EmailAddresses'], $coreCompany->getCompanyEmails());
-        $this->assertEquals($testDataAddress['Line1'], $coreCompany->getCompanyAddrLine1());
-        $this->assertEquals($testDataAddress['Line2'], $coreCompany->getCompanyAddrLine2());
-        $this->assertEquals($testDataAddress['City'], $coreCompany->getCompanyAddrCity());
-        $this->assertEquals($testDataAddress['PostalCode'], $coreCompany->getCompanyAddrPostalCode());
-        $this->assertEquals($testData['IndustrySector'], $coreCompany->getIndustrySector());
-        $this->assertEquals($testData['IndustryGroup'], $coreCompany->getIndustryGroup());
-        $this->assertEquals($testData['IndustrySIC'], $coreCompany->getIndustrySIC());
-        $this->assertEquals($testData['IndustryNAICS'], $coreCompany->getIndustryNAICS());
-        $this->assertEquals($testData['Tags'], $coreCompany->getTags());
-        $this->assertEquals($testData['AlexaRank'], $coreCompany->getAlexaRank());
-        $this->assertEquals($testData['Employees'], $coreCompany->getNoEmployees());
-        $this->assertEquals($testData['EmployeeRange'], $coreCompany->getEmployeeRange());
-        $this->assertEquals($testData['MarketCap'], $coreCompany->getMarketCap());
-        $this->assertEquals($testData['Raised'], $coreCompany->getRaised());
-        $this->assertEquals($testData['Revenue'], $coreCompany->getRevenue());
-        $this->assertEquals($testData['RevenueEstimated'], $coreCompany->getRevenueRange());
-    }
-    public function testGetCoreLocation()
-    {
-        // First lets test that no location object means null return value
-        $responseEmpty = new Company(['Location' => []]);
-        $this->assertNull($responseEmpty->getCoreLocation());
+    //     $testDataSocial = $testData['SocialMedia'];
+    //     $testDataAddress = $testData['Location']['Address'];
+    //     $this->assertInstanceOf(Canddi_Core_Company::class, $coreCompany);
+    //     $this->assertEquals($testData['CompanyName'], $coreCompany->getCompanyName());
+    //     $this->assertEquals($testData['Description'], $coreCompany->getCompanyDescription());
+    //     $this->assertEquals($testDataSocial['Facebook']['url'], $coreCompany->getCompanyFacebook());
+    //     $this->assertEquals($testDataSocial['Twitter']['url'], $coreCompany->getCompanyTwitter());
+    //     $this->assertEquals($testDataSocial['LinkedIn']['url'], $coreCompany->getCompanyLinkedIn());
+    //     $this->assertEquals($testData['Logo'], $coreCompany->getCompanyLogo());
+    //     $this->assertEquals($testData['Industry'], $coreCompany->getCompanyIndustry());
+    //     $this->assertEquals($testData['WebsiteURL'], $coreCompany->getCompanyWebsite());
+    //     $this->assertEquals($testData['PhoneNumbers'], $coreCompany->getCompanyPhones());
+    //     $this->assertEquals($testData['EmailAddresses'], $coreCompany->getCompanyEmails());
+    //     $this->assertEquals($testDataAddress['Line1'], $coreCompany->getCompanyAddrLine1());
+    //     $this->assertEquals($testDataAddress['Line2'], $coreCompany->getCompanyAddrLine2());
+    //     $this->assertEquals($testDataAddress['City'], $coreCompany->getCompanyAddrCity());
+    //     $this->assertEquals($testDataAddress['PostalCode'], $coreCompany->getCompanyAddrPostalCode());
+    //     $this->assertEquals($testData['IndustrySector'], $coreCompany->getIndustrySector());
+    //     $this->assertEquals($testData['IndustryGroup'], $coreCompany->getIndustryGroup());
+    //     $this->assertEquals($testData['IndustrySIC'], $coreCompany->getIndustrySIC());
+    //     $this->assertEquals($testData['IndustryNAICS'], $coreCompany->getIndustryNAICS());
+    //     $this->assertEquals($testData['Tags'], $coreCompany->getTags());
+    //     $this->assertEquals($testData['AlexaRank'], $coreCompany->getAlexaRank());
+    //     $this->assertEquals($testData['Employees'], $coreCompany->getNoEmployees());
+    //     $this->assertEquals($testData['EmployeeRange'], $coreCompany->getEmployeeRange());
+    //     $this->assertEquals($testData['MarketCap'], $coreCompany->getMarketCap());
+    //     $this->assertEquals($testData['Raised'], $coreCompany->getRaised());
+    //     $this->assertEquals($testData['Revenue'], $coreCompany->getRevenue());
+    //     $this->assertEquals($testData['RevenueEstimated'], $coreCompany->getRevenueRange());
+    // }
+    // public function testGetCoreLocation()
+    // {
+    //     // First lets test that no location object means null return value
+    //     $responseEmpty = new Company(['Location' => []]);
+    //     $this->assertNull($responseEmpty->getCoreLocation());
 
-        // Now test that missing Lat or Lng means null return value
-        $responseNoLat = new Company([
-            'Location' => [
-                'Lng' => 10,
-                'Lat' => null
-            ]
-        ]);
-        $this->assertNull($responseNoLat->getCoreLocation());
-        $responseNoLng = new Company([
-            'Location' => [
-                'Lng' => null,
-                'Lat' => 10
-            ]
-        ]);
-        $this->assertNull($responseNoLng->getCoreLocation());
+    //     // Now test that missing Lat or Lng means null return value
+    //     $responseNoLat = new Company([
+    //         'Location' => [
+    //             'Lng' => 10,
+    //             'Lat' => null
+    //         ]
+    //     ]);
+    //     $this->assertNull($responseNoLat->getCoreLocation());
+    //     $responseNoLng = new Company([
+    //         'Location' => [
+    //             'Lng' => null,
+    //             'Lat' => 10
+    //         ]
+    //     ]);
+    //     $this->assertNull($responseNoLng->getCoreLocation());
 
-        // Now test that the core location is created properly
-        $testData = $this->_getTestData();
-        $response = new Company($testData);
-        $coreLocation = $response->getCoreLocation();
+    //     // Now test that the core location is created properly
+    //     $testData = $this->_getTestData();
+    //     $response = new Company($testData);
+    //     $coreLocation = $response->getCoreLocation();
 
-        $testDataLocation = $testData['Location'];
-        $this->assertEquals($testDataLocation['Lat'], $coreLocation->getLatitude());
-        $this->assertEquals($testDataLocation['Lng'], $coreLocation->getLongitude());
-        $this->assertEquals(Canddi_Core_Location::TYPE_FIXED_ADDRESS, $coreLocation->getIPType());
-    }
+    //     $testDataLocation = $testData['Location'];
+    //     $this->assertEquals($testDataLocation['Lat'], $coreLocation->getLatitude());
+    //     $this->assertEquals($testDataLocation['Lng'], $coreLocation->getLongitude());
+    //     $this->assertEquals(Canddi_Core_Location::TYPE_FIXED_ADDRESS, $coreLocation->getIPType());
+    // }
 }
