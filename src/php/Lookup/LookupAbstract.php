@@ -39,7 +39,7 @@ abstract class LookupAbstract
         $this->_strURL      = $strURL;
         $this->_strAPIKey   = $strApiKey;
     }
-    final protected function __clone()
+    final public function __clone()
     {
         throw new \Exception('Cannot clone');
     }
@@ -55,6 +55,24 @@ abstract class LookupAbstract
     )
     {
         self::$_guzzleConnection    = $guzzleConnection;
+    }
+    protected static function _getGuzzle($strBaseUri, $strApiKey)
+    {
+        if (!self::$_guzzleConnection) {
+            $arrDefaults                = [
+                'base_uri'              => $strBaseUri,
+                'timeout'               => 5,
+                'connect_timeout'       => 5,
+                'headers'               => [
+                    'Accept'            => 'application/json',
+                    'Accept-Encoding'   => 'gzip, deflate',
+                    'x-api-key'         => $strApiKey
+                ],
+                "verify"                => false
+            ];
+            self::$_guzzleConnection    = new Client($arrDefaults);
+        }
+        return self::$_guzzleConnection;
     }
     /**
      * Gets an instance of the current class
@@ -102,22 +120,9 @@ abstract class LookupAbstract
         Array $arrQuery                 = []
     )
     {
-        if (!self::$_guzzleConnection) {
-            $arrDefaults                = [
-                'base_uri'              => $this->_strURL,
-                'timeout'               => 5,
-                'connect_timeout'       => 5,
-                'headers'               => [
-                    'Accept'            => 'application/json',
-                    'Accept-Encoding'   => 'gzip, deflate',
-                    'x-api-key'         => $this->_strAPIKey
-                ],
-                "verify"                => false
-            ];
-            self::$_guzzleConnection    = new Client($arrDefaults);
-        }
+        $guzzleConnection = self::_getGuzzle($this->_strURL, $this->_strAPIKey);
 
-        $response                   = self::$_guzzleConnection
+        $response                   = $guzzleConnection
             ->request(
                 'GET',
                 $strURL,

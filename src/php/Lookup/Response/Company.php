@@ -8,7 +8,7 @@
  * @author Tim Langley
  **/
 
-namespace CanddiAi\Response;
+namespace CanddiAi\Lookup\Response;
 
 use CanddiAi\Traits\GetArrayValue as NS_traitArrayValue;
 
@@ -139,11 +139,13 @@ class Company
             ""
         );
     }
-    /**
+
+    /* https://canddi.atlassian.net/browse/CS-9790
+    /* *
      * Produces a Canddi_Core_Company based on the data in this response
      *
      * @return Canddi_Core_Company || null
-     */
+     * /
     public function getCoreCompany()
     {
         $strCompanyName = $this->getName();
@@ -239,7 +241,7 @@ class Company
      * Produces a Canddi_Core_Location based on the Lon/Lat in this response
      *
      * @return Canddi_Core_Location || null
-     */
+     * /
     public function getCoreLocation()
     {
         if (empty($this->getLocation())) {
@@ -261,6 +263,8 @@ class Company
 
         return $coreLocation;
     }
+        END https://canddi.atlassian.net/browse/CS-9790
+    */
     public function getCountryCode()
     {
         return $this->_getArrayValue(

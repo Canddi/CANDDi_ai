@@ -115,12 +115,12 @@ class Company
             );
         } catch(\Exception $e) {
             throw new \Exception(
-                "Service:Company:Name returned error for ($mixedIPAddress) ".
+                "Service:Company:Name returned error for ($strCompanyName) ".
                 " on Account ($strAccountURL), Contact ($guidContactId) ".
                 $e->getMessage()
             );
         }
 
-        return new ResponseCompany($arrResponse);
+        return new Response\Company($arrResponse);
     }
 }
