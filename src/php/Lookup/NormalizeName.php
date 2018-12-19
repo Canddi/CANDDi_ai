@@ -7,9 +7,6 @@
 
 namespace CanddiAi\Lookup;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-
 class NormalizeName
     extends LookupAbstract
 {
