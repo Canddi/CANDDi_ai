@@ -11,7 +11,7 @@ class CompanyTest
         $strName = 'Logan White';
 
         $strBaseUri = 'https://ip.canddi.ai';
-        $strApiKey = '5RPIBLH2t61mJb6BRUjGa4Rm5TB56Xp22YAFaB8o';
+        $strApiKey = '';
 
         $strURL = sprintf(NormalizeName::c_URL_NORMALIZE, $strName);
 
