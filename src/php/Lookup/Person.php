@@ -10,18 +10,13 @@
 
 namespace CanddiAi\Lookup;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
+use CanddiAi\Singleton\InterfaceSingleton;
+use CanddiAi\Traits\TraitSingleton;
 
 class Person
-    extends LookupAbstract
+    implements InterfaceSingleton
 {
-    /**
-        This class needs this as otherwise when we inject more than once in a unit test
-        the second is overwritten, which was leading to issues where it would try to call
-        getDescription and so on on the Person class (and vice versa)
-    **/
-    protected static $_locater;
+    use TraitSingleton;
 
     const c_URL_Person  = 'person/email/%s';
     /**
@@ -40,7 +35,8 @@ class Person
         $strEmailAddress,
         $strAccountURL = null,
         $guidContactId = null
-    ) {
+    )
+    {
         $strURL             = sprintf(self::c_URL_Person, $strEmailAddress);
         $arrQuery           = [
             'accounturl'    => $strAccountURL,

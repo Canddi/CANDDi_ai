@@ -3,7 +3,8 @@
  * @author Luke Roberts
  **/
 namespace CanddiAi\Lookup;
-class CompanyTest
+
+class NormalizeNameTest
     extends \CanddiAi\TestCase
 {
     public function testNormalizeName()
@@ -11,7 +12,7 @@ class CompanyTest
         $strName = 'Logan White';
 
         $strBaseUri = 'https://ip.canddi.ai';
-        $strApiKey = '';
+        $strApiKey = md5(1);
 
         $strURL = sprintf(NormalizeName::c_URL_NORMALIZE, $strName);
 

@@ -7,13 +7,18 @@
 
 namespace CanddiAi\Lookup;
 
+use CanddiAi\Singleton\InterfaceSingleton;
+use CanddiAi\Traits\TraitSingleton;
+
 class NormalizeName
-    extends LookupAbstract
+    implements InterfaceSingleton
 {
+    use TraitSingleton;
+
     const c_URL_NORMALIZE   = 'person/name/%s/normalize';
 
     /**
-     * Takes a name and normalizes it using FullContact's name normalization.
+     * Takes a name and normalizes it
      *
      * @return void
      * @author Luke Roberts

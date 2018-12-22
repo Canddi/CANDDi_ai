@@ -116,7 +116,6 @@ class CompanyTest
         $this->assertEquals($testData['PhoneNumbers'], $response->getPhones());
         $this->assertEquals($testData_Address['PostCode'], $response->getPostCode());
         $this->assertEquals($testData['Raised'], $response->getRaised());
-        $this->assertEquals($testData['Region'], $response->getRegion());
         $this->assertEquals($testData['Revenue'], $response->getRevenue());
         $this->assertEquals($testData['RevenueEstimated'], $response->getRevenueEstimated());
         $this->assertEquals($testData['Tags'], $response->getTags());

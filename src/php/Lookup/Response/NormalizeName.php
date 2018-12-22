@@ -21,7 +21,8 @@ class NormalizeName
     }
 
     /**
-     * This will get the value from an item in $_arrResponse, if it doesn't exist or is empty
+     * This will get the value from an item in $_arrResponse,
+     * if it doesn't exist or is empty
      * It'll return the $mixedDefault that's been passed in.
      *
      * @param string $strFieldName
@@ -53,7 +54,8 @@ class NormalizeName
         if (is_null($arrFirstName)) {
             return null;
         }
-        return isset($arrFirstName[self::KEY_FIRSTNAME]) ? $arrFirstName[self::KEY_FIRSTNAME] : null;
+        return isset($arrFirstName[self::KEY_FIRSTNAME]) ?
+            $arrFirstName[self::KEY_FIRSTNAME] : null;
     }
 
     /**
@@ -68,6 +70,7 @@ class NormalizeName
         if (is_null($arrLastName)) {
             return null;
         }
-        return isset($arrLastName[self::KEY_LASTNAME]) ? $arrLastName[self::KEY_LASTNAME] : null;
+        return isset($arrLastName[self::KEY_LASTNAME]) ?
+            $arrLastName[self::KEY_LASTNAME] : null;
     }
 }

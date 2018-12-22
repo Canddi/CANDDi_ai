@@ -1,25 +1,24 @@
 <?php
 /**
- * Wrapper for CANDDi Lookup
- * https://ip.canddi.ai
- *
+ * @copyright 2016-12-14
  * @author Tim Langley
- **/
+**/
 
-namespace CanddiAi\Lookup;
+
+namespace CanddiAi\Traits;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
-abstract class LookupAbstract
+use CanddiAi\Singleton\InterfaceSingleton;
+/**
+ * Singleton trait
+**/
+
+trait TraitSingleton
 {
-
-    /**
-     *  Implements the singleton pattern
-    **/
-    protected static $_locater;
-
-    private static $_guzzleConnection       = null;
+    private $_strURL;
+    private $_strAPIKey;
 
     /**
      * Prevent instantiation and cloning
@@ -39,10 +38,61 @@ abstract class LookupAbstract
         $this->_strURL      = $strURL;
         $this->_strAPIKey   = $strApiKey;
     }
-    final public function __clone()
+
+    final protected function __clone()
     {
-        throw new \Exception('Cannot clone');
+        throw new Exception('Cannot clone');
     }
+
+    /**
+     *  Implements the singleton pattern
+     *  @return:$this       - this is a fluent interface
+    **/
+    protected static $_locater;
+
+    /**
+     * Gets an instance of the current class
+     *
+     * @return static
+     * @author Tim Langley
+    **/
+    public static function getInstance(
+        $strURL     = null,
+        $strApiKey  = null
+    )
+    {
+        if (is_null(static::$_locater)) {
+            static::$_locater   = new static(
+                $strURL,
+                $strApiKey
+            );
+        }
+
+        return static::$_locater;
+    }
+
+    /**
+     * This method is used for testing
+     *  @param: $locator    - this is mainly for testing
+     *                      - it allows a mock version of the
+     *                          Common_Gateway to be injected
+    **/
+    public static function inject(
+        InterfaceSingleton $locator = null
+    )
+    {
+        static::$_locater   = $locator;
+    }
+    /**
+     * This wipes out anything cached
+     *
+     **/
+    public static function reset()
+    {
+        static::$_locater = null;
+    }
+    private static $_guzzleConnection;
+
     /**
      * Used for testing
      *      This injects in a GuzzleConnection so we can
@@ -73,47 +123,6 @@ abstract class LookupAbstract
             self::$_guzzleConnection    = new Client($arrDefaults);
         }
         return self::$_guzzleConnection;
-    }
-    /**
-     * Gets an instance of the current class
-     *
-     * @return static
-     * @author Tim Langley
-    **/
-    public static function getInstance(
-        $strURL     = null,
-        $strApiKey  = null
-    )
-    {
-        if (is_null(static::$_locater)) {
-            static::$_locater   = new static(
-                $strURL,
-                $strApiKey
-            );
-        }
-
-        return static::$_locater;
-    }
-
-    /**
-     * This method is used for testing
-     *  @param: $locator    - this is mainly for testing
-     *                      - it allows a mock version of the
-     *                          Common_Gateway to be injected
-    **/
-    public static function inject(
-        LookupAbstract $locator = null
-    )
-    {
-        static::$_locater   = $locator;
-    }
-    /**
-     * This wipes out anything cached
-     *
-     **/
-    public static function reset()
-    {
-        static::$_locater = null;
     }
     protected function _callEndpoint(
         $strURL,

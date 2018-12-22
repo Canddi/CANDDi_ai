@@ -27,9 +27,6 @@ class TestCase extends \Zend_Test_PHPUnit_ControllerTestCase
         \Mockery::close();
         \Zend_Registry::_unsetInstance();
 
-        Lookup\LookupAbstract::reset();
-        $this->_setProtAttr(Lookup\LookupAbstract::class, '_guzzleConnection', null);
-
         $this->_postTearDown();
 
     }
