@@ -77,7 +77,8 @@ class CompanyTest
             "Raised" => 500000,
             "Revenue" => 700000,
             "RevenueEstimated" => '$1m',
-            "Type" => 3
+            "Type" => 3,
+            "PostCode" => "M22"
         );
     }
     public function testBasicGetters()
@@ -122,6 +123,7 @@ class CompanyTest
         $this->assertEquals($testData['Type'], $response->getType());
         $this->assertEquals($testData['WebsiteURL'], $response->getWebsite());
         $this->assertEquals($testData['bIsISP'], $response->isISP());
+        $this->assertEquals($testData['PostCode'], $response->getPostCode_Outer());
     }
     public function testGetSocialProfiles()
     {
