@@ -7,13 +7,15 @@
 
 namespace CanddiAi\Lookup;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
+use CanddiAi\Singleton\InterfaceSingleton;
 use CanddiAi\Response\Company as ResponseCompany;
+use CanddiAi\Traits\TraitSingleton;
 
 class Company
-    extends LookupAbstract
+    implements InterfaceSingleton
 {
+    use TraitSingleton;
+
     const c_URL_Host    = 'lookup/hostname/%s';
     const c_URL_IP      = 'lookup/ip/%s';
     const c_URL_Name    = 'lookup/company/%s';
@@ -115,12 +117,12 @@ class Company
             );
         } catch(\Exception $e) {
             throw new \Exception(
-                "Service:Company:Name returned error for ($mixedIPAddress) ".
+                "Service:Company:Name returned error for ($strCompanyName) ".
                 " on Account ($strAccountURL), Contact ($guidContactId) ".
                 $e->getMessage()
             );
         }
 
-        return new ResponseCompany($arrResponse);
+        return new Response\Company($arrResponse);
     }
 }

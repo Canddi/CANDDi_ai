@@ -1,21 +1,18 @@
 <?php
 
+/**
+ * @author Matty Glancy
+ */
+
 namespace CanddiAi;
 
-class TestCase extends \Zend_Test_PHPUnit_ControllerTestCase
+class Functional_TestCase
+    extends \Zend_Test_PHPUnit_ControllerTestCase
 {
     public function setUp()
     {
-        $this->_postSetUp();
     }
-    public function _postSetUp()
-    {
 
-    }
-    public function isInIsolation()
-    {
-        return true;
-    }
     /**
      * Make sure all necessary singletons and connections are blanked.
      *
@@ -26,9 +23,7 @@ class TestCase extends \Zend_Test_PHPUnit_ControllerTestCase
     {
         \Mockery::close();
         \Zend_Registry::_unsetInstance();
-
         $this->_postTearDown();
-
     }
 
     /**
@@ -58,22 +53,7 @@ class TestCase extends \Zend_Test_PHPUnit_ControllerTestCase
         $prop->setAccessible(true);
         return $prop->getValue($obj);
     }
-    /**
-     * This function sets a static value
-     *
-     * @param string $obj
-     * @param string $attr
-     * @param string $value
-     *
-     * @author Tim Langley
-     **/
-    protected function _setProtAttr($obj, $attr, $value)
-    {
-        $reflectedClass     = new \ReflectionClass($obj);
-        $reflectedProperty  = $reflectedClass->getProperty($attr);
-        $reflectedProperty->setAccessible(true);
-        $reflectedProperty->setValue($obj, $value);
-    }
+
     /**
      * Use reflection again to invoke a protected or private method
      * Takes an optional arg
@@ -84,11 +64,11 @@ class TestCase extends \Zend_Test_PHPUnit_ControllerTestCase
      * @return the method's return value
      * @author Tim Langley
      **/
-    protected function _invokeProtMethod($obj, $method, $arg = null, $arg2 = null)
+    protected function _invokeProtMethod($obj, $method, $arg = null)
     {
         $reflection = new \ReflectionClass($obj);
         $refMethod = $reflection->getMethod($method);
         $refMethod->setAccessible(true);
-        return $refMethod->invoke($obj, $arg, $arg2);
+        return $refMethod->invoke($obj, $arg);
     }
 }

@@ -1,25 +1,24 @@
 <?php
 /**
- * Wrapper for CANDDi Lookup
- * https://ip.canddi.ai
- *
+ * @copyright 2016-12-14
  * @author Tim Langley
- **/
+**/
 
-namespace CanddiAi\Lookup;
+
+namespace CanddiAi\Traits;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
-abstract class LookupAbstract
+use CanddiAi\Singleton\InterfaceSingleton;
+/**
+ * Singleton trait
+**/
+
+trait TraitSingleton
 {
-
-    /**
-     *  Implements the singleton pattern
-    **/
-    protected static $_locater;
-
-    private static $_guzzleConnection       = null;
+    private $_strURL;
+    private $_strAPIKey;
 
     /**
      * Prevent instantiation and cloning
@@ -39,23 +38,18 @@ abstract class LookupAbstract
         $this->_strURL      = $strURL;
         $this->_strAPIKey   = $strApiKey;
     }
+
     final protected function __clone()
     {
-        throw new \Exception('Cannot clone');
+        throw new Exception('Cannot clone');
     }
+
     /**
-     * Used for testing
-     *      This injects in a GuzzleConnection so we can
-     *      mock this
-     *
-     * @param GuzzleHttp\Client $guzzleConnection
-     **/
-    public static function injectGuzzle(
-        Client $guzzleConnection
-    )
-    {
-        self::$_guzzleConnection    = $guzzleConnection;
-    }
+     *  Implements the singleton pattern
+     *  @return:$this       - this is a fluent interface
+    **/
+    protected static $_locater;
+
     /**
      * Gets an instance of the current class
      *
@@ -84,7 +78,7 @@ abstract class LookupAbstract
      *                          Common_Gateway to be injected
     **/
     public static function inject(
-        LookupAbstract $locator = null
+        InterfaceSingleton $locator = null
     )
     {
         static::$_locater   = $locator;
@@ -97,27 +91,47 @@ abstract class LookupAbstract
     {
         static::$_locater = null;
     }
-    protected function _callEndpoint(
-        $strURL,
-        Array $arrQuery                 = []
+    private static $_guzzleConnection;
+
+    /**
+     * Used for testing
+     *      This injects in a GuzzleConnection so we can
+     *      mock this
+     *
+     * @param GuzzleHttp\Client $guzzleConnection
+     **/
+    public static function injectGuzzle(
+        Client $guzzleConnection
     )
+    {
+        self::$_guzzleConnection    = $guzzleConnection;
+    }
+    protected static function _getGuzzle($strBaseUri, $strApiKey)
     {
         if (!self::$_guzzleConnection) {
             $arrDefaults                = [
-                'base_uri'              => $this->_strURL,
+                'base_uri'              => $strBaseUri,
                 'timeout'               => 5,
                 'connect_timeout'       => 5,
                 'headers'               => [
                     'Accept'            => 'application/json',
                     'Accept-Encoding'   => 'gzip, deflate',
-                    'x-api-key'         => $this->_strAPIKey
+                    'x-api-key'         => $strApiKey
                 ],
                 "verify"                => false
             ];
             self::$_guzzleConnection    = new Client($arrDefaults);
         }
+        return self::$_guzzleConnection;
+    }
+    protected function _callEndpoint(
+        $strURL,
+        Array $arrQuery                 = []
+    )
+    {
+        $guzzleConnection = self::_getGuzzle($this->_strURL, $this->_strAPIKey);
 
-        $response                   = self::$_guzzleConnection
+        $response                   = $guzzleConnection
             ->request(
                 'GET',
                 $strURL,

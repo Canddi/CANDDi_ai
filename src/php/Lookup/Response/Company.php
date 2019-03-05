@@ -8,7 +8,7 @@
  * @author Tim Langley
  **/
 
-namespace CanddiAi\Response;
+namespace CanddiAi\Lookup\Response;
 
 use CanddiAi\Traits\GetArrayValue as NS_traitArrayValue;
 
@@ -443,6 +443,21 @@ class Company
                 self::KEY_PHONES
             ],
             []
+        );
+    }
+    /* 
+        This is for the IP lookup endpoint
+        Where PostCode is a key on the outer object 
+        (Rather than inside a Location object)
+    */
+    public function getPostCode_Outer()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [
+                self::KEY_POSTCODE
+            ],
+            ""
         );
     }
     public function getPostCode()
