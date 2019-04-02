@@ -34,7 +34,7 @@ class UserAgentTest
             'accounturl' => null,
             'contactid' => null
         ];
-        $strURL = sprintf(UserAgent::c_URL_Agent, $strUserAgent);
+        $strURL = sprintf(UserAgent::c_URL_Agent, urlencode($strUserAgent));
         $userAgentInstance = UserAgent::getInstance($strBaseUri, $strApiKey);
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
             ->shouldReceive('getStatusCode')

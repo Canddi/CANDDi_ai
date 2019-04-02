@@ -22,6 +22,7 @@ class UserAgent
         $guidContactId = null
     )
     {
+        $strUserAgent = urlencode($strUserAgent);
         $strURL = sprintf(self::c_URL_Agent, $strUserAgent);
         $arrQuery = [
             'accounturl' => $strAccountUrl,
