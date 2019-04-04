@@ -26,7 +26,7 @@ class UserAgent
         $strURL = sprintf(self::c_URL_Agent, $strUserAgent);
         $arrQuery = [
             'accounturl' => $strAccountUrl,
-            'guid'       => $guidContactId
+            'contactId'       => $guidContactId
         ];
 
         try {
