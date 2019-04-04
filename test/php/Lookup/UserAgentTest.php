@@ -32,7 +32,7 @@ class UserAgentTest
         $guidContactId = md5(1);
         $arrQuery = [
             'accounturl' => null,
-            'contactid' => null
+            'guid' => null
         ];
         $strURL = sprintf(UserAgent::c_URL_Agent, urlencode($strUserAgent));
         $userAgentInstance = UserAgent::getInstance($strBaseUri, $strApiKey);
