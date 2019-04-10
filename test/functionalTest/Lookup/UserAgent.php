@@ -112,23 +112,20 @@ class FunctionalTest_UserAgent
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
         ];
 
-        $strUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36";
-
         $instance = UserAgent::getInstance(
             $this->_strBaseUri,
             $this->_strAPIKey
         );
 
-        $response = $instance->lookupAgent($strUserAgent);
-
-        print_r($this->_getProtAttr($response, '_arrResponse'));
-
-        // for ($strUserAgent = 0; $strUserAgent < sizeof($arrUserAgents); $strUserAgent++)
-        // {
-        //     print_r($this->_getProtAttr($response, '_arrResponse'));
-        // }
-
+        for ($strUserAgent = 0; $strUserAgent < sizeof($arrUserAgents); $strUserAgent++)
+        {
+            sleep(1);
+            $response = $instance->lookupAgent(
+                $arrUserAgents[$strUserAgent],
+                "test",
+                "test"
+            );
+            print_r($this->_getProtAttr($response, '_arrResponse'));
+        }
     }
-
-
 }
