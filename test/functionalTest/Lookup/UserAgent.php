@@ -116,7 +116,7 @@ class FunctionalTest_UserAgent
 
         $instance = UserAgent::getInstance(
             $this->_strBaseUri,
-            $this->_strApiKey
+            $this->_strAPIKey
         );
 
         $response = $instance->lookupAgent($strUserAgent);
