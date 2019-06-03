@@ -42,6 +42,10 @@ class UserAgent
             );
         }
 
+        if (!array_key_exists('BrowserVersion', $arrResponse) || count($arrResponse) != 6) {
+            error_log("Data not found on useragent " . $strUserAgent . " on account " . $strAccountUrl . ", Contact " .  $guidContactId);
+            $arrResponse = [];
+        } else {
         $arrBrowserVersionParts = explode(".", $arrResponse['BrowserVersion']);
         $arrResponse['BrowserVersion'] = $arrBrowserVersionParts[0] . '.' . $arrBrowserVersionParts[1];
 
@@ -50,6 +54,7 @@ class UserAgent
 
         $arrDeviceVersionParts = explode(".", $arrResponse['DeviceVersion']);
         $arrResponse['DeviceVersion'] = $arrDeviceVersionParts[0] . '.' . $arrDeviceVersionParts[1];
+        }
 
         return new ResponseUserAgent($arrResponse);
     }
