@@ -8,6 +8,7 @@ class AddressResponseTest
     public function testConstruct()
     {
         $arrAddressData = [
+            "CountryCode"      => "GB",
             "Lat"              => 53.4819035,
             "Lng"              => -2.2330543,
             "City"             => "Manchester",
@@ -20,6 +21,8 @@ class AddressResponseTest
 
         $response = new Response\Address($arrAddressData);
 
+        $this->assertEquals($arrAddressData['CountryCode'], $response->getCountryCode());
+        $this->assertEquals($arrAddressData['Lat'], $response->getLat());
         $this->assertEquals($arrAddressData['Lat'], $response->getLat());
         $this->assertEquals($arrAddressData['Lng'], $response->getLng());
         $this->assertEquals($arrAddressData['City'], $response->getCity());

@@ -10,6 +10,7 @@ class AddressTest
     public function testLookupAddress()
     {
         $arrAddressData = [
+            "CountryCode"      => "GB",
             "Lat"              => 53.4819035,
             "Lng"              => -2.2330543,
             "City"             => "Manchester",

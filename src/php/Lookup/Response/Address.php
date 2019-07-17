@@ -6,6 +6,7 @@ use CanddiAi\Traits\GetArrayValue as NS_traitArrayValue;
 
 class Address
 {
+    const KEY_COUNTRY_CODE      = 'CountryCode';
     const KEY_CITY              = 'City';
     const KEY_COUNTRY           = 'Country';
     const KEY_LINE1             = 'Line1';
@@ -23,6 +24,16 @@ class Address
     public function __construct(Array $arrResponse)
     {
         $this->_arrResponse = $arrResponse;
+    }
+    public function getCountryCode()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [
+                self::KEY_COUNTRY_CODE
+            ],
+            ""
+        );
     }
     public function getCity()
     {
