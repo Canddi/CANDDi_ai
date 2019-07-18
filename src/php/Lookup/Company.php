@@ -16,10 +16,49 @@ class Company
 {
     use TraitSingleton;
 
+    const c_URL_CompanyName = 'lookup/companyname/%s';
     const c_URL_Host    = 'lookup/hostname/%s';
     const c_URL_IP      = 'lookup/ip/%s';
     const c_URL_Name    = 'lookup/company/%s';
 
+    /**
+     * Calls https://ip.candd.ai/lookup/companyname/[companyname]
+     * end point and returns an array of data
+     *
+     * @param   string $strHostname
+     * @param   optional string $strAccountURL
+     * @param   optional string $guidContactId
+     *
+     * @return  Response\Company
+     *
+    **/
+    public function lookupCompanyName(
+        $strCompanyName,
+        $strAccountURL = null,
+        $guidContactId = null
+    )
+    {
+        $strURL             = sprintf(self::c_URL_CompanyName, $strCompanyName);
+        $arrQuery           = [
+            'accounturl'    => $strAccountURL,
+            'contactid'     => $guidContactId
+        ];
+
+        try {
+            $arrResponse    = $this->_callEndpoint(
+                $strURL,
+                $arrQuery
+            );
+        } catch(\Exception $e) {
+            throw new \Exception(
+                "Service:Company:CompanyName returned error for ($strCompanyName) ".
+                " on Account ($strAccountURL), Contact ($guidContactId) ".
+                $e->getMessage()
+            );
+        }
+
+        return new Response\Company($arrResponse);
+    }
     /**
      * Calls https://ip.candd.ai/lookup/host/[hostname]
      * end point and returns an array of data

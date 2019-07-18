@@ -6,6 +6,45 @@ namespace CanddiAi\Lookup;
 class CompanyTest
     extends \CanddiAi\TestCase
 {
+    public function testLookupCompanyName()
+    {
+        $strBaseUri = 'baseuri.com';
+        $strApiKey = 'api_key_v4387yt876y745';
+        $strName = 'CANDDi';
+        $strAccountURL = 'anAccount';
+        $guidContactId = md5(1);
+        $strURL             = sprintf(Company::c_URL_CompanyName, $strName);
+        $arrQuery           = [
+            'accounturl'    => $strAccountURL,
+            'contactid'     => $guidContactId
+        ];
+        $companyInstance = Company::getInstance($strBaseUri, $strApiKey);
+        $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
+            ->shouldReceive('getStatusCode')
+            ->once()
+            ->withNoArgs()
+            ->andReturn(200)
+            ->shouldReceive('getBody')
+            ->once()
+            ->withNoArgs()
+            ->andReturn('[]')
+            ->mock();
+        $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
+            ->shouldReceive('request')
+            ->once()
+            ->with(
+                'GET',
+                $strURL,
+                [
+                    'query'         => $arrQuery
+                ]
+            )
+            ->andReturn($mockResponse)
+            ->mock();
+        Company::injectGuzzle($mockGuzzle);
+        $actualCompanyResponse = $companyInstance->lookupCompanyName($strName, $strAccountURL, $guidContactId);
+        $this->assertInstanceOf(Response\Company::CLASS, $actualCompanyResponse);
+    }
     public function testLookupHost()
     {
         $strBaseUri = 'baseuri.com';
