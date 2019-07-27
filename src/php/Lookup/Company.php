@@ -67,7 +67,7 @@ class Company
      * @param   optional string $strAccountURL
      * @param   optional string $guidContactId
      *
-     * @return  array  structure as
+     * @return  Response\Company
      *
     **/
     public function lookupHost(
@@ -105,8 +105,7 @@ class Company
      * @param   optional string $strAccountURL
      * @param   optional string $guidContactId
      *
-     * @return  array  structure as
-     *              ** TODO REFACTOR THIS TO RETURN OBJECT **
+     * @return  Response\Company
      *
     **/
     public function lookupIP(

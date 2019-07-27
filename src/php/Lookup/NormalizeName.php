@@ -20,7 +20,7 @@ class NormalizeName
     /**
      * Takes a name and normalizes it
      *
-     * @return void
+     * @return Response\NormalizeName
      * @author Luke Roberts
      **/
     public function normalizeName(

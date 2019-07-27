@@ -27,8 +27,7 @@ class Person
      * @param   optional string $strAccountURL
      * @param   optional string $guidContactId
      *
-     * @return  array  structure as
-     *              ** TODO REFACTOR THIS TO RETURN OBJECT **
+     * @return  Response\Person
      *
     **/
     public function lookupEmail(
