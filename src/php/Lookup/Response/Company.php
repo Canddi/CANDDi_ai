@@ -21,8 +21,8 @@ class Company
     const KEY_LOCATION          = 'Location';
     const KEY_LAT               = 'Lat';
     const KEY_LON               = 'Lon';
-    const KEY_ADDRESS_LON       = 'Lng';
     const KEY_CITY              = 'City';
+    const KEY_COUNTRY           = 'Country';
     const KEY_COUNTRYCODE       = 'CountryCode';
     const KEY_LOGO              = 'Logo';
     const KEY_NAME              = 'CompanyName';
@@ -43,13 +43,10 @@ class Company
     const KEY_ADDRESS           = 'Address';
     const KEY_LINE1             = 'Line1';
     const KEY_LINE2             = 'Line2';
-    // The PostalCode is the address in the address object
-    const KEY_POSTALCODE        = 'PostalCode';
-    // PostCode is for the the postcode for the IP from 1_Company_IP
     const KEY_POSTCODE          = 'PostCode';
     const KEY_TYPE              = 'Type';
     const KEY_REGION            = 'Region';
-    const KEY_ISISP             = 'bIsISP';
+    const KEY_COMPANY           = 'Company';
 
     use NS_traitArrayValue;
 
@@ -59,80 +56,60 @@ class Company
     {
         $this->_arrResponse = $arrResponse;
     }
-    public function getAddressCity()
+    public function getCompany()
     {
         return $this->_getArrayValue(
-            $this->getLocationAddress(),
+            $this->_arrResponse,
             [
-                self::KEY_CITY
+                self::KEY_COMPANY
             ],
-            ""
+            []
         );
     }
-    public function getAddressLat()
+    public function getLocation()
     {
         return $this->_getArrayValue(
-            $this->getLocation(),
+            $this->getCompany(),
             [
-                self::KEY_LAT
+                self::KEY_LOCATION
             ],
-            ""
-        );
-    }
-    public function getAddressLon()
-    {
-        return $this->_getArrayValue(
-            $this->getLocation(),
-            [
-                self::KEY_ADDRESS_LON
-            ],
-            ""
-        );
-    }
-    public function getAddressLine1()
-    {
-        return $this->_getArrayValue(
-            $this->getLocationAddress(),
-            [
-                self::KEY_LINE1
-            ],
-            ""
-        );
-    }
-    public function getAddressLine2()
-    {
-        return $this->_getArrayValue(
-            $this->getLocationAddress(),
-            [
-                self::KEY_LINE2
-            ],
-            ""
-        );
-    }
-    public function getAddressPostCode()
-    {
-        return $this->_getArrayValue(
-            $this->getLocationAddress(),
-            [
-                self::KEY_POSTALCODE
-            ],
-            ""
+            []
         );
     }
     public function getAlexaRank()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_ALEXA_RANK
             ],
             null
         );
     }
+    public function getLine1()
+    {
+        return $this->_getArrayValue(
+            $this->getLocation(),
+            [
+                self::KEY_LINE1
+            ],
+            ""
+        );
+    }
+    public function getLine2()
+    {
+        return $this->_getArrayValue(
+            $this->getLocation(),
+            [
+                self::KEY_LINE2
+            ],
+            ""
+        );
+    }
     public function getCity()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getLocation(),
             [
                 self::KEY_CITY
             ],
@@ -264,11 +241,21 @@ class Company
         return $coreLocation;
     }
         END https://canddi.atlassian.net/browse/CS-9790
-    */
+        */
+    public function getCountry()
+    {
+        return $this->_getArrayValue(
+            $this->getLocation(),
+            [
+                self::KEY_COUNTRY
+            ],
+            ""
+        );
+    }
     public function getCountryCode()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getLocation(),
             [
                 self::KEY_COUNTRYCODE
             ],
@@ -278,7 +265,7 @@ class Company
     public function getDescription()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_DESCRIPTION
             ],
@@ -288,7 +275,7 @@ class Company
     public function getLogo()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_LOGO
             ],
@@ -298,7 +285,7 @@ class Company
     public function getEmailAddresses()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_EMAILS
             ],
@@ -308,7 +295,7 @@ class Company
     public function getEmployees()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_EMPLOYEES
             ],
@@ -318,7 +305,7 @@ class Company
     public function getEmployeeRange()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_EMPLOYEE_RANGE
             ],
@@ -328,7 +315,7 @@ class Company
     public function getIndustry()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_INDUSTRY
             ],
@@ -338,7 +325,7 @@ class Company
     public function getIndustryGroup()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_INDUSTRY_GROUP
             ],
@@ -348,7 +335,7 @@ class Company
     public function getIndustryNAICS()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_INDUSTRY_NAICS
             ],
@@ -358,7 +345,7 @@ class Company
     public function getIndustrySector()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_INDUSTRY_SECTOR
             ],
@@ -368,7 +355,7 @@ class Company
     public function getIndustrySIC()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_INDUSTRY_SIC
             ],
@@ -378,37 +365,17 @@ class Company
     public function getLat()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getLocation(),
             [
                 self::KEY_LAT
             ],
             ""
         );
     }
-    public function getLocation()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [
-                self::KEY_LOCATION
-            ],
-            []
-        );
-    }
-    public function getLocationAddress()
-    {
-        return $this->_getArrayValue(
-            $this->getLocation(),
-            [
-                self::KEY_ADDRESS
-            ],
-            []
-        );
-    }
     public function getLon()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getLocation(),
             [
                 self::KEY_LON
             ],
@@ -418,7 +385,7 @@ class Company
     public function getMarketCap()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_MARKETCAP
             ],
@@ -428,7 +395,7 @@ class Company
     public function getName()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_NAME
             ],
@@ -438,42 +405,27 @@ class Company
     public function getPhones()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_PHONES
             ],
             []
         );
     }
-    /* 
-        This is for the IP lookup endpoint
-        Where PostCode is a key on the outer object 
-        (Rather than inside a Location object)
-    */
-    public function getPostCode_Outer()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [
-                self::KEY_POSTCODE
-            ],
-            ""
-        );
-    }
     public function getPostCode()
     {
         return $this->_getArrayValue(
-            $this->getLocationAddress(),
+            $this->getLocation(),
             [
                 self::KEY_POSTCODE
             ],
-            ""
+            null
         );
     }
     public function getRaised()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_RAISED
             ],
@@ -483,7 +435,7 @@ class Company
     public function getRegion()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getLocation(),
             [
                 self::KEY_REGION
             ],
@@ -493,7 +445,7 @@ class Company
     public function getRevenue()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_REVENUE
             ],
@@ -503,7 +455,7 @@ class Company
     public function getRevenueEstimated()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_REVENUE_ESTIMATED
             ],
@@ -513,7 +465,7 @@ class Company
     public function getSocialProfiles()
     {
         $arrProfiles  = $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_SOCIAL
             ],
@@ -539,7 +491,7 @@ class Company
     public function getTags()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_TAGS
             ],
@@ -559,7 +511,7 @@ class Company
     public function getWebsite()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_WEBSITE
             ],
@@ -569,7 +521,7 @@ class Company
     public function isISP()
     {
         return $this->_getArrayValue(
-            $this->_arrResponse,
+            $this->getCompany(),
             [
                 self::KEY_ISISP
             ],
