@@ -10,120 +10,114 @@ class CompanyTest
 
     private function _getTestData()
     {
-        return array(
-            "City" => "Manchester",
-            "CompanyName" => "Canddi",
-            "CountryCode" => "GB",
-            "Description" => "CANDDi tells you which businesses and people are on your website - helping you convert your visitors into sales! Book a free online demo today.",
-            "Heading" => "Find out WHO is on your website",
-            "SocialMedia" => array(
-                "Facebook" => array(
-                    "url" => "facebook.com\/pages\/Canddi\/126078980739722",
-                    "handle" => "Canddi",
-                    "id" => "126078980739722",
-                    "username" => "thisiscanddi"
-                ),
-                "Twitter" => array(
-                    "url" => "twitter.com\/CANDDi",
-                    "handle" => "CANDDi",
-                    "id" => "50582574",
-                    "followers" => 19751,
-                    "verified" => false
-                ),
-                "LinkedIn" => array(
-                    "url" => "linkedin.com\/company\/canddi-campaign-and-digital-intelligence-limited-"
-                ),
-                "ObscureSocialMediaSite" => array(
-                    "url" => "fakeURL"
-                )
-            ),
-            "EmailAddresses" => array(
-                "hello@canddi.com",
-                "goodbye@canddi.com"
-            ),
-            "CRN" => "07066939",
-            "Logo" => "https:\/\/s3-eu-west-1.amazonaws.com\/images.canddi.net\/canddi.com\/logo.png",
-            "Industry" => "Advertising Agency",
-            "IndustrySector" => "IT",
-            "IndustryGroup" => "IT Group",
-            "IndustrySIC" => "8748",
-            "IndustryNAICS" => "541990",
-            "WebsiteURL" => "http:\/\/canddi.com",
-            "PhoneNumbers" => [
-                "+44 (0) 161 414 1080",
-                "+44 161 414 1080"
-            ],
-            "Location" => array(
-                "FormattedAddress" => "47 Newton St, Manchester M1 1FT, UK",
-                "Lat" => 53.4818762,
-                "Lng" => -2.2331668,
-                "Address" => array(
-                    "Line1" => "47 Newton Street",
-                    "Line2" => "",
-                    "City" => "Manchester",
-                    "PostalCode" => "M1 1FT",
-                    "PostCode" => "m1 1ft",
-                    "Country" => "United Kingdom"
-                )
-            ),
-            "Lat" => 15.4,
-            "Lon" => 12.3,
-            "bIsISP" => false,
-            "Tags" => ['IT', 'Marketing'],
-            "AlexaRank" => 9999,
-            "Employees" => 15,
-            "EmployeeRange" => '10-50',
-            "MarketCap" => 1000000,
-            "Raised" => 500000,
-            "Revenue" => 700000,
-            "RevenueEstimated" => '$1m',
-            "Type" => 3,
-            "PostCode" => "M22"
-        );
+        return [
+            "Hostname" => "canddi.com",
+            "Type" => 1,
+            "Company" => [
+              "CompanyName" => "CANDDi",
+              "PhoneNumbers" => [
+                "+44 161 414 1080",
+                "+442019063604",
+                "+442009201947",
+                "+44 (0) 161 414 1080"
+              ],
+              "WebsiteURL" => [
+                "http =>//canddi.com"
+              ],
+              "Location" => [
+                "Lat" => 53.48187619999999,
+                "Lon" => -2.233166799999999,
+                "Line1" => "47 Newton Street",
+                "Line2" => "",
+                "City" => "Manchester",
+                "PostCode" => "M1 1FT",
+                "Country" => "United Kingdom"
+              ],
+              "SocialMedia" => [
+                "Facebook" => [
+                  "url" => "facebook.com/thisiscanddi",
+                  "platform" => "Facebook",
+                  "handle" => "thisiscanddi"
+                ],
+                "Twitter" => [
+                  "url" => "twitter.com/50582574",
+                  "platform" => "Twitter",
+                  "handle" => "50582574"
+                ],
+                "Youtube" => [
+                  "url" => "youtube.com/channel/UCU7aljz8YC9IdPfxuxLY39g",
+                  "platform" => "Youtube",
+                  "handle" => "UCU7aljz8YC9IdPfxuxLY39g"
+                ],
+                "LinkedIn" => [
+                  "url" => "linkedin.com/company/canddi-campaign-and-digital-intelligence-limited-",
+                  "platform" => "LinkedIn",
+                  "handle" => "canddi-campaign-and-digital-intelligence-limited-"
+                ]
+              ],
+              "EmailAddresses" => [
+                "hello@canddi.com"
+              ],
+              "Description" => "See the people and businesses visiting your website with Website Visitor Tracking Software CANDDI. Web User ID Analytics for marketing and lead generation.",
+              "Logo" => "https =>//s3.eu-west-1.amazonaws.com/images.canddi.net/canddi.com/logo.png",
+              "Industry" => "Internet Software & Services",
+              "AlexaRank" => 1825479,
+              "Employees" => 14,
+              "EmployeeRange" => "11-50",
+              "IndustrySector" => "Information Technology",
+              "IndustryGroup" => "Software & Services",
+              "IndustrySIC" => "73",
+              "IndustryNAICS" => "54",
+              "Raised" => 676528,
+              "MarketCap" => 123456,
+              "Revenue" => 9876,
+              "RevenueEstimated" => "$1M-$10M",
+              "Tags" => [
+                "Technology",
+                "Information Technology & Services",
+                "Marketing & Advertising",
+                "SAAS",
+                "B2B"
+              ]
+            ]
+        ];
     }
     public function testBasicGetters()
     {
         $testData = $this->_getTestData();
         $response = new Company($testData);
 
-        $testData_Location = $testData['Location'];
-        $testData_Address = $testData_Location['Address'];
+        $testCompanyData = $testData['Company'];
+        $testLocationData = $testCompanyData['Location'];
 
-        $this->assertEquals($testData_Address['City'], $response->getAddressCity());
-        $this->assertEquals($testData_Location['Lat'], $response->getAddressLat());
-        $this->assertEquals($testData_Location['Lng'], $response->getAddressLon());
-        $this->assertEquals($testData_Address['Line1'], $response->getAddressLine1());
-        $this->assertEquals($testData_Address['Line2'], $response->getAddressLine2());
-        $this->assertEquals($testData_Address['PostalCode'], $response->getAddressPostCode());
-        $this->assertEquals($testData['AlexaRank'], $response->getAlexaRank());
-        $this->assertEquals($testData['City'], $response->getCity());
-        $this->assertEquals($testData['CountryCode'], $response->getCountryCode());
-        $this->assertEquals($testData['Description'], $response->getDescription());
-        $this->assertEquals($testData['Logo'], $response->getLogo());
-        $this->assertEquals($testData['EmailAddresses'], $response->getEmailAddresses());
-        $this->assertEquals($testData['Employees'], $response->getEmployees());
-        $this->assertEquals($testData['EmployeeRange'], $response->getEmployeeRange());
-        $this->assertEquals($testData['Industry'], $response->getIndustry());
-        $this->assertEquals($testData['IndustryGroup'], $response->getIndustryGroup());
-        $this->assertEquals($testData['IndustryNAICS'], $response->getIndustryNAICS());
-        $this->assertEquals($testData['IndustrySIC'], $response->getIndustrySIC());
-        $this->assertEquals($testData['IndustrySector'], $response->getIndustrySector());
-        $this->assertEquals($testData['Lat'], $response->getLat());
-        $this->assertEquals($testData_Location, $response->getLocation());
-        $this->assertEquals($testData_Address, $response->getLocationAddress());
-        $this->assertEquals($testData['Lon'], $response->getLon());
-        $this->assertEquals($testData['MarketCap'], $response->getMarketCap());
-        $this->assertEquals($testData['CompanyName'], $response->getName());
-        $this->assertEquals($testData['PhoneNumbers'], $response->getPhones());
-        $this->assertEquals($testData_Address['PostCode'], $response->getPostCode());
-        $this->assertEquals($testData['Raised'], $response->getRaised());
-        $this->assertEquals($testData['Revenue'], $response->getRevenue());
-        $this->assertEquals($testData['RevenueEstimated'], $response->getRevenueEstimated());
-        $this->assertEquals($testData['Tags'], $response->getTags());
+        $this->assertEquals($testLocationData['City'], $response->getCity());
+        $this->assertEquals($testLocationData['Lat'], $response->getLat());
+        $this->assertEquals($testLocationData['Lon'], $response->getLon());
+        $this->assertEquals($testLocationData['Line1'], $response->getLine1());
+        $this->assertEquals($testLocationData['Line2'], $response->getLine2());
+        $this->assertEquals($testLocationData['PostCode'], $response->getPostCode());
+        $this->assertEquals($testLocationData['Country'], $response->getCountry());
+        $this->assertEquals($testLocationData['City'], $response->getCity());
+        $this->assertEquals($testCompanyData['AlexaRank'], $response->getAlexaRank());
+        $this->assertEquals($testCompanyData['Description'], $response->getDescription());
+        $this->assertEquals($testCompanyData['Logo'], $response->getLogo());
+        $this->assertEquals($testCompanyData['EmailAddresses'], $response->getEmailAddresses());
+        $this->assertEquals($testCompanyData['Employees'], $response->getEmployees());
+        $this->assertEquals($testCompanyData['EmployeeRange'], $response->getEmployeeRange());
+        $this->assertEquals($testCompanyData['Industry'], $response->getIndustry());
+        $this->assertEquals($testCompanyData['IndustryGroup'], $response->getIndustryGroup());
+        $this->assertEquals($testCompanyData['IndustryNAICS'], $response->getIndustryNAICS());
+        $this->assertEquals($testCompanyData['IndustrySIC'], $response->getIndustrySIC());
+        $this->assertEquals($testCompanyData['IndustrySector'], $response->getIndustrySector());
+        $this->assertEquals($testCompanyData['MarketCap'], $response->getMarketCap());
+        $this->assertEquals($testCompanyData['CompanyName'], $response->getName());
+        $this->assertEquals($testCompanyData['PhoneNumbers'], $response->getPhones());
+        $this->assertEquals($testCompanyData['Raised'], $response->getRaised());
+        $this->assertEquals($testCompanyData['Revenue'], $response->getRevenue());
+        $this->assertEquals($testCompanyData['RevenueEstimated'], $response->getRevenueEstimated());
+        $this->assertEquals($testCompanyData['Tags'], $response->getTags());
+        $this->assertEquals($testCompanyData['WebsiteURL'], $response->getWebsite());
         $this->assertEquals($testData['Type'], $response->getType());
-        $this->assertEquals($testData['WebsiteURL'], $response->getWebsite());
-        $this->assertEquals($testData['bIsISP'], $response->isISP());
-        $this->assertEquals($testData['PostCode'], $response->getPostCode_Outer());
     }
     public function testGetSocialProfiles()
     {
@@ -133,24 +127,30 @@ class CompanyTest
         $arrReturnedSocialProfiles = $response->getSocialProfiles();
         $arrReturnedFacebook = $this->_getProtAttr($arrReturnedSocialProfiles[0], '_arrResponse');
         $arrReturnedTwitter = $this->_getProtAttr($arrReturnedSocialProfiles[1], '_arrResponse');
-        $arrReturnedLinkedIn = $this->_getProtAttr($arrReturnedSocialProfiles[2], '_arrResponse');
+        $arrReturnedYoutube = $this->_getProtAttr($arrReturnedSocialProfiles[2], '_arrResponse');
+        $arrReturnedLinkedIn = $this->_getProtAttr($arrReturnedSocialProfiles[3], '_arrResponse');
         $this->assertEquals([
-            "url" => "facebook.com\/pages\/Canddi\/126078980739722",
-            "handle" => "Canddi",
-            "id" => "126078980739722",
-            "username" => "thisiscanddi",
+            "url" => "facebook.com/thisiscanddi",
+            "platform" => "Facebook",
+            "handle" => "thisiscanddi",
             "typeId" => "Facebook"
         ], $arrReturnedFacebook);
         $this->assertEquals([
-            "url" => "twitter.com\/CANDDi",
-            "handle" => "CANDDi",
-            "id" => "50582574",
-            "followers" => 19751,
-            "verified" => false,
+            "url" => "twitter.com/50582574",
+            "platform" => "Twitter",
+            "handle" => "50582574",
             "typeId" => "Twitter"
         ], $arrReturnedTwitter);
         $this->assertEquals([
-            "url" => "linkedin.com\/company\/canddi-campaign-and-digital-intelligence-limited-",
+            "url" => "youtube.com/channel/UCU7aljz8YC9IdPfxuxLY39g",
+            "platform" => "Youtube",
+            "handle" => "UCU7aljz8YC9IdPfxuxLY39g",
+            "typeId" => "Youtube"
+        ], $arrReturnedYoutube);
+        $this->assertEquals([
+            "url" => "linkedin.com/company/canddi-campaign-and-digital-intelligence-limited-",
+            "platform" => "LinkedIn",
+            "handle" => "canddi-campaign-and-digital-intelligence-limited-",
             "typeId" => "LinkedIn"
         ], $arrReturnedLinkedIn);
     }
