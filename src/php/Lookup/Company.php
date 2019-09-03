@@ -417,7 +417,7 @@ class Company
         $arrResponseToPass = [];
         foreach($arrOldResponse as $key => $value) {
             if (!is_array($value)) {
-                if ($value) {
+                if ($value || $key == "bIsISP" || $key == "Type") {
                     $arrResponseToPass[$key] = $value;
                 }
             } else {
@@ -827,7 +827,7 @@ class Company
         $arrResponseToPass = [];
         foreach($arrOldResponse as $key => $value) {
             if (!is_array($value)) {
-                if ($value) {
+                if ($value || $key == "bIsISP" || $key == "Type") {
                     $arrResponseToPass[$key] = $value;
                 }
             } else {
@@ -1236,7 +1236,7 @@ class Company
         $arrResponseToPass = [];
         foreach($arrOldResponse as $key => $value) {
             if (!is_array($value)) {
-                if ($value) {
+                if ($value || $key == "bIsISP" || $key == "Type") {
                     $arrResponseToPass[$key] = $value;
                 }
             } else {
@@ -1638,7 +1638,7 @@ class Company
         $arrResponseToPass = [];
         foreach($arrOldResponse as $key => $value) {
             if (!is_array($value)) {
-                if ($value) {
+                if ($value || $key == "bIsISP" || ($key == "Type")) {
                     $arrResponseToPass[$key] = $value;
                 }
             } else {
