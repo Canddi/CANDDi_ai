@@ -37,13 +37,17 @@ class Company
     public function lookupCompanyName(
         $strCompanyName,
         $strAccountURL = null,
-        $guidContactId = null
+        $guidContactId = null,
+        $strCallbackUrl = null,
+        $arrCallbackOptions = []
     )
     {
         $strURL             = sprintf(self::c_URL_CompanyName, $strCompanyName);
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
-            'contactid'     => $guidContactId
+            'contactid'     => $guidContactId,
+            'cburl'         => $strCallbackUrl,
+            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
         ];
         try {
             $arrResponse    = $this->_callEndpoint(
@@ -446,13 +450,17 @@ class Company
     public function lookupHost(
         $strHostName,
         $strAccountURL = null,
-        $guidContactId = null
+        $guidContactId = null,
+        $strCallbackUrl = null,
+        $arrCallbackOptions = []
     )
     {
         $strURL             = sprintf(self::c_URL_Host, $strHostName);
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
-            'contactid'     => $guidContactId
+            'contactid'     => $guidContactId,
+            'cburl'         => $strCallbackUrl,
+            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
         ];
 
         try {
@@ -856,13 +864,17 @@ class Company
     public function lookupIP(
         $mixedIPAddress,
         $strAccountURL = null,
-        $guidContactId = null
+        $guidContactId = null,
+        $strCallbackUrl = null,
+        $arrCallbackOptions = []
     )
     {
         $strURL             = sprintf(self::c_URL_IP, $mixedIPAddress);
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
-            'contactid'     => $guidContactId
+            'contactid'     => $guidContactId,
+            'cburl'         => $strCallbackUrl,
+            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
         ];
 
         try {
@@ -1255,13 +1267,17 @@ class Company
     public function lookupName(
         $strCompanyName,
         $strAccountURL = null,
-        $guidContactId = null
+        $guidContactId = null,
+        $strCallbackUrl = null,
+        $arrCallbackOptions = []
     )
     {
         $strURL             = sprintf(self::c_URL_Name, $strCompanyName);
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
-            'contactid'     => $guidContactId
+            'contactid'     => $guidContactId,
+            'cburl'         => $strCallbackUrl,
+            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
         ];
 
         try {
