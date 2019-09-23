@@ -86,7 +86,10 @@ class CompanyTest
             ->mock();
         Company::injectGuzzle($mockGuzzle);
         $actualCompanyResponse = $companyInstance->lookupHost($strHostname, $strAccountURL, $guidContactId);
-        $expectedCompanyResponse = new Response\Company([]);
+        $expectedCompanyResponse = new Response\Company([
+            'Type'   => '',
+            'bIsISP' => false
+        ]);
         $this->assertEquals($expectedCompanyResponse, $actualCompanyResponse);
     }
     public function testLookupIP()
@@ -128,7 +131,10 @@ class CompanyTest
             ->mock();
         Company::injectGuzzle($mockGuzzle);
         $actualCompanyResponse = $companyInstance->lookupIP($intIP, $strAccountURL, $guidContactId);
-        $expectedCompanyResponse = new Response\Company([]);
+        $expectedCompanyResponse = new Response\Company([
+            'Type'   => '',
+            'bIsISP' => false
+        ]);
         $this->assertEquals($expectedCompanyResponse, $actualCompanyResponse);
     }
     public function testLookupName()
@@ -170,7 +176,10 @@ class CompanyTest
             ->mock();
         Company::injectGuzzle($mockGuzzle);
         $actualCompanyResponse = $companyInstance->lookupName($strName, $strAccountURL, $guidContactId);
-        $expectedCompanyResponse = new Response\Company([]);
+        $expectedCompanyResponse = new Response\Company([
+            'Type'   => '',
+            'bIsISP' => false
+        ]);
         $this->assertEquals($expectedCompanyResponse, $actualCompanyResponse);
     }
     public function testLookups_Fail()
