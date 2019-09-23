@@ -16,7 +16,9 @@ class CompanyTest
         $strURL             = sprintf(Company::c_URL_CompanyName, $strName);
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
-            'contactid'     => $guidContactId
+            'contactid'     => $guidContactId,
+            'cburl'         => '',
+            'cboptions'     => '{}'
         ];
         $companyInstance = Company::getInstance($strBaseUri, $strApiKey);
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
@@ -55,7 +57,9 @@ class CompanyTest
         $strURL             = sprintf(Company::c_URL_Host, $strHostname);
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
-            'contactid'     => $guidContactId
+            'contactid'     => $guidContactId,
+            'cburl'         => '',
+            'cboptions'     => '{}'
         ];
         $companyInstance = Company::getInstance($strBaseUri, $strApiKey);
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
@@ -95,7 +99,9 @@ class CompanyTest
         $strURL             = sprintf(Company::c_URL_IP, $intIP);
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
-            'contactid'     => $guidContactId
+            'contactid'     => $guidContactId,
+            'cburl'         => '',
+            'cboptions'     => '{}'
         ];
         $companyInstance = Company::getInstance($strBaseUri, $strApiKey);
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
@@ -135,7 +141,9 @@ class CompanyTest
         $strURL             = sprintf(Company::c_URL_Name, $strName);
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
-            'contactid'     => $guidContactId
+            'contactid'     => $guidContactId,
+            'cburl'         => '',
+            'cboptions'     => '{}'
         ];
         $companyInstance = Company::getInstance($strBaseUri, $strApiKey);
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
@@ -173,7 +181,9 @@ class CompanyTest
         $guidContactId = md5(1);
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
-            'contactid'     => $guidContactId
+            'contactid'     => $guidContactId,
+            'cburl'         => '',
+            'cboptions'     => '{}'
         ];
 
         $strName = 'CANDDi';
