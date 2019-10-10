@@ -426,11 +426,14 @@ class Company
                 }
             } else {
                 if (
+                    $key === "Location" &&
                     isset($arrOldResponse["Location"]) &&
                     isset($arrOldResponse["Location"]["Lat"]) &&
                     $arrOldResponse["Location"]["Lat"] != ""
                 ) {
                     $arrResponseToPass["Location"] = $arrOldResponse["Location"];
+                } else if ($key !== "Location") {
+                    $arrResponseToPass[$key] = $value;
                 }
             }
         }
@@ -840,11 +843,14 @@ class Company
                 }
             } else {
                 if (
+                    $key === "Location" &&
                     isset($arrOldResponse["Location"]) &&
                     isset($arrOldResponse["Location"]["Lat"]) &&
                     $arrOldResponse["Location"]["Lat"] != ""
                 ) {
                     $arrResponseToPass["Location"] = $arrOldResponse["Location"];
+                } else if ($key !== "Location") {
+                    $arrResponseToPass[$key] = $value;
                 }
             }
         }
@@ -1253,11 +1259,14 @@ class Company
                 }
             } else {
                 if (
+                    $key === "Location" &&
                     isset($arrOldResponse["Location"]) &&
                     isset($arrOldResponse["Location"]["Lat"]) &&
                     $arrOldResponse["Location"]["Lat"] != ""
                 ) {
                     $arrResponseToPass["Location"] = $arrOldResponse["Location"];
+                } else if ($key !== "Location") {
+                    $arrResponseToPass[$key] = $value;
                 }
             }
         }
@@ -1659,11 +1668,14 @@ class Company
                 }
             } else {
                 if (
+                    $key === "Location" &&
                     isset($arrOldResponse["Location"]) &&
                     isset($arrOldResponse["Location"]["Lat"]) &&
                     $arrOldResponse["Location"]["Lat"] != ""
                 ) {
                     $arrResponseToPass["Location"] = $arrOldResponse["Location"];
+                } else if ($key !== "Location") {
+                    $arrResponseToPass[$key] = $value;
                 }
             }
         }
