@@ -432,7 +432,7 @@ class Company
                     $arrOldResponse["Location"]["Lat"] != ""
                 ) {
                     $arrResponseToPass["Location"] = $arrOldResponse["Location"];
-                } else {
+                } else if ($key !== "Location") {
                     $arrResponseToPass[$key] = $value;
                 }
             }
@@ -849,7 +849,7 @@ class Company
                     $arrOldResponse["Location"]["Lat"] != ""
                 ) {
                     $arrResponseToPass["Location"] = $arrOldResponse["Location"];
-                } else {
+                } else if ($key !== "Location") {
                     $arrResponseToPass[$key] = $value;
                 }
             }
@@ -1265,7 +1265,7 @@ class Company
                     $arrOldResponse["Location"]["Lat"] != ""
                 ) {
                     $arrResponseToPass["Location"] = $arrOldResponse["Location"];
-                } else {
+                } else if ($key !== "Location") {
                     $arrResponseToPass[$key] = $value;
                 }
             }
@@ -1674,7 +1674,7 @@ class Company
                     $arrOldResponse["Location"]["Lat"] != ""
                 ) {
                     $arrResponseToPass["Location"] = $arrOldResponse["Location"];
-                } else {
+                } else if ($key !== "Location") {
                     $arrResponseToPass[$key] = $value;
                 }
             }
