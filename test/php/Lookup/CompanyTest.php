@@ -10,10 +10,10 @@ class CompanyTest
     {
         $strBaseUri = 'baseuri.com';
         $strApiKey = 'api_key_v4387yt876y745';
-        $strName = 'CANDDi';
+        $strName = 'CANDD/i';
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
-        $strURL             = sprintf(Company::c_URL_CompanyName, $strName);
+        $strURL             = sprintf(Company::c_URL_CompanyName, str_replace('/', '%2F', $strName));
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
             'contactid'     => $guidContactId,
