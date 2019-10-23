@@ -23,6 +23,10 @@ class Company
     const c_URL_IP      = 'lookup/ip/%s';
     const c_URL_Name    = 'lookup/company/%s';
 
+    private function cleanseForURL($str){
+        return str_replace('/', '%2F', $str);
+    }
+
     /**
      * Calls https://ip.candd.ai/lookup/companyname/[companyname]
      * end point and returns an array of data
@@ -42,7 +46,7 @@ class Company
         $arrCallbackOptions = []
     )
     {
-        $strURL             = sprintf(self::c_URL_CompanyName, $strCompanyName);
+        $strURL             = sprintf(self::c_URL_CompanyName, $this->cleanseForURL($strCompanyName));
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
             'contactid'     => $guidContactId,
@@ -455,7 +459,7 @@ class Company
         $arrCallbackOptions = []
     )
     {
-        $strURL             = sprintf(self::c_URL_Host, $strHostName);
+        $strURL             = sprintf(self::c_URL_Host, $this->cleanseForURL($strHostName));
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
             'contactid'     => $guidContactId,
@@ -869,7 +873,7 @@ class Company
         $arrCallbackOptions = []
     )
     {
-        $strURL             = sprintf(self::c_URL_IP, $mixedIPAddress);
+        $strURL             = sprintf(self::c_URL_IP, $this->cleanseForURL($mixedIPAddress));
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
             'contactid'     => $guidContactId,
@@ -1272,7 +1276,7 @@ class Company
         $arrCallbackOptions = []
     )
     {
-        $strURL             = sprintf(self::c_URL_Name, $strCompanyName);
+        $strURL             = sprintf(self::c_URL_Name, $this->cleanseForURL($strCompanyName));
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
             'contactid'     => $guidContactId,
