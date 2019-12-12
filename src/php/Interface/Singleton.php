@@ -18,7 +18,7 @@ interface InterfaceSingleton
     **/
     public static function getInstance(
         $strURL     = null,
-        $strApiKey  = null
+        $strAccessToken  = null
     );
 
     /**
