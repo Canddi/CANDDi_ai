@@ -12,11 +12,11 @@ class NormalizeNameTest
         $strName = 'Logan White';
 
         $strBaseUri = 'https://ip.canddi.ai';
-        $strApiKey = md5(1);
+        $strAccessToken = md5(1);
 
         $strURL = sprintf(NormalizeName::c_URL_NORMALIZE, $strName);
 
-        $normalizeNameInstance = NormalizeName::getInstance($strBaseUri, $strApiKey);
+        $normalizeNameInstance = NormalizeName::getInstance($strBaseUri, $strAccessToken);
 
         $responseBody = [
             "status" => "200",
@@ -65,12 +65,12 @@ class NormalizeNameTest
     public function testNormalizeNameIncorrectName() {
         $strName = 'fakename';
 
-        $strBaseUri = 'https://ip.canddi.ai';
-        $strApiKey = '5RPIBLH2t61mJb6BRUjGa4Rm5TB56Xp22YAFaB8o';
+        $strBaseUri = 'baseuri.com';
+        $strAccessToken = md5(1);
 
         $strURL = sprintf(NormalizeName::c_URL_NORMALIZE, $strName);
 
-        $normalizeNameInstance = NormalizeName::getInstance($strBaseUri, $strApiKey);
+        $normalizeNameInstance = NormalizeName::getInstance($strBaseUri, $strAccessToken);
 
         $responseBody = [
             "status" => "200",

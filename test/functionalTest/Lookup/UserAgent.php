@@ -5,7 +5,7 @@ namespace CanddiAi\Lookup;
 class FunctionalTest_UserAgent
     extends \CanddiAi\Functional_TestCase
 {
-    private $_strAPIKey = "";
+    private $_strAccessToken = '';
     private $_strBaseUri = "";
 
     public function testUserAgent()
@@ -114,7 +114,7 @@ class FunctionalTest_UserAgent
 
         $instance = UserAgent::getInstance(
             $this->_strBaseUri,
-            $this->_strAPIKey
+            $this->_strAccessToken
         );
 
         for ($strUserAgent = 0; $strUserAgent < sizeof($arrUserAgents); $strUserAgent++)

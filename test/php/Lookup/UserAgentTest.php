@@ -26,7 +26,7 @@ class UserAgentTest
             "DeviceVersion" => "0.0"
         ];
         $strBaseUri = 'baseuri.com';
-        $strApiKey = 'api_key_v4387yt876y745';
+        $strAccessToken = md5(1);
         $strUserAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36';
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
@@ -35,7 +35,7 @@ class UserAgentTest
             'contactid' => null
         ];
         $strURL = sprintf(UserAgent::c_URL_Agent, rawurlencode($strUserAgent));
-        $userAgentInstance = UserAgent::getInstance($strBaseUri, $strApiKey);
+        $userAgentInstance = UserAgent::getInstance($strBaseUri, $strAccessToken);
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
             ->shouldReceive('getStatusCode')
             ->once()

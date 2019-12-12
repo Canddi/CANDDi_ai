@@ -22,11 +22,11 @@ class AddressTest
         ];
 
         $strBaseUri = 'baseuri.com';
-        $strApiKey = 'api_key_v4387yt876y745';
+        $strAccessToken = md5(1);
         $strAddress = $arrAddressData["FormattedAddress"];
 
         $strURL = sprintf(Address::c_URL_Address, rawurlencode($strAddress));
-        $addressInstance = Address::getInstance($strBaseUri, $strApiKey);
+        $addressInstance = Address::getInstance($strBaseUri, $strAccessToken);
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
             ->shouldReceive('getStatusCode')
             ->once()
