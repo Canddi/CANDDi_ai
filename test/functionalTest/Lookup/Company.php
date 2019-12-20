@@ -18,7 +18,7 @@ class FunctionalTest_Company
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
 
-        $instance = Company::getInstance($this->_strBaseUri, $this->_strApiKey);
+        $instance = Company::getInstance($this->_strBaseUri, $this->_strAccessToken);
 
         $response = $instance->lookupHost($strHost, $strAccountURL, $guidContactId);
 
@@ -30,7 +30,7 @@ class FunctionalTest_Company
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
 
-        $instance = Company::getInstance($this->_strBaseUri, $this->_strApiKey);
+        $instance = Company::getInstance($this->_strBaseUri, $this->_strAccessToken);
 
         $response = $instance->lookupIP($strIP, $strAccountURL, $guidContactId);
 
@@ -42,7 +42,7 @@ class FunctionalTest_Company
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
 
-        $instance = Company::getInstance($this->_strBaseUri, $this->_strApiKey);
+        $instance = Company::getInstance($this->_strBaseUri, $this->_strAccessToken);
 
         $response = $instance->lookupName($strName, $strAccountURL, $guidContactId);
 
@@ -54,7 +54,7 @@ class FunctionalTest_Company
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
 
-        $instance = Company::getInstance($this->_strBaseUri, $this->_strApiKey);
+        $instance = Company::getInstance($this->_strBaseUri, $this->_strAccessToken);
 
         $response = $instance->lookupCompanyName($strName, $strAccountURL, $guidContactId);
 

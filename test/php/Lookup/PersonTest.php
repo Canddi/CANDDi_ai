@@ -9,7 +9,7 @@ class PersonTest
     public function testLookupEmail()
     {
         $strBaseUri = 'baseuri.com';
-        $strApiKey = 'api_key_v4387yt876y745';
+        $strAccessToken = md5(1);
         $strEmail = 'tim@canddi.com';
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
@@ -18,7 +18,7 @@ class PersonTest
             'accounturl'    => $strAccountURL,
             'contactid'     => $guidContactId
         ];
-        $companyInstance = Person::getInstance($strBaseUri, $strApiKey);
+        $companyInstance = Person::getInstance($strBaseUri, $strAccessToken);
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
             ->shouldReceive('getStatusCode')
             ->once()
@@ -49,7 +49,7 @@ class PersonTest
     public function testLookups_Fail()
     {
         $strBaseUri = 'baseuri.com';
-        $strApiKey = 'api_key_v4387yt876y745';
+        $strAccessToken = md5(1);
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
         $arrQuery           = [
@@ -84,7 +84,7 @@ class PersonTest
             ->mock();
 
         Person::injectGuzzle($mockGuzzle);
-        $lookupCompany = Person::getInstance($strBaseUri, $strApiKey);
+        $lookupCompany = Person::getInstance($strBaseUri, $strAccessToken);
 
         $returnedException = null;
 

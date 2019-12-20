@@ -9,7 +9,7 @@ class CompanyTest
     public function testLookupCompanyName()
     {
         $strBaseUri = 'baseuri.com';
-        $strApiKey = 'api_key_v4387yt876y745';
+        $strAccessToken = md5(1);
         $strName = 'CANDD/i';
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
@@ -20,7 +20,7 @@ class CompanyTest
             'cburl'         => '',
             'cboptions'     => '{}'
         ];
-        $companyInstance = Company::getInstance($strBaseUri, $strApiKey);
+        $companyInstance = Company::getInstance($strBaseUri, $strAccessToken);
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
             ->shouldReceive('getStatusCode')
             ->once()
@@ -50,7 +50,7 @@ class CompanyTest
     public function testLookupCompanyName_WithCallback()
     {
         $strBaseUri = 'baseuri.com';
-        $strApiKey = 'api_key_v4387yt876y745';
+        $strAccessToken = md5(1);
         $strName = 'CANDDi';
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
@@ -67,7 +67,7 @@ class CompanyTest
             'cburl'         => $strCallback,
             'cboptions'     => '{\"headers\":{\"my\":\"header\"}}'
         ];
-        $companyInstance = Company::getInstance($strBaseUri, $strApiKey);
+        $companyInstance = Company::getInstance($strBaseUri, $strAccessToken);
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
             ->shouldReceive('getStatusCode')
             ->once()
@@ -97,7 +97,7 @@ class CompanyTest
     public function testLookupHost()
     {
         $strBaseUri = 'baseuri.com';
-        $strApiKey = 'api_key_v4387yt876y745';
+        $strAccessToken = md5(1);
         $strHostname = 'hostname.com';
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
@@ -108,7 +108,7 @@ class CompanyTest
             'cburl'         => '',
             'cboptions'     => '{}'
         ];
-        $companyInstance = Company::getInstance($strBaseUri, $strApiKey);
+        $companyInstance = Company::getInstance($strBaseUri, $strAccessToken);
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
             ->shouldReceive('getStatusCode')
             ->once()
@@ -142,7 +142,7 @@ class CompanyTest
     public function testLookupIP()
     {
         $strBaseUri = 'baseuri.com';
-        $strApiKey = 'api_key_v4387yt876y745';
+        $strAccessToken = md5(1);
         $intIP = 12345;
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
@@ -153,7 +153,7 @@ class CompanyTest
             'cburl'         => '',
             'cboptions'     => '{}'
         ];
-        $companyInstance = Company::getInstance($strBaseUri, $strApiKey);
+        $companyInstance = Company::getInstance($strBaseUri, $strAccessToken);
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
             ->shouldReceive('getStatusCode')
             ->once()
@@ -187,7 +187,7 @@ class CompanyTest
     public function testLookupName()
     {
         $strBaseUri = 'baseuri.com';
-        $strApiKey = 'api_key_v4387yt876y745';
+        $strAccessToken = md5(1);
         $strName = 'CANDDi';
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
@@ -198,7 +198,7 @@ class CompanyTest
             'cburl'         => '',
             'cboptions'     => '{}'
         ];
-        $companyInstance = Company::getInstance($strBaseUri, $strApiKey);
+        $companyInstance = Company::getInstance($strBaseUri, $strAccessToken);
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
             ->shouldReceive('getStatusCode')
             ->once()
@@ -232,7 +232,7 @@ class CompanyTest
     public function testLookups_Fail()
     {
         $strBaseUri = 'baseuri.com';
-        $strApiKey = 'api_key_v4387yt876y745';
+        $strAccessToken = md5(1);
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
         $arrQuery           = [
@@ -271,7 +271,7 @@ class CompanyTest
             ->mock();
 
         Company::injectGuzzle($mockGuzzle);
-        $lookupCompany = Company::getInstance($strBaseUri, $strApiKey);
+        $lookupCompany = Company::getInstance($strBaseUri, $strAccessToken);
 
         $returnedException = null;
 

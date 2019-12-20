@@ -9,7 +9,7 @@ namespace CanddiAi\Lookup;
 class FunctionalTest_Person
     extends \CanddiAi\Functional_TestCase
 {
-    private $_strApiKey = '';
+    private $_strAccessToken = '';
     private $_strBaseUri = '';
 
     public function testLookupEmail()
@@ -18,7 +18,7 @@ class FunctionalTest_Person
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
 
-        $instance = Person::getInstance($this->_strBaseUri, $this->_strApiKey);
+        $instance = Person::getInstance($this->_strBaseUri, $this->_strAccessToken);
 
         $response = $instance->lookupEmail($strEmail, $strAccountURL, $guidContactId);
 

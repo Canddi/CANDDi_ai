@@ -18,7 +18,7 @@ use CanddiAi\Singleton\InterfaceSingleton;
 trait TraitSingleton
 {
     private $_strURL;
-    private $_strAPIKey;
+    private $_strAccessToken;
 
     /**
      * Prevent instantiation and cloning
@@ -26,17 +26,17 @@ trait TraitSingleton
     **/
     final protected function __construct(
         $strURL,
-        $strApiKey
+        $strAccessToken
     )
     {
-        if (empty($strURL) || empty($strApiKey)) {
+        if (empty($strURL) || empty($strAccessToken)) {
             throw new \Exception(
                 "Unable to create instance - Missing URL OR Key"
             );
         }
 
         $this->_strURL      = $strURL;
-        $this->_strAPIKey   = $strApiKey;
+        $this->_strAccessToken   = $strAccessToken;
     }
 
     final protected function __clone()
@@ -58,19 +58,28 @@ trait TraitSingleton
     **/
     public static function getInstance(
         $strURL     = null,
-        $strApiKey  = null
+        $strAccessToken  = null
     )
     {
         if (is_null(static::$_locater)) {
             static::$_locater   = new static(
                 $strURL,
-                $strApiKey
+                $strAccessToken
             );
         }
+
+        static::$_locater->setAccessToken(
+            $strAccessToken
+        );
 
         return static::$_locater;
     }
 
+    private function setAccessToken(
+        $strAccessToken = null
+    ) {
+        $this->_strAccessToken = $strAccessToken;
+    }
     /**
      * This method is used for testing
      *  @param: $locator    - this is mainly for testing
@@ -106,7 +115,7 @@ trait TraitSingleton
     {
         self::$_guzzleConnection    = $guzzleConnection;
     }
-    protected static function _getGuzzle($strBaseUri, $strApiKey)
+    protected static function _getGuzzle($strBaseUri, $strAccessToken)
     {
         if (!self::$_guzzleConnection) {
             $arrDefaults                = [
@@ -116,7 +125,7 @@ trait TraitSingleton
                 'headers'               => [
                     'Accept'            => 'application/json',
                     'Accept-Encoding'   => 'gzip, deflate',
-                    'x-api-key'         => $strApiKey
+                    'Authorization'         => $strAccessToken
                 ],
                 "verify"                => false
             ];
@@ -129,7 +138,7 @@ trait TraitSingleton
         Array $arrQuery                 = []
     )
     {
-        $guzzleConnection = self::_getGuzzle($this->_strURL, $this->_strAPIKey);
+        $guzzleConnection = self::_getGuzzle($this->_strURL, $this->_strAccessToken);
 
         $response                   = $guzzleConnection
             ->request(
