@@ -33,6 +33,10 @@ class NormalizeName
             $arrResponse    = $this->_callEndpoint(
                 $strURL
             );
+
+            if ($arrResponse === NULL) {
+                throw new \Exception('404 Not Found');
+            }
         } catch(\Exception $e) {
             throw new \Exception(
                 "Service:NormalizeName returned error for ($strName) " .
