@@ -19,6 +19,7 @@ class Person
     use TraitSingleton;
 
     const c_URL_Person  = 'person/email/%s';
+    const c_URL_LinkedIn = 'person/linkedin/%s';
     /**
      * This calls the https://api.canddi.net/person/email/[emailaddress]
      * end point and returns an array of data
@@ -56,5 +57,37 @@ class Person
         }
 
         return new Response\Person($arrResponse);
+    }
+
+    public function lookupLinkedIn(
+        $strLinkedInUsername,
+        $strAccountURL = null,
+        $guidContactId = null,
+        $strCallbackUrl = null,
+        $arrCallbackOptions = []
+    )
+    {
+        $strURL = sprintf(self::c_URL_LinkedIn, $strLinkedInUsername);
+        $arrQuery           = [
+            'accounturl'    => $strAccountURL,
+            'contactid'     => $guidContactId,
+            'cburl'         => $strCallbackUrl,
+            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
+        ];
+
+        try {
+            $arrResponse = $this->_callEndpoint(
+                $strURL,
+                $arrQuery
+            );
+        } catch(\Exception $e) {
+            throw new \Exception(
+                "Service:Person:LinkedIn returned error for ($strLinkedInUsername) ".
+                " on Account ($strAccountURL), Contact ($guidContactId) ".
+                $e->getMessage()
+            );
+        }
+
+        return new Response\PersonLinkedIn($arrResponse);
     }
 }
