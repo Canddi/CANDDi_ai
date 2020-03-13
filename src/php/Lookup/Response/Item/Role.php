@@ -7,6 +7,7 @@ class Role
 {
     const KEY_PRIMARY   = 'IsPrimary';
     const KEY_TITLE     = 'Title';
+    const KEY_NAME      = 'CompanyName';
     const KEY_START     = 'StartDate';
     const KEY_END       = 'EndDate';
 
@@ -34,6 +35,16 @@ class Role
             $this->_arrResponse,
             [
                 self::KEY_TITLE
+            ],
+            ""
+        );
+    }
+    public function getName()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [
+                self::KEY_NAME
             ],
             ""
         );
