@@ -115,4 +115,14 @@ class PersonLinkedIn
         }
         return $arrReturn;
     }
+    public function getEducation()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [
+                self::KEY_EDUCATION
+            ],
+            []
+        );
+    }
 }
