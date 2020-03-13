@@ -101,4 +101,53 @@ class PersonTest
             $returnedException->getMessage()
         );
     }
+    public function testLookupLinkedIn()
+    {
+        $strBaseUri = 'baseuri.com';
+        $strAccessToken = md5(1);
+        $strUsername = 'linkedinName';
+        $strAccountURL = 'anAccount';
+        $strCBUrl = 'url';
+        $guidContactId = md5(1);
+        $strURL             = sprintf(Person::c_URL_LinkedIn, $strUsername);
+        $arrQuery           = [
+            'accounturl'    => $strAccountURL,
+            'contactid'     => $guidContactId,
+            'cburl'         => $strCBUrl,
+            'cboptions'     => '{}'
+        ];
+        $companyInstance = Person::getInstance($strBaseUri, $strAccessToken);
+        $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
+            ->shouldReceive('getStatusCode')
+            ->once()
+            ->withNoArgs()
+            ->andReturn(200)
+            ->shouldReceive('getBody')
+            ->once()
+            ->withNoArgs()
+            ->andReturn('[]')
+            ->mock();
+        $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
+            ->shouldReceive('request')
+            ->once()
+            ->with(
+                'GET',
+                $strURL,
+                [
+                    'query'         => $arrQuery
+                ]
+            )
+            ->andReturn($mockResponse)
+            ->mock();
+        Person::injectGuzzle($mockGuzzle);
+
+        $actualCompanyResponse = $companyInstance->lookupLinkedIn(
+            $strUsername,
+            $strAccountURL,
+            $guidContactId,
+            $strCBUrl
+        );
+        $expectedCompanyResponse = new Response\PersonLinkedIn([]);
+        $this->assertEquals($expectedCompanyResponse, $actualCompanyResponse);
+    }
 }
