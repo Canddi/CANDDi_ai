@@ -50,6 +50,7 @@ class Company
     const KEY_TYPE              = 'Type';
     const KEY_REGION            = 'Region';
     const KEY_ISISP             = 'bIsISP';
+    const KEY_HOST              = 'Hostname';
 
     use NS_traitArrayValue;
 
@@ -306,6 +307,16 @@ class Company
             $this->_arrResponse,
             [
                 self::KEY_NAME
+            ],
+            ""
+        );
+    }
+    public function getHostname()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [
+                self::KEY_HOST
             ],
             ""
         );
