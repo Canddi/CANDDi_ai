@@ -211,6 +211,18 @@ class Company
                 ],
                 ""
             ),
+            "Hostname" => $this->_getArrayValue(
+                $arrResponse,
+                [
+                    'Company',
+                    'Hostname'
+                ],
+                [
+                    'IP',
+                    'Hostname'
+                ],
+                null
+            ),
             "Employees" => $this->_getArrayValue(
                 $arrResponse,
                 [
@@ -628,6 +640,18 @@ class Company
                 ],
                 ""
             ),
+            "Hostname" => $this->_getArrayValue(
+                $arrResponse,
+                [
+                    'Company',
+                    'Hostname'
+                ],
+                [
+                    'IP',
+                    'Hostname'
+                ],
+                null
+            ),
             "Employees" => $this->_getArrayValue(
                 $arrResponse,
                 [
@@ -1044,6 +1068,18 @@ class Company
                 ],
                 ""
             ),
+            "Hostname" => $this->_getArrayValue(
+                $arrResponse,
+                [
+                    'Company',
+                    'Hostname'
+                ],
+                [
+                    'IP',
+                    'Hostname'
+                ],
+                null
+            ),
             "Employees" => $this->_getArrayValue(
                 $arrResponse,
                 [
@@ -1450,6 +1486,18 @@ class Company
                     "EmailAddresses"
                 ],
                 ""
+            ),
+            "Hostname" => $this->_getArrayValue(
+                $arrResponse,
+                [
+                    'Company',
+                    'Hostname'
+                ],
+                [
+                    'IP',
+                    'Hostname'
+                ],
+                null
             ),
             "Employees" => $this->_getArrayValue(
                 $arrResponse,
