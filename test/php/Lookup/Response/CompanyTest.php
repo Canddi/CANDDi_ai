@@ -90,6 +90,7 @@ class CompanyTest
             "Type" => 3,
             "PostCode" => "",
             "City" => "",
+            "Hostname" => 'canddi.com',
             "bIsISP" => false
         ];
     }
@@ -136,6 +137,7 @@ class CompanyTest
         $this->assertEquals($testData['WebsiteURL'], $response->getWebsite());
         $this->assertEquals($testData['bIsISP'], $response->isISP());
         $this->assertEquals($testData['PostCode'], $response->getPostCode_Outer());
+        $this->assertEquals($testData['Hostname'], $response->getHostname());
     }
     public function testGetSocialProfiles()
     {
