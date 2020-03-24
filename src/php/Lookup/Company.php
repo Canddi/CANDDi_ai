@@ -217,11 +217,14 @@ class Company
                     'Company',
                     'Hostname'
                 ],
-                [
-                    'IP',
-                    'Hostname'
-                ],
-                null
+                $this->_getArrayValue(
+                    $arrResponse,
+                    [
+                        'IP',
+                        'Hostname'
+                    ],
+                    null
+                )
             ),
             "Employees" => $this->_getArrayValue(
                 $arrResponse,
@@ -646,11 +649,14 @@ class Company
                     'Company',
                     'Hostname'
                 ],
-                [
-                    'IP',
-                    'Hostname'
-                ],
-                null
+                $this->_getArrayValue(
+                    $arrResponse,
+                    [
+                        'IP',
+                        'Hostname'
+                    ],
+                    null
+                )
             ),
             "Employees" => $this->_getArrayValue(
                 $arrResponse,
@@ -1074,11 +1080,14 @@ class Company
                     'Company',
                     'Hostname'
                 ],
-                [
-                    'IP',
-                    'Hostname'
-                ],
-                null
+                $this->_getArrayValue(
+                    $arrResponse,
+                    [
+                        'IP',
+                        'Hostname'
+                    ],
+                    null
+                )
             ),
             "Employees" => $this->_getArrayValue(
                 $arrResponse,
@@ -1493,11 +1502,14 @@ class Company
                     'Company',
                     'Hostname'
                 ],
-                [
-                    'IP',
-                    'Hostname'
-                ],
-                null
+                $this->_getArrayValue(
+                    $arrResponse,
+                    [
+                        'IP',
+                        'Hostname'
+                    ],
+                    null
+                )
             ),
             "Employees" => $this->_getArrayValue(
                 $arrResponse,
