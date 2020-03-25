@@ -174,7 +174,7 @@ class Company
                     [
                         "Company",
                         "Location",
-                        "Lng"
+                        "Lon"
                     ],
                     ""
                 )
@@ -606,7 +606,7 @@ class Company
                     [
                         "Company",
                         "Location",
-                        "Lng"
+                        "Lon"
                     ],
                     ""
                 )
@@ -939,7 +939,15 @@ class Company
                             "Location",
                             "Line1"
                         ],
-                        ""
+                        $this->_getArrayValue(
+                            $arrResponse,
+                            [
+                                "IP",
+                                "Location",
+                                "Line1"
+                            ],
+                            ""
+                        )
                     ),
                     "Line2" => $this->_getArrayValue(
                         $arrResponse,
@@ -948,7 +956,15 @@ class Company
                             "Location",
                             "Line2"
                         ],
-                        ""
+                        $this->_getArrayValue(
+                            $arrResponse,
+                            [
+                                "IP",
+                                "Location",
+                                "Line2"
+                            ],
+                            ""
+                        )
                     ),
                     "PostalCode" => $this->_getArrayValue(
                         $arrResponse,
@@ -957,7 +973,15 @@ class Company
                             "Location",
                             "PostCode"
                         ],
-                        ""
+                        $this->_getArrayValue(
+                            $arrResponse,
+                            [
+                                "IP",
+                                "Location",
+                                "PostCode"
+                            ],
+                            ""
+                        )
                     ),
                     "PostCode" => $this->_getArrayValue(
                         $arrResponse,
@@ -966,7 +990,15 @@ class Company
                             "Location",
                             "PostCode"
                         ],
-                        ""
+                        $this->_getArrayValue(
+                            $arrResponse,
+                            [
+                                "IP",
+                                "Location",
+                                "PostCode"
+                            ],
+                            ""
+                        )
                     ),
                     "City" => $this->_getArrayValue(
                         $arrResponse,
@@ -975,7 +1007,15 @@ class Company
                             "Location",
                             "City"
                         ],
-                        ""
+                        $this->_getArrayValue(
+                            $arrResponse,
+                            [
+                                "IP",
+                                "Location",
+                                "City"
+                            ],
+                            ""
+                        )
                     ),
                     "Country" => $this->_getArrayValue(
                         $arrResponse,
@@ -984,7 +1024,15 @@ class Company
                             "Location",
                             "Lng"
                         ],
-                        ""
+                        $this->_getArrayValue(
+                            $arrResponse,
+                            [
+                                "IP",
+                                "Location",
+                                "Lng"
+                            ],
+                            ""
+                        )
                     )
                 ],
                 "FormattedAddress" => $this->_getArrayValue(
@@ -994,7 +1042,15 @@ class Company
                         "Location",
                         "FormattedAddress"
                     ],
-                    ""
+                    $this->_getArrayValue(
+                        $arrResponse,
+                        [
+                            "IP",
+                            "Location",
+                            "FormattedAddress"
+                        ],
+                        ""
+                    )
                 ),
                 "Region" => $this->_getArrayValue(
                     $arrResponse,
@@ -1003,7 +1059,15 @@ class Company
                         "Location",
                         "Region"
                     ],
-                    ""
+                    $this->_getArrayValue(
+                        $arrResponse,
+                        [
+                            "IP",
+                            "Location",
+                            "Region"
+                        ],
+                        ""
+                    )
                 ),
                 "CountryCode" => $this->_getArrayValue(
                     $arrResponse,
@@ -1012,7 +1076,15 @@ class Company
                         "Location",
                         "CountryCode"
                     ],
-                    ""
+                    $this->_getArrayValue(
+                        $arrResponse,
+                        [
+                            "IP",
+                            "Location",
+                            "CountryCode"
+                        ],
+                        ""
+                    )
                 ),
                 "Lat" => $this->_getArrayValue(
                     $arrResponse,
@@ -1021,7 +1093,15 @@ class Company
                         "Location",
                         "Lat"
                     ],
-                    ""
+                    $this->_getArrayValue(
+                        $arrResponse,
+                        [
+                            "IP",
+                            "Location",
+                            "Lat"
+                        ],
+                        ""
+                    )
                 ),
                 "Lon" => $this->_getArrayValue(
                     $arrResponse,
@@ -1030,16 +1110,32 @@ class Company
                         "Location",
                         "Lon"
                     ],
-                    ""
+                    $this->_getArrayValue(
+                        $arrResponse,
+                        [
+                            "IP",
+                            "Location",
+                            "Lon"
+                        ],
+                        ""
+                    )
                 ),
                 "Lng" => $this->_getArrayValue(
                     $arrResponse,
                     [
                         "Company",
                         "Location",
-                        "Lng"
+                        "Lon"
                     ],
-                    ""
+                    $this->_getArrayValue(
+                        $arrResponse,
+                        [
+                            "IP",
+                            "Location",
+                            "Lon"
+                        ],
+                        ""
+                    )
                 )
             ],
             "AlexaRank" => $this->_getArrayValue(
@@ -1459,7 +1555,7 @@ class Company
                     [
                         "Company",
                         "Location",
-                        "Lng"
+                        "Lon"
                     ],
                     ""
                 )
