@@ -1,12 +1,5 @@
 <?php
-/**
- * Wrapper for CANDDi Lookup
- * https://api.canddi.net
- *
- * @TODO REFACTOR THIS TO a separate composer package
- *
- * @author Tim Langley
- **/
+
 namespace CanddiAi\Lookup\Response\Company;
 
 use CanddiAi\Traits\GetArrayValue as NS_traitArrayValue;
@@ -73,14 +66,22 @@ class IP
             null
         );
     }
-    // TODO: This will return location model
+    /**
+     * @return  CanddiAi\Lookup\Response\Company\Location|null
+     */
     public function getLocation()
     {
-        return $this->_getArrayValue(
+        $arrLocation = $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_LOCATION],
             null
         );
+
+        if(is_null($arrLocation)) {
+            return null;
+        }
+
+        return new Location($arrLocation);
     }
     public function getLat()
     {
