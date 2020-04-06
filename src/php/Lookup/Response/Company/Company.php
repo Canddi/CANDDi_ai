@@ -318,6 +318,9 @@ class Company
             null
         );
     }
+    /**
+     * @return  Array<CanddiAi\Lookup\Response\Company\SocialMedia>|null
+     */
     public function getSocialMedia()
     {
         $arrSocialMedia = $this->_getArrayValue(
@@ -330,7 +333,13 @@ class Company
             return null;
         }
 
-        return new SocialMedia($arrSocialMedia);
+        $arrReturn = [];
+
+        foreach($arrSocialMedia as $arrThisSocial) {
+            $arrReturn[] = new SocialMedia($arrThisSocial);
+        }
+
+        return $arrReturn;
     }
     public function getTags()
     {

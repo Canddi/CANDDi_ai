@@ -201,10 +201,6 @@ class CompanyTest
             $this->_getTestData()['SIC'],
             $innerCompany->getSIC()
         );
-        $this->assertInstanceOf(
-            SocialMedia::class,
-            $innerCompany->getSocialMedia()
-        );
         $this->assertEquals(
             $this->_getTestData()['Tags'],
             $innerCompany->getTags()
@@ -221,5 +217,17 @@ class CompanyTest
             $this->_getTestData()['WebsiteScreenshot'],
             $innerCompany->getWebsiteScreenshot()
         );
+
+        $arrSocialMedia = $innerCompany->getSocialMedia();
+        $this->assertEquals(
+            5,
+            count($arrSocialMedia)
+        );
+        foreach($arrSocialMedia as $mdlSocial) {
+            $this->assertInstanceOf(
+                SocialMedia::class,
+                $mdlSocial
+            );
+        }
     }
 }
