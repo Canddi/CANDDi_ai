@@ -34,13 +34,23 @@ class Company
         if(array_key_exists('Company', $arrResponse)) {
             $this->_mdlCompany = new InnerCompany($arrResponse['Company']);
         }
+        if(array_key_exists('IP', $arrResponse)) {
+            $this->_mdlIP = new InnerIP($arrResponse['IP']);
+        }
     }
     /**
-     * @return  CanddiAi\Lookup\Response\Company\Company
+     * @return  CanddiAi\Lookup\Response\Company\Company|null
      */
     public function getCompany()
     {
         return $this->_mdlCompany;
+    }
+    /**
+     * @return  CanddiAi\Lookup\Response\Company\IP|null
+     */
+    public function getIP()
+    {
+        return $this->_mdlIP;
     }
     /**
      * @return  Array
