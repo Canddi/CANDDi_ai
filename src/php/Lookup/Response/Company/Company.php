@@ -320,11 +320,17 @@ class Company
     }
     public function getSocialMedia()
     {
-        return $this->_getArrayValue(
+        $arrSocialMedia = $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_SOCIALMEDIA],
             null
         );
+
+        if(is_null($arrSocialMedia)) {
+            return null;
+        }
+
+        return new SocialMedia($arrSocialMedia);
     }
     public function getTags()
     {
