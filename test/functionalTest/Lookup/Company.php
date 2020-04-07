@@ -9,9 +9,10 @@ namespace CanddiAi\Lookup;
 class FunctionalTest_Company
     extends \CanddiAi\Functional_TestCase
 {
-    private $_strApiKey = '';
-    private $_strBaseUri = '';
+    private $_strAccessToken = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlJUQXhPVVZCTlRBM1FqRkJOVUV5UmtVd01rSkVSRFV6UkRNelFrRTJNalpCUTBJM05rRkZRZyJ9.eyJpc3MiOiJodHRwczovL2NhbmRkaS1kYXRhLmV1LmF1dGgwLmNvbS8iLCJzdWIiOiIxd2UyMDNCV2dtUkhrS3Z1RTRZSktTaXc5YkFBSlNYU0BjbGllbnRzIiwiYXVkIjoiYXBpLmNhbmRkaS5haSIsImlhdCI6MTU4NjI2NTc4OCwiZXhwIjoxNTg2MzUyMTg4LCJhenAiOiIxd2UyMDNCV2dtUkhrS3Z1RTRZSktTaXc5YkFBSlNYUyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.JIC5O46hIrXj4-bSLIYZu9RgbfEBF-3SIEQxB87XaRzdkrbIxpNPVmQLWThRuxeAr35ODvn0zCOZTUuSVZRo0hOffzNCrlrwn7Nyy-95jBcNmuR73RRiiAD4X9ssHTXfjKvljbhGkHm9URetqlGZf3SWo-9J_6dqnaeSbZcX8vU1uQsnnMu7XcRIkkregvTr7VYSz_98izvra5PYvcH3IZaOf-ALhmsHFlXqDjzRBcOCL12lZYlhZS-yu3609NpTZKlKgwOBlyYEoJZlVDdGONIizlBZD2SVZBhKYnCRzUW6GGljILQMqTWEP6Jw3ITkRI1LtHcu1bIUFy_aB1Ggfw";
+    private $_strBaseUri = 'https://ip.canddi.ai/';
 
+    /*
     public function testLookupHost()
     {
         $strHost = 'canddi.com';
@@ -24,9 +25,10 @@ class FunctionalTest_Company
 
         print_r($this->_getProtAttr($response, '_arrResponse'));
     }
+    */
     public function testLookupIP()
     {
-        $strIP = '87.238.85.156';
+        $strIP = '88.98.243.9';
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
 
@@ -34,8 +36,9 @@ class FunctionalTest_Company
 
         $response = $instance->lookupIP($strIP, $strAccountURL, $guidContactId);
 
-        print_r($this->_getProtAttr($response, '_arrResponse'));
+        print_r($response);
     }
+    /*
     public function testLookupName()
     {
         $strName = 'CANDDi';
@@ -60,4 +63,5 @@ class FunctionalTest_Company
 
         print_r($this->_getProtAttr($response, '_arrResponse'));
     }
+    */
 }
