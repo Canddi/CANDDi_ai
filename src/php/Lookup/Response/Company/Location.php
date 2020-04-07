@@ -88,4 +88,8 @@ class Location
             null
         );
     }
+    public function getRegion()
+    {
+        return "";
+    }
 }
