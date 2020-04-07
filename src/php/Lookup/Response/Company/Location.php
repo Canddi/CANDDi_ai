@@ -10,10 +10,10 @@ class Location
     const KEY_COUNTRYCODE = "CountryCode";
     const KEY_LAT = "Lat";
     const KEY_LNG = "Lng";
-    const KEY_LON = "Lon";
     const KEY_LINE1 = "Line1";
     const KEY_LINE2 = "Line2";
     const KEY_POSTCODE = "PostCode";
+    const KEY_REGION = "Region";
 
     use NS_traitArrayValue;
 
@@ -56,14 +56,6 @@ class Location
             null
         );
     }
-    public function getLon()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_LON],
-            null
-        );
-    }
     public function getLine1()
     {
         return $this->_getArrayValue(
@@ -90,6 +82,10 @@ class Location
     }
     public function getRegion()
     {
-        return "";
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_REGION],
+            null
+        );
     }
 }
