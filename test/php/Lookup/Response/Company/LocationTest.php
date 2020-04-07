@@ -40,10 +40,6 @@ class LocationTest
             $innerLocation->getLng()
         );
         $this->assertEquals(
-            $this->_getTestData()['Lon'],
-            $innerLocation->getLon()
-        );
-        $this->assertEquals(
             $this->_getTestData()['Line1'],
             $innerLocation->getLine1()
         );
