@@ -22,6 +22,7 @@ class Person
     const KEY_EDUCATION = 'Education';
     const KEY_PHOTO = 'Pictures';
     const KEY_SOCIAL = 'SocialMedia';
+    const KEY_BIO = 'Bio';
 
     use NS_traitArrayValue;
 
@@ -120,6 +121,16 @@ class Person
                 self::KEY_EDUCATION
             ],
             []
+        );
+    }
+    public function getBio()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [
+                self::KEY_BIO
+            ],
+            null
         );
     }
 }
