@@ -61,7 +61,7 @@ class IPTest
             $innerIP->getLat()
         );
         $this->assertEquals(
-            $this->_getTestData()['Lon'],
+            $this->_getTestData()['Lng'],
             $innerIP->getLon()
         );
         $this->assertEquals(
