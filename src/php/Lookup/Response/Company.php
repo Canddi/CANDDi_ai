@@ -21,6 +21,7 @@ class Company
     const KEY_HOSTNAME  = 'Hostname';
     const KEY_DEBUG     = 'Debug';
     const KEY_TYPE      = 'Type';
+    const KEY_ORIGIP = "OrigIP";
 
     use NS_traitArrayValue;
 
@@ -82,6 +83,28 @@ class Company
         return $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_HOSTNAME],
+            null
+        );
+    }
+    public function bIsISP() {
+        $intType = $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_TYPE],
+            null
+        );
+
+        if ($intType && $intType === 1) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function getOrigIP()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_ORIGIP],
             null
         );
     }
