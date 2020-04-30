@@ -79,10 +79,6 @@ class CompanyTest
             $innerCompany->getAlexaRank()
         );
         $this->assertEquals(
-            $this->_getTestData()['bIsISP'],
-            $innerCompany->getbIsISP()
-        );
-        $this->assertEquals(
             $this->_getTestData()['City'],
             $innerCompany->getCity()
         );
