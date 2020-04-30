@@ -65,7 +65,7 @@ class IPTest
             $innerIP->getLon()
         );
         $this->assertEquals(
-            $this->_getTestData()['CountryCode'],
+            $this->_getTestData()['Location']['CountryCode'],
             $innerIP->getCountryCode()
         );
     }
