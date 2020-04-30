@@ -25,10 +25,10 @@ class Company
     const KEY_INDUSTRYSECTOR = "IndustrySector";
     const KEY_INDUSTRYSIC = "IndustrySIC";
     const KEY_LAT = "Lat";
+    const KEY_LNG = "Lng";
     const KEY_LEGALNAME = "LegalName";
     const KEY_LOCATION = "Location";
     const KEY_LOGO = "Logo";
-    const KEY_LON = "Lon";
     const KEY_MARKETCAP = "MarketCap";
     const KEY_ORIGIP = "OrigIP";
     const KEY_PHONENUMBERS = "PhoneNumbers";
@@ -242,7 +242,7 @@ class Company
     {
         return $this->_getArrayValue(
             $this->_arrResponse,
-            [self::KEY_LON],
+            [self::KEY_LNG],
             null
         );
     }
