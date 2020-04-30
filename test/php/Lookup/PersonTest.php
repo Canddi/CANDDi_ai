@@ -147,7 +147,7 @@ class PersonTest
             $guidContactId,
             $strCBUrl
         );
-        $expectedCompanyResponse = new Response\PersonLinkedIn([]);
+        $expectedCompanyResponse = new Response\Person([]);
         $this->assertEquals($expectedCompanyResponse, $actualCompanyResponse);
     }
 }
