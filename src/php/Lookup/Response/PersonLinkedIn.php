@@ -93,8 +93,8 @@ class PersonLinkedIn
             ],
             []
         );
-        $arrReturn  = [];
-        return $arrReturn;
+
+        return $arrPhotos;
     }
     public function getSocialProfiles()
     {
