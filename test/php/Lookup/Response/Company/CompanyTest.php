@@ -162,7 +162,7 @@ class CompanyTest
             $innerCompany->getLogo()
         );
         $this->assertEquals(
-            $this->_getTestData()['Lon'],
+            $this->_getTestData()['Lng'],
             $innerCompany->getLon()
         );
         $this->assertEquals(
