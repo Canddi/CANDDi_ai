@@ -54,6 +54,7 @@ class CompanyTest
             "EmployeeRange"   => "11-50 employees",
             "Employees"   => 39,
             "Logo"    => "https  =>//images.canddi.net/canddi.com/logo.png",
+            "AlexaRank" => 1,
             "Location"    => [
                 "Lat"   => 53.4819,
                 "Lng"   => -2.2332,
@@ -61,11 +62,25 @@ class CompanyTest
                 "Line2"     => "Manchester",
                 "PostCode"  => "M1 1FT",
                 "City"  => "Manchester",
-                "CountryCode"   => "GB"
+                "CountryCode"   => "GB",
+                "Region" => "Northern Quarter"
             ],
             "SIC"     => [
                 "62012"
-            ]
+            ],
+            "Hostname" => "canddi.com",
+            "Industry" => "Techonology",
+            "IndustryGroup" => "Software",
+            "IndustryNAICS" => "AB123",
+            "IndustrySector" => "Technology3",
+            "IndustrySIC" => "123",
+            "MarketCap" => "456",
+            "Raised" => "789",
+            "Revenue" => "1234",
+            "RevenueEstimated" => "12345",
+            "Tags" => ["Technology"],
+            "VAT" => "GB1234",
+            "WebsiteScreenshot" => "some url to a screenshot"
         ];
     }
 
@@ -78,11 +93,7 @@ class CompanyTest
             $innerCompany->getAlexaRank()
         );
         $this->assertEquals(
-            $this->_getTestData()['bIsISP'],
-            $innerCompany->getbIsISP()
-        );
-        $this->assertEquals(
-            $this->_getTestData()['City'],
+            $this->_getTestData()['Location']['City'],
             $innerCompany->getCity()
         );
         $this->assertEquals(
@@ -90,16 +101,12 @@ class CompanyTest
             $innerCompany->getCompanyName()
         );
         $this->assertEquals(
-            $this->_getTestData()['CountryCode'],
+            $this->_getTestData()['Location']['CountryCode'],
             $innerCompany->getCountryCode()
         );
         $this->assertEquals(
             $this->_getTestData()['CRN'],
             $innerCompany->getCRN()
-        );
-        $this->assertEquals(
-            $this->_getTestData()['Debug'],
-            $innerCompany->getDebug()
         );
         $this->assertEquals(
             $this->_getTestData()['Description'],
@@ -146,7 +153,7 @@ class CompanyTest
             $innerCompany->getIndustrySIC()
         );
         $this->assertEquals(
-            $this->_getTestData()['Lat'],
+            $this->_getTestData()['Location']['Lat'],
             $innerCompany->getLat()
         );
         $this->assertEquals(
@@ -162,7 +169,7 @@ class CompanyTest
             $innerCompany->getLogo()
         );
         $this->assertEquals(
-            $this->_getTestData()['Lon'],
+            $this->_getTestData()['Location']['Lng'],
             $innerCompany->getLon()
         );
         $this->assertEquals(
@@ -170,15 +177,11 @@ class CompanyTest
             $innerCompany->getMarketCap()
         );
         $this->assertEquals(
-            $this->_getTestData()['OrigIP'],
-            $innerCompany->getOrigIP()
-        );
-        $this->assertEquals(
             $this->_getTestData()['PhoneNumbers'],
             $innerCompany->getPhoneNumbers()
         );
         $this->assertEquals(
-            $this->_getTestData()['PostCode'],
+            $this->_getTestData()['Location']['PostCode'],
             $innerCompany->getPostCode()
         );
         $this->assertEquals(
@@ -186,7 +189,7 @@ class CompanyTest
             $innerCompany->getRaised()
         );
         $this->assertEquals(
-            $this->_getTestData()['Region'],
+            $this->_getTestData()['Location']['Region'],
             $innerCompany->getRegion()
         );
         $this->assertEquals(

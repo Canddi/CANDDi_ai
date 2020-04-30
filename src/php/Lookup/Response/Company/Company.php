@@ -7,12 +7,10 @@ use CanddiAi\Traits\GetArrayValue as NS_traitArrayValue;
 class Company
 {
     const KEY_ALEXARANK = "AlexaRank";
-    const KEY_BISISP = "bIsISP";
     const KEY_CITY = "City";
     const KEY_COMPANYNAME = "CompanyName";
     const KEY_COUNTRYCODE = "CountryCode";
     const KEY_CRN = "CRN";
-    const KEY_DEBUG = "Debug";
     const KEY_DESCRIPTION = "Description";
     const KEY_EMAILADDRESSES = "EmailAddresses";
     const KEY_EMPLOYEERANGE = "EmployeeRange";
@@ -25,12 +23,11 @@ class Company
     const KEY_INDUSTRYSECTOR = "IndustrySector";
     const KEY_INDUSTRYSIC = "IndustrySIC";
     const KEY_LAT = "Lat";
+    const KEY_LNG = "Lng";
     const KEY_LEGALNAME = "LegalName";
     const KEY_LOCATION = "Location";
     const KEY_LOGO = "Logo";
-    const KEY_LON = "Lon";
     const KEY_MARKETCAP = "MarketCap";
-    const KEY_ORIGIP = "OrigIP";
     const KEY_PHONENUMBERS = "PhoneNumbers";
     const KEY_POSTCODE = "PostCode";
     const KEY_RAISED = "Raised";
@@ -61,21 +58,15 @@ class Company
             null
         );
     }
-    public function getbIsISP()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_BISISP],
-            null
-        );
-    }
     public function getCity()
     {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_CITY],
-            null
-        );
+        $mdlLocation = $this->getLocation();
+
+        if (!$mdlLocation) {
+            return null;
+        }
+
+        return $mdlLocation->getCity();
     }
     public function getCompanyName()
     {
@@ -87,25 +78,19 @@ class Company
     }
     public function getCountryCode()
     {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_COUNTRYCODE],
-            null
-        );
+        $mdlLocation = $this->getLocation();
+
+        if (!$mdlLocation) {
+            return null;
+        }
+
+        return $mdlLocation->getCountryCode();
     }
     public function getCRN()
     {
         return $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_CRN],
-            null
-        );
-    }
-    public function getDebug()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_DEBUG],
             null
         );
     }
@@ -199,11 +184,13 @@ class Company
     }
     public function getLat()
     {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_LAT],
-            null
-        );
+        $mdlLocation = $this->getLocation();
+
+        if (!$mdlLocation) {
+            return null;
+        }
+
+        return $mdlLocation->getLat();
     }
     public function getLegalName()
     {
@@ -240,25 +227,19 @@ class Company
     }
     public function getLon()
     {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_LON],
-            null
-        );
+        $mdlLocation = $this->getLocation();
+
+        if (!$mdlLocation) {
+            return null;
+        }
+
+        return $mdlLocation->getLng();
     }
     public function getMarketCap()
     {
         return $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_MARKETCAP],
-            null
-        );
-    }
-    public function getOrigIP()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_ORIGIP],
             null
         );
     }
@@ -272,11 +253,13 @@ class Company
     }
     public function getPostCode()
     {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_POSTCODE],
-            null
-        );
+        $mdlLocation = $this->getLocation();
+
+        if (!$mdlLocation) {
+            return null;
+        }
+
+        return $mdlLocation->getPostCode();
     }
     public function getRaised()
     {
@@ -288,11 +271,13 @@ class Company
     }
     public function getRegion()
     {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_REGION],
-            null
-        );
+        $mdlLocation = $this->getLocation();
+
+        if (!$mdlLocation) {
+            return null;
+        }
+
+        return $mdlLocation->getRegion();
     }
     public function getRevenue()
     {

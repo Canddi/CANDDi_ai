@@ -61,16 +61,12 @@ class IPTest
             $innerIP->getLat()
         );
         $this->assertEquals(
-            $this->_getTestData()['Lon'],
+            $this->_getTestData()['Lng'],
             $innerIP->getLon()
         );
         $this->assertEquals(
-            $this->_getTestData()['CountryCode'],
+            $this->_getTestData()['Location']['CountryCode'],
             $innerIP->getCountryCode()
-        );
-        $this->assertEquals(
-            $this->_getTestData()['LegalName'],
-            $innerIP->getLegalName()
         );
     }
 }

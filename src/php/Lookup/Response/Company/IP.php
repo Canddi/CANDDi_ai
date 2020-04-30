@@ -13,9 +13,8 @@ class IP
     const KEY_COMPANYNAME = "CompanyName";
     const KEY_LOCATION = "Location";
     const KEY_LAT = "Lat";
-    const KEY_LON = "Lon";
+    const KEY_LNG = "Lng";
     const KEY_COUNTRYCODE = "CountryCode";
-    const KEY_LEGALNAME = "LegalName";
 
     use NS_traitArrayValue;
 
@@ -95,7 +94,7 @@ class IP
     {
         return $this->_getArrayValue(
             $this->_arrResponse,
-            [self::KEY_LON],
+            [self::KEY_LNG],
             null
         );
     }
@@ -104,14 +103,6 @@ class IP
         return $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_COUNTRYCODE],
-            null
-        );
-    }
-    public function getLegalName()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_LEGALNAME],
             null
         );
     }
