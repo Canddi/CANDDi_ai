@@ -95,10 +95,6 @@ class CompanyTest
             $innerCompany->getCRN()
         );
         $this->assertEquals(
-            $this->_getTestData()['Debug'],
-            $innerCompany->getDebug()
-        );
-        $this->assertEquals(
             $this->_getTestData()['Description'],
             $innerCompany->getDescription()
         );

@@ -11,7 +11,6 @@ class Company
     const KEY_COMPANYNAME = "CompanyName";
     const KEY_COUNTRYCODE = "CountryCode";
     const KEY_CRN = "CRN";
-    const KEY_DEBUG = "Debug";
     const KEY_DESCRIPTION = "Description";
     const KEY_EMAILADDRESSES = "EmailAddresses";
     const KEY_EMPLOYEERANGE = "EmployeeRange";
@@ -93,14 +92,6 @@ class Company
         return $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_CRN],
-            null
-        );
-    }
-    public function getDebug()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_DEBUG],
             null
         );
     }
