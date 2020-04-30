@@ -143,5 +143,10 @@ class CompanyTest
             $this->_getTestData()['Hostname'],
             $respCompany->getHostname()
         );
+
+        $this->assertEquals(
+            false,
+            $respCompany->bIsISP()
+        );
     }
 }
