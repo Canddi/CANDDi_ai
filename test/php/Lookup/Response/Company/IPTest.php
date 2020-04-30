@@ -68,9 +68,5 @@ class IPTest
             $this->_getTestData()['CountryCode'],
             $innerIP->getCountryCode()
         );
-        $this->assertEquals(
-            $this->_getTestData()['LegalName'],
-            $innerIP->getLegalName()
-        );
     }
 }
