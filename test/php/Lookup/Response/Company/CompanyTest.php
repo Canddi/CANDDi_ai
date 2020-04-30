@@ -54,6 +54,7 @@ class CompanyTest
             "EmployeeRange"   => "11-50 employees",
             "Employees"   => 39,
             "Logo"    => "https  =>//images.canddi.net/canddi.com/logo.png",
+            "AlexaRank" => 1,
             "Location"    => [
                 "Lat"   => 53.4819,
                 "Lng"   => -2.2332,
