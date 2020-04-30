@@ -70,11 +70,13 @@ class Company
     }
     public function getCity()
     {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_CITY],
-            null
-        );
+        $mdlLocation = $this->getLocation();
+
+        if (!$mdlLocation) {
+            return null;
+        }
+
+        return $mdlLocation->getCity();
     }
     public function getCompanyName()
     {
@@ -86,11 +88,13 @@ class Company
     }
     public function getCountryCode()
     {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_COUNTRYCODE],
-            null
-        );
+        $mdlLocation = $this->getLocation();
+
+        if (!$mdlLocation) {
+            return null;
+        }
+
+        return $mdlLocation->getCountryCode();
     }
     public function getCRN()
     {
@@ -287,11 +291,13 @@ class Company
     }
     public function getRegion()
     {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_REGION],
-            null
-        );
+        $mdlLocation = $this->getLocation();
+
+        if (!$mdlLocation) {
+            return null;
+        }
+
+        return $mdlLocation->getRegion();
     }
     public function getRevenue()
     {
