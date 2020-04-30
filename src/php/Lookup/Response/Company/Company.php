@@ -60,14 +60,6 @@ class Company
             null
         );
     }
-    public function getbIsISP()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_BISISP],
-            null
-        );
-    }
     public function getCity()
     {
         $mdlLocation = $this->getLocation();
