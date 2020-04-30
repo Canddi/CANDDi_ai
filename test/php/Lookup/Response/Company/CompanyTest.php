@@ -66,7 +66,14 @@ class CompanyTest
             ],
             "SIC"     => [
                 "62012"
-            ]
+            ],
+            "Hostname" => "canddi.com",
+            "Industry" => "Techonology",
+            "IndustryGroup" => "Technology",
+            "IndustryNAICS" => "Technology",
+            "IndustrySector" => "Technology",
+            "IndustrySIC" => "123",
+            "MarketCap" => "123"
         ];
     }
 

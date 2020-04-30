@@ -185,11 +185,13 @@ class Company
     }
     public function getLat()
     {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_LAT],
-            null
-        );
+        $mdlLocation = $this->getLocation();
+
+        if (!$mdlLocation) {
+            return null;
+        }
+
+        return $mdlLocation->getLat();
     }
     public function getLegalName()
     {
@@ -226,11 +228,13 @@ class Company
     }
     public function getLon()
     {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_LNG],
-            null
-        );
+        $mdlLocation = $this->getLocation();
+
+        if (!$mdlLocation) {
+            return null;
+        }
+
+        return $mdlLocation->getLng();
     }
     public function getMarketCap()
     {
