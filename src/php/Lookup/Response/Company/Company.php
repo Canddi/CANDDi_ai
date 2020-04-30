@@ -28,7 +28,6 @@ class Company
     const KEY_LOCATION = "Location";
     const KEY_LOGO = "Logo";
     const KEY_MARKETCAP = "MarketCap";
-    const KEY_ORIGIP = "OrigIP";
     const KEY_PHONENUMBERS = "PhoneNumbers";
     const KEY_POSTCODE = "PostCode";
     const KEY_RAISED = "Raised";
@@ -244,14 +243,6 @@ class Company
             null
         );
     }
-    public function getOrigIP()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_ORIGIP],
-            null
-        );
-    }
     public function getPhoneNumbers()
     {
         return $this->_getArrayValue(
@@ -262,11 +253,13 @@ class Company
     }
     public function getPostCode()
     {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_POSTCODE],
-            null
-        );
+        $mdlLocation = $this->getLocation();
+
+        if (!$mdlLocation) {
+            return null;
+        }
+
+        return $mdlLocation->getPostCode();
     }
     public function getRaised()
     {
