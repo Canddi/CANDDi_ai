@@ -88,6 +88,6 @@ class Person
             );
         }
 
-        return new Response\PersonLinkedIn($arrResponse);
+        return new Response\Person($arrResponse);
     }
 }
