@@ -62,18 +62,25 @@ class CompanyTest
                 "Line2"     => "Manchester",
                 "PostCode"  => "M1 1FT",
                 "City"  => "Manchester",
-                "CountryCode"   => "GB"
+                "CountryCode"   => "GB",
+                "Region" => "Northern Quarter"
             ],
             "SIC"     => [
                 "62012"
             ],
             "Hostname" => "canddi.com",
             "Industry" => "Techonology",
-            "IndustryGroup" => "Technology",
-            "IndustryNAICS" => "Technology",
-            "IndustrySector" => "Technology",
+            "IndustryGroup" => "Software",
+            "IndustryNAICS" => "AB123",
+            "IndustrySector" => "Technology3",
             "IndustrySIC" => "123",
-            "MarketCap" => "123"
+            "MarketCap" => "456",
+            "Raised" => "789",
+            "Revenue" => "1234",
+            "RevenueEstimated" => "12345",
+            "Tags" => ["Technology"],
+            "VAT" => "GB1234",
+            "WebsiteScreenshot" => "some url to a screenshot"
         ];
     }
 
@@ -168,10 +175,6 @@ class CompanyTest
         $this->assertEquals(
             $this->_getTestData()['MarketCap'],
             $innerCompany->getMarketCap()
-        );
-        $this->assertEquals(
-            $this->_getTestData()['OrigIP'],
-            $innerCompany->getOrigIP()
         );
         $this->assertEquals(
             $this->_getTestData()['PhoneNumbers'],
