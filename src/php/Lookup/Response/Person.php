@@ -20,7 +20,7 @@ class Person
     const KEY_PHONES = 'PhoneNumbers';
     const KEY_ROLE = 'Employment';
     const KEY_EDUCATION = 'Education';
-    const KEY_PHOTO = 'Photos';
+    const KEY_PHOTO = 'Pictures';
     const KEY_SOCIAL = 'SocialMedia';
 
     use NS_traitArrayValue;
