@@ -14,7 +14,7 @@ class SocialTest
             "followers" => 5454,
             "following" => 741,
             "type" => "twitter",
-            "typeId" => "twitter",
+            "platform" => "twitter",
             "typeName" => "Twitter",
             "url" => "https:\/\/twitter.com\/bartlorang",
             "username" => "bartlorang",
