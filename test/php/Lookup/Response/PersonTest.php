@@ -166,4 +166,24 @@ class PersonTestLinkedIn
 
         $this->assertEquals($expectedResponse, $arrEducation);
     }
+    public function testGetEmailAddresses()
+    {
+        $testData = $this->_getTestData();
+        $response = new Person($testData);
+
+        $arrEmails = $response->getEmailAddresses();
+        $expectedResponse = $testData[Person::KEY_EMAILS];
+
+        $this->assertEquals($expectedResponse, $arrEmails);
+    }
+    public function testGetPhoneNumbers()
+    {
+        $testData = $this->_getTestData();
+        $response = new Person($testData);
+
+        $arrPhones = $response->getPhoneNumbers();
+        $expectedResponse = $testData[Person::KEY_PHONES];
+
+        $this->assertEquals($expectedResponse, $arrPhones);
+    }
 }
