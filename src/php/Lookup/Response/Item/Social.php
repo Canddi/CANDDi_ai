@@ -16,7 +16,7 @@ class Social
 {
     const KEY_TYPE      = 'platform';
     const KEY_URL       = 'url';
-    const KEY_USERNAME  = 'username';
+    const KEY_USERNAME  = 'handle';
 
     use NS_traitArrayValue;
 

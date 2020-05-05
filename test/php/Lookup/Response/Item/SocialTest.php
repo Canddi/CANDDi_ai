@@ -10,15 +10,9 @@ class SocialTest
     private function _getTestData()
     {
         return array(
-            "bio" => "CEO & Co-Founder of @FullContact, Managing Director @v1vc_. Tech Entrepreneur, Investor. Husband to @parkerbenson and Father to Greyson Lorang",
-            "followers" => 5454,
-            "following" => 741,
-            "type" => "twitter",
             "platform" => "twitter",
-            "typeName" => "Twitter",
             "url" => "https:\/\/twitter.com\/bartlorang",
-            "username" => "bartlorang",
-            "id" => "5998422"
+            "handle" => "bartlorang",
         );
     }
 
