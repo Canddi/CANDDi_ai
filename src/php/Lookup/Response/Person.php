@@ -33,6 +33,18 @@ class Person
         $this->_arrResponse = $arrResponse;
     }
 
+    public function getEmailAddresses()
+    {
+        $arrEmails  = $this->_getArrayValue(
+            $this->_arrResponse,
+            [
+                self::KEY_EMAILS
+            ],
+            []
+        );
+
+        return $arrEmails;
+    }
     public function getFirstName()
     {
         return $this->_getArrayValue(
@@ -81,6 +93,18 @@ class Person
             $itemRole = new Item\Role($arrRoles[0]);
         }
         return $itemRole;
+    }
+    public function getPhoneNumbers()
+    {
+        $arrPhones  = $this->_getArrayValue(
+            $this->_arrResponse,
+            [
+                self::KEY_PHONES
+            ],
+            []
+        );
+
+        return $arrPhones;
     }
     public function getPhotos()
     {
