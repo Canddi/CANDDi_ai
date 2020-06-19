@@ -9,68 +9,139 @@ class PersonTestLinkedIn
     private function _getTestData()
     {
         return [
-            "EmailAddresses" => [
-                "not-real@fake.com"
-            ],
-            "SocialMedia" => [
-                "Facebook" => [
-                    "url" => "facebook.com/not-real",
-                    "platform" => "Facebook",
-                    "handle" => "not-real"
+            "Company" => [
+                "WebsiteURL" => [
+                    "canddi.com"
                 ],
-                "LinkedIn" => [
-                    "url" => "linkedin.com/in/not-real",
-                    "platform" => "LinkedIn",
-                    "handle" => "not-real"
+                "SocialMedia" => [
+                    "Pinterest" => [
+                        "url" => "pinterest.com/canddi",
+                        "platform" => "Pinterest",
+                        "handle" => "canddi"
+                    ],
+                    "Facebook" => [
+                        "url" => "facebook.com/thisiscanddi",
+                        "platform" => "Facebook",
+                        "handle" => "thisiscanddi"
+                    ],
+                    "Twitter" => [
+                        "url" => "twitter.com/canddi",
+                        "platform" => "Twitter",
+                        "handle" => "canddi"
+                    ],
+                    "Youtube" => [
+                        "url" => "youtube.com/channel/UCU7aljz8YC9IdPfxuxLY39g",
+                        "platform" => "Youtube",
+                        "handle" => "UCU7aljz8YC9IdPfxuxLY39g"
+                    ],
+                    "LinkedIn" => [
+                        "url" => "linkedin.com/company/canddi-campaign-and-digital-intelligence-limited-",
+                        "platform" => "LinkedIn",
+                        "handle" => "canddi-campaign-and-digital-intelligence-limited-"
+                    ]
                 ],
-                "Twitter" => [
-                    "url" => "twitter.com/not-real",
-                    "platform" => "Twitter",
-                    "handle" => "not-real"
-                ]
-            ],
-            "PhoneNumbers" => [
-                "+44123456789"
-            ],
-            "Location" => [
-                [
-                    "Address" => [
-                        "PostalCode" => null,
-                        "Line1" => null,
-                        "Line2" => null,
-                        "Country" => "united kingdom",
-                        "Region" => "manchester"
+                "Description" => "Campaign and Digital Intelligence => the Prospect Analytics Pioneer. \n\nCANDDi tells you WHO is on your website, not just how many people. It tracks visitors across time and multiple devices, combining behavioural data with social profile information to provide actionable sales insight to boost ROI.\n\nCANDDi helps you to =>\n - Close Deals => Enable sales teams to make intelligent, timely interventions with rich profiles and real-time behaviour tracking\n - Nurture Leads => Identify the hot prospects and the nearly customers and automatically nurture them towards a sale\n - Optimise Marketing => Cut sales cycle length and cost by focusing on the campaigns that deliver sales not just leads",
+                "Heading" => "Turn visitors intoleads, and leadsinto sales.",
+                "PhoneNumbers" => [
+                    "+441614141080"
+                ],
+                "EmailAddresses" => [
+                    "hello@canddi.com",
+                    "help@canddi.com",
+                    "dpo@canddi.com",
+                    "privacy@canddi.com"
+                ],
+                "CompanyName" => "CANDDi (Campaign and Digital Intelligence Limited)",
+                "EmployeeRange" => "11-50 employees",
+                "Location" => [
+                    "Lat" => 53.4819,
+                    "Lng" => -2.2331,
+                    "Line1" => "47 Newton Street",
+                    "Line2" => "City Centre",
+                    "PostCode" => "M1 1FT",
+                    "City" => "Manchester",
+                    "CountryCode" => "GB",
+                    "Region" => "ENG"
+                ],
+                "Legal" => [
+                    "LegalName" => "CAMPAIGN AND DIGITAL INTELLIGENCE",
+                    "CRN" => "07066939",
+                    "IncorporationDate" => "2009-11-05",
+                    "CompanyType" => "private limited company",
+                    "RegisteredLocation" => [
+                        "Lat" => 53.4819,
+                        "Lng" => -2.2331,
+                        "Line1" => "47 Newton Street",
+                        "Line2" => "City Centre",
+                        "PostCode" => "M1 1FT",
+                        "City" => "Manchester",
+                        "CountryCode" => "GB",
+                        "Region" => "ENG"
                     ]
                 ]
             ],
-            "Name" => [
-                "FirstName" => "not",
-                "LastName" => "real",
-                "MiddleName" => null,
-                "FullName" => "not real"
+            "Debug" => [
+                "p2PersonId" => 1,
+                "TimeUpdated" => 1590000000,
+                "Reprocess" => false
             ],
-            "Gender" => "male",
-            "Employment" => [
-                [
-                    "CompanyName" => "the fake company",
-                    "StartDate" => "2007-06",
-                    "EndDate" => "2007-10",
-                    "Title" => "venture capitalist",
-                    "IsPrimary" => false
+            "Person" => [
+                "EmailAddresses" => [
+                    "tim@canddi.com",
+                    "tim@timlangley.me.uk"
                 ],
-                [
-                    "CompanyName" => "the sequel to the fake company",
-                    "StartDate" => "2010-02",
-                    "EndDate" => null,
-                    "Title" => "ceo",
-                    "IsPrimary" => true
-                ]
-            ],
-            "Education" => [
-                [
-                    "Name" => "the fake school",
-                    "StartDate" => null,
-                    "EndDate" => "1996"
+                "SocialMedia" => [
+                    "Facebook" => [
+                        "url" => "facebook.com/timlangley",
+                        "platform" => "Facebook",
+                        "handle" => "timlangley"
+                    ],
+                    "LinkedIn" => [
+                        "url" => "linkedin.com/in/tim-langley-2894a11",
+                        "platform" => "LinkedIn",
+                        "handle" => "tim-langley-2894a11"
+                    ],
+                    "Twitter" => [
+                        "url" => "twitter.com/timlangley",
+                        "platform" => "Twitter",
+                        "handle" => "timlangley"
+                    ]
+                ],
+                "PhoneNumbers" => [
+                    "+441234567890"
+                ],
+                "Location" => [
+                    "Lat" => 0,
+                    "Lng" => 0,
+                    "Line1" => "",
+                    "Line2" => "",
+                    "PostCode" => "",
+                    "City" => "",
+                    "CountryCode" => "GB",
+                    "Region" => "manchester"
+                ],
+                "Name" => [
+                    "FirstName" => "not",
+                    "LastName" => "real",
+                    "MiddleName" => null,
+                    "FullName" => "not real"
+                ],
+                "Gender" => "male",
+                "Employment" => [
+                    [
+                        "CompanyName" => "the sequel to the fake company",
+                        "StartDate" => "2010-02",
+                        "EndDate" => null,
+                        "Title" => "ceo",
+                        "IsPrimary" => true
+                    ]
+                ],
+                "Education" => [
+                    [
+                        "Name" => "manchester business school",
+                        "StartDate" => "2006",
+                        "EndDate" => "2008"
+                    ]
                 ]
             ]
         ];
@@ -86,7 +157,7 @@ class PersonTestLinkedIn
         $this->assertEquals($strExpectedFirstName, $strReturnedFirstName);
 
         // Test to make sure it returns null when there's no firstname
-        unset($testData["Name"]["FirstName"]);
+        unset($testData['Person']["Name"]["FirstName"]);
         $response = new Person($testData);
 
         $this->assertEquals(null, $response->getFirstName());
@@ -108,13 +179,13 @@ class PersonTestLinkedIn
         $this->assertEquals($strExpectedLastName, $strReturnedLastName);
 
         // Test to make sure it returns null when there's no LastName
-        unset($testData["Name"]["LastName"]);
+        unset($testData['Person']["Name"]["LastName"]);
         $response = new Person($testData);
 
         $this->assertEquals(null, $response->getLastName());
 
         // Test for if the ContactInfo field doesn't exist
-        unset($testData["Name"]);
+        unset($testData['Person']["Name"]);
         $response = new Person($testData);
 
         $this->assertEquals(null, $response->getFirstName());
@@ -132,7 +203,7 @@ class PersonTestLinkedIn
         $this->assertEquals('2010-02', $itemRole->getStartDate());
         $this->assertEquals('', $itemRole->getEndDate());
 
-        unset($testData['Employment']);
+        unset($testData['Person']['Employment']);
         $response = new Person($testData);
 
         $this->assertEquals(null, $response->getRole());
@@ -162,7 +233,7 @@ class PersonTestLinkedIn
 
         $this->assertTrue(is_array($arrEducation));
 
-        $expectedResponse = $testData['Education'];
+        $expectedResponse = $testData['Person']['Education'];
 
         $this->assertEquals($expectedResponse, $arrEducation);
     }
@@ -172,7 +243,7 @@ class PersonTestLinkedIn
         $response = new Person($testData);
 
         $arrEmails = $response->getEmailAddresses();
-        $expectedResponse = $testData[Person::KEY_EMAILS];
+        $expectedResponse = $testData['Person'][Person::KEY_EMAILS];
 
         $this->assertEquals($expectedResponse, $arrEmails);
     }
@@ -182,8 +253,18 @@ class PersonTestLinkedIn
         $response = new Person($testData);
 
         $arrPhones = $response->getPhoneNumbers();
-        $expectedResponse = $testData[Person::KEY_PHONES];
+        $expectedResponse = $testData['Person'][Person::KEY_PHONES];
 
         $this->assertEquals($expectedResponse, $arrPhones);
+    }
+    public function testNoPersonField() {
+        $arrTestData = $this->_getTestData()['Person'];
+
+        $response = new Person($arrTestData);
+
+        $expectedResponse = $arrTestData[Person::KEY_PHONES];
+        $actualResponse = $response->getPhoneNumbers();
+
+        $this->assertEquals($expectedResponse, $actualResponse);
     }
 }
