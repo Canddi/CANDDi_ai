@@ -56,7 +56,7 @@ class Person
             );
         }
 
-        return new Response\Person($arrResponse);
+        return new Response\PersonCompany($arrResponse);
     }
 
     public function lookupLinkedIn(
