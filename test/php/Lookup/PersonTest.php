@@ -43,7 +43,7 @@ class PersonTest
             ->mock();
         Person::injectGuzzle($mockGuzzle);
         $actualCompanyResponse = $companyInstance->lookupEmail($strEmail, $strAccountURL, $guidContactId);
-        $expectedCompanyResponse = new Response\Person([]);
+        $expectedCompanyResponse = new Response\PersonCompany([]);
         $this->assertEquals($expectedCompanyResponse, $actualCompanyResponse);
     }
     public function testLookups_Fail()
