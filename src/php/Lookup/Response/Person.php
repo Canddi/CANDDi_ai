@@ -30,9 +30,10 @@ class Person
 
     public function __construct(Array $arrResponse)
     {
-        $this->_arrResponse = [];
         if(array_key_exists('Person', $arrResponse)) {
             $this->_arrResponse = $arrResponse['Person'];
+        } else {
+            $this->_arrResponse = $arrResponse;
         }
     }
 
