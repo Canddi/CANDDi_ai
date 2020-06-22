@@ -257,14 +257,15 @@ class PersonTestLinkedIn
 
         $this->assertEquals($expectedResponse, $arrPhones);
     }
-    public function testNoPersonField() {
-        $arrTestData = $this->_getTestData()['Person'];
+    public function testGetCompany()
+    {
+        $testData = $this->_getTestData();
+        $response = new Person($testData);
 
-        $response = new Person($arrTestData);
-
-        $expectedResponse = $arrTestData[Person::KEY_PHONES];
-        $actualResponse = $response->getPhoneNumbers();
+        $expectedResponse = new Company\Company($testData['Company']);
+        $actualResponse = $response->getCompany();
 
         $this->assertEquals($expectedResponse, $actualResponse);
+
     }
 }
