@@ -9,6 +9,7 @@
 namespace CanddiAi\Lookup\Response;
 
 use CanddiAi\Traits\GetArrayValue as NS_traitArrayValue;
+use CanddiAi\Lookup\Response\Company\Company as ResponseCompany;
 
 class Person
 {
