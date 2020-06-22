@@ -32,8 +32,6 @@ class Person
     {
         if(array_key_exists('Person', $arrResponse)) {
             $this->_arrResponse = $arrResponse['Person'];
-        } else {
-            $this->_arrResponse = $arrResponse;
         }
     }
 
