@@ -27,12 +27,25 @@ class Person
     use NS_traitArrayValue;
 
     private $_arrResponse;
+    private $_mdlCompanyResponse;
 
     public function __construct(Array $arrResponse)
     {
+        $this->_arrResponse = [];
         if(array_key_exists('Person', $arrResponse)) {
             $this->_arrResponse = $arrResponse['Person'];
         }
+
+        if(array_key_exists('Company', $arrResponse)) {
+            $this->_mdlCompanyResponse = new ResponseCompany($arrResponse['Company']);
+        } else {
+            $this->_mdlCompanyResponse = new ResponseCompany([]);
+        }
+    }
+
+    public function getCompany()
+    {
+        return $this->_mdlCompanyResponse;
     }
 
     public function getEmailAddresses()
