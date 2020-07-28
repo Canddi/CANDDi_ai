@@ -10,10 +10,8 @@ class NormalizeNameTest
     private function _getTestData()
     {
         return [
-            'nameDetails'   => [
-                'givenName' => "Tim",
-                'familyName'=> "Langley"
-            ]
+            'FirstName' => "Tim",
+            'LastName'=> "Langley"
         ];
     }
 
@@ -25,13 +23,7 @@ class NormalizeNameTest
         $this->assertEquals("Tim", $response->getFirstName());
 
         // Test to make sure it returns null when there's no firstname
-        unset($testData["nameDetails"]["givenName"]);
-        $response = new NormalizeName($testData);
-
-        $this->assertEquals(null, $response->getFirstName());
-
-        // Test for if the nameDetails field doesn't exist
-        unset($testData["nameDetails"]);
+        unset($testData["FirstName"]);
         $response = new NormalizeName($testData);
 
         $this->assertEquals(null, $response->getFirstName());
@@ -44,13 +36,7 @@ class NormalizeNameTest
         $this->assertEquals("Langley", $response->getLastName());
 
         // Test to make sure it returns null when there's no firstname
-        unset($testData["nameDetails"]["familyName"]);
-        $response = new NormalizeName($testData);
-
-        $this->assertEquals(null, $response->getLastName());
-
-        // Test for if the nameDetails field doesn't exist
-        unset($testData["nameDetails"]);
+        unset($testData["LastName"]);
         $response = new NormalizeName($testData);
 
         $this->assertEquals(null, $response->getLastName());
