@@ -30,43 +30,43 @@ class IPTest
 
     public function testGetters()
     {
-        $innerIP = new IP($this->_getTestData());
+        $CompanyIP = new IP($this->_getTestData());
 
         $this->assertEquals(
             $this->_getTestData()['StartIP'],
-            $innerIP->getStartIP()
+            $CompanyIP->getStartIP()
         );
         $this->assertEquals(
             $this->_getTestData()['EndIP'],
-            $innerIP->getEndIP()
+            $CompanyIP->getEndIP()
         );
         $this->assertEquals(
             $this->_getTestData()['IPRange'],
-            $innerIP->getIPRange()
+            $CompanyIP->getIPRange()
         );
         $this->assertEquals(
             $this->_getTestData()['IPAddress'],
-            $innerIP->getIPAddress()
+            $CompanyIP->getIPAddress()
         );
         $this->assertEquals(
             $this->_getTestData()['CompanyName'],
-            $innerIP->getCompanyName()
+            $CompanyIP->getCompanyName()
         );
         $this->assertInstanceOf(
             Location::class,
-            $innerIP->getLocation()
+            $CompanyIP->getLocation()
         );
         $this->assertEquals(
             $this->_getTestData()['Lat'],
-            $innerIP->getLat()
+            $CompanyIP->getLat()
         );
         $this->assertEquals(
             $this->_getTestData()['Lng'],
-            $innerIP->getLon()
+            $CompanyIP->getLon()
         );
         $this->assertEquals(
             $this->_getTestData()['Location']['CountryCode'],
-            $innerIP->getCountryCode()
+            $CompanyIP->getCountryCode()
         );
     }
 }
