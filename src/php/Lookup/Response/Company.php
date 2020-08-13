@@ -13,6 +13,7 @@ use CanddiAi\Traits\GetArrayValue as NS_traitArrayValue;
 
 use CanddiAi\Lookup\Response\Company\Company as InnerCompany;
 use CanddiAi\Lookup\Response\Company\IP as InnerIP;
+use CanddiAi\Lookup\Response\Company\Person as InnerPerson;
 
 class Company
 {

@@ -7,7 +7,7 @@
  * @author George Meadows
  **/
 
-namespace CanddiAi\Lookup\Response;
+namespace CanddiAi\Lookup\Response\Company;
 
 use CanddiAi\Traits\GetArrayValue as NS_traitArrayValue;
 
