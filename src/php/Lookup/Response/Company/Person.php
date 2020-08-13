@@ -15,8 +15,8 @@ class Person
 {
     const KEY_FORENAME = 'FirstName';
     const KEY_SURNAME = 'LastName';
-    const KEY_EMAILS = 'EmailAddresses';
-    const KEY_PHONES = 'PhoneNumbers';
+    const KEY_EMAILS = 'Emails';
+    const KEY_PHONES = 'Phones';
     const KEY_SOCIAL = 'SocialMedia';
     const KEY_LEGAL_ROLE = 'LegalRole';
     const KEY_POSITION = 'Position';
