@@ -12,8 +12,8 @@ namespace CanddiAi\Lookup\Response;
 use CanddiAi\Traits\GetArrayValue as NS_traitArrayValue;
 
 use CanddiAi\Lookup\Response\Company\Company as InnerCompany;
-use CanddiAi\Lookup\Response\Company\IP as InnerIP;
-use CanddiAi\Lookup\Response\Company\Person as InnerPerson;
+use CanddiAi\Lookup\Response\Company\IP as CompanyIP;
+use CanddiAi\Lookup\Response\Company\Person as CompanyPerson;
 
 class Company
 {
@@ -37,7 +37,7 @@ class Company
             $this->_mdlCompany = new InnerCompany($arrResponse['Company']);
         }
         if(array_key_exists('IP', $arrResponse)) {
-            $this->_mdlIP = new InnerIP($arrResponse['IP']);
+            $this->_mdlIP = new CompanyIP($arrResponse['IP']);
         }
     }
     /**
@@ -64,7 +64,7 @@ class Company
             $arrPeople = $this->_arrResponse['Company']['People'];
 
             foreach($arrPeople as $objPerson) {
-                $arrReturn[] = new InnerPerson($objPerson);
+                $arrReturn[] = new CompanyPerson($objPerson);
             }
         }
 
