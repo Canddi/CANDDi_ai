@@ -94,31 +94,9 @@ class Person
         // too many loops = slow code
         // @TODO refactor with an Iterator
         foreach ($arrProfiles as $arrProfile) {
-            $arrReturn[] = new Item\Social($arrProfile);
+            $arrReturn[] = new SocialMedia($arrProfile);
         }
         return $arrReturn;
-    }
-
-    public function getEducation()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [
-                self::KEY_EDUCATION
-            ],
-            []
-        );
-    }
-
-    public function getBio()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [
-                self::KEY_BIO
-            ],
-            null
-        );
     }
 
     public function getLegalRole()
