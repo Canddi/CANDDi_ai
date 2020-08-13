@@ -53,6 +53,23 @@ class Company
     {
         return $this->_mdlIP;
     }
+
+    /**
+     * @return Array
+     */
+    public function getPeople() {
+        $arrReturn = [];
+        if (array_key_exists('Company', $this->_arrResponse) && array_key_exists('People', $this->_arrResponse['Company'])) {
+            $arrPeople = $this->_arrResponse['Company']['People'];
+
+            foreach($arrPeople as $objPerson) {
+                $arrReturn[] = new InnerPerson($objPerson);
+            }
+        }
+
+        return $arrReturn;
+    }
+
     /**
      * @return  Array
      */
