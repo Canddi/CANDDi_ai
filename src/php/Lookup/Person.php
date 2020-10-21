@@ -34,13 +34,17 @@ class Person
     public function lookupEmail(
         $strEmailAddress,
         $strAccountURL = null,
-        $guidContactId = null
+        $guidContactId = null,
+        $strCallbackUrl = null,
+        $arrCallbackOptions = []
     )
     {
         $strURL             = sprintf(self::c_URL_Person, $strEmailAddress);
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
-            'contactid'     => $guidContactId
+            'contactid'     => $guidContactId,
+            'cburl'         => $strCallbackUrl,
+            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
         ];
 
         try {
