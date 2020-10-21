@@ -12,11 +12,15 @@ class PersonTest
         $strAccessToken = md5(1);
         $strEmail = 'tim@canddi.com';
         $strAccountURL = 'anAccount';
+        $strCallbackUrl = 'callbackurl';
+        $arrCallbackOptions = [123, 456];
         $guidContactId = md5(1);
         $strURL             = sprintf(Person::c_URL_Person, $strEmail);
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
-            'contactid'     => $guidContactId
+            'contactid'     => $guidContactId,
+            'cburl'         => $strCallbackUrl,
+            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
         ];
         $companyInstance = Person::getInstance($strBaseUri, $strAccessToken);
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
@@ -42,7 +46,7 @@ class PersonTest
             ->andReturn($mockResponse)
             ->mock();
         Person::injectGuzzle($mockGuzzle);
-        $actualCompanyResponse = $companyInstance->lookupEmail($strEmail, $strAccountURL, $guidContactId);
+        $actualCompanyResponse = $companyInstance->lookupEmail($strEmail, $strAccountURL, $guidContactId, $strCallbackUrl, $arrCallbackOptions);
         $expectedCompanyResponse = new Response\Person([]);
         $this->assertEquals($expectedCompanyResponse, $actualCompanyResponse);
     }
@@ -52,9 +56,13 @@ class PersonTest
         $strAccessToken = md5(1);
         $strAccountURL = 'anAccount';
         $guidContactId = md5(1);
+        $strCallbackUrl = 'callbackurl';
+        $arrCallbackOptions = [123, 456];
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
-            'contactid'     => $guidContactId
+            'contactid'     => $guidContactId,
+            'cburl'         => $strCallbackUrl,
+            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
         ];
 
         $strEmail = 'tim@canddi.com';
@@ -89,7 +97,7 @@ class PersonTest
         $returnedException = null;
 
         try {
-            $lookupCompany->lookupEmail($strEmail, $strAccountURL, $guidContactId);
+            $lookupCompany->lookupEmail($strEmail, $strAccountURL, $guidContactId, $strCallbackUrl, $arrCallbackOptions);
         } catch(\Exception $e) {
             $returnedException = $e;
         }
