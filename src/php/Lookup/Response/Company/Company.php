@@ -248,7 +248,7 @@ class Company
         return $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_PHONENUMBERS],
-            null
+            []
         );
     }
     public function getPostCode()
