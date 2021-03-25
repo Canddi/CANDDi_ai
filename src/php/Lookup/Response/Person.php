@@ -24,6 +24,7 @@ class Person
     const KEY_PHOTO = 'Pictures';
     const KEY_SOCIAL = 'SocialMedia';
     const KEY_BIO = 'Bio';
+    const KEY_REPROCESS = 'Reprocess';
 
     use NS_traitArrayValue;
 
@@ -42,6 +43,17 @@ class Person
         } else {
             $this->_mdlCompanyResponse = new ResponseCompany([]);
         }
+    }
+
+    /**
+     * @return  bool
+     */
+    public function bIsReprocessing() {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_REPROCESS],
+            false
+        );
     }
 
     public function getCompany()
