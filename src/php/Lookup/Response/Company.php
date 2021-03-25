@@ -22,7 +22,7 @@ class Company
     const KEY_HOSTNAME  = 'Hostname';
     const KEY_DEBUG     = 'Debug';
     const KEY_TYPE      = 'Type';
-    const KEY_ORIGIP = "OrigIP";
+    const KEY_REPROCESS = 'Reprocess';
 
     use NS_traitArrayValue;
 
@@ -118,12 +118,14 @@ class Company
         return false;
     }
 
-    public function getOrigIP()
-    {
+    /**
+     * @return  bool
+     */
+    public function bIsReprocessing() {
         return $this->_getArrayValue(
             $this->_arrResponse,
-            [self::KEY_ORIGIP],
-            null
+            [self::KEY_REPROCESS],
+            false
         );
     }
 }

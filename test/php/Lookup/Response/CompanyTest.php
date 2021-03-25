@@ -111,7 +111,8 @@ class CompanyTest
                   "TimeUpdatedIP"   => 1581519740
                 ]
               ]
-            ]
+            ],
+            "Reprocess" => true
         ];
     }
 
@@ -147,6 +148,20 @@ class CompanyTest
         $this->assertEquals(
             false,
             $respCompany->bIsISP()
+        );
+
+        $this->assertTrue(
+            $respCompany->bIsReprocessing()
+        );
+    }
+    public function testDefaultProcessing()
+    {
+        $arrData = $this->_getTestData();
+        unset($arrData['Reprocess']);
+        $respCompany = new Company($arrData);
+
+        $this->assertFalse(
+            $respCompany->bIsReprocessing()
         );
     }
 }
