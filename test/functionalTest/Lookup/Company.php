@@ -39,18 +39,6 @@ class FunctionalTest_Company
         print_r($response);
     }
     /*
-    public function testLookupName()
-    {
-        $strName = 'CANDDi';
-        $strAccountURL = 'anAccount';
-        $guidContactId = md5(1);
-
-        $instance = Company::getInstance($this->_strBaseUri, $this->_strAccessToken);
-
-        $response = $instance->lookupName($strName, $strAccountURL, $guidContactId);
-
-        print_r($this->_getProtAttr($response, '_arrResponse'));
-    }
     public function testLookupCompanyName()
     {
         $strName = 'CANDDi';

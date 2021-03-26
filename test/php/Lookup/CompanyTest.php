@@ -180,49 +180,6 @@ class CompanyTest
         ]);
         $this->assertEquals($expectedCompanyResponse, $actualCompanyResponse);
     }
-    public function testLookupName()
-    {
-        $strBaseUri = 'baseuri.com';
-        $strAccessToken = md5(1);
-        $strName = 'CANDDi';
-        $strAccountURL = 'anAccount';
-        $guidContactId = md5(1);
-        $strURL             = sprintf(Company::c_URL_Name, $strName);
-        $arrQuery           = [
-            'accounturl'    => $strAccountURL,
-            'contactid'     => $guidContactId,
-            'cburl'         => '',
-            'cboptions'     => '{}'
-        ];
-        $companyInstance = Company::getInstance($strBaseUri, $strAccessToken);
-        $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
-            ->shouldReceive('getStatusCode')
-            ->once()
-            ->withNoArgs()
-            ->andReturn(200)
-            ->shouldReceive('getBody')
-            ->once()
-            ->withNoArgs()
-            ->andReturn('[]')
-            ->mock();
-        $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
-            ->shouldReceive('request')
-            ->once()
-            ->with(
-                'GET',
-                $strURL,
-                [
-                    'query'         => $arrQuery
-                ]
-            )
-            ->andReturn($mockResponse)
-            ->mock();
-        Company::injectGuzzle($mockGuzzle);
-        $actualCompanyResponse = $companyInstance->lookupName($strName, $strAccountURL, $guidContactId);
-        $expectedCompanyResponse = new Response\Company([
-        ]);
-        $this->assertEquals($expectedCompanyResponse, $actualCompanyResponse);
-    }
     public function testLookups_Fail()
     {
         $strBaseUri = 'baseuri.com';
@@ -242,18 +199,18 @@ class CompanyTest
 
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
             ->shouldReceive('getStatusCode')
-            ->times(4)
+            ->times(2)
             ->withNoArgs()
             ->andReturn(400)
             ->shouldReceive('getReasonPhrase')
-            ->times(3)
+            ->times(2)
             ->withNoArgs()
             ->andReturn('Bad Request')
             ->mock();
 
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
-            ->times(3)
+            ->times(2)
             ->with(
                 'GET',
                 \Mockery::type('string'),
@@ -290,19 +247,6 @@ class CompanyTest
 
         $this->assertEquals(
             "Service:Company:IP returned error for ($intIP) ".
-            " on Account ($strAccountURL), Contact ($guidContactId) ".
-            "400-Bad Request",
-            $returnedException->getMessage()
-        );
-
-        try {
-            $lookupCompany->lookupName($strName, $strAccountURL, $guidContactId);
-        } catch(\Exception $e) {
-            $returnedException = $e;
-        }
-
-        $this->assertEquals(
-            "Service:Company:Name returned error for ($strName) ".
             " on Account ($strAccountURL), Contact ($guidContactId) ".
             "400-Bad Request",
             $returnedException->getMessage()
