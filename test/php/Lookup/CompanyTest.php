@@ -242,7 +242,7 @@ class CompanyTest
 
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
             ->shouldReceive('getStatusCode')
-            ->times(5)
+            ->times(4)
             ->withNoArgs()
             ->andReturn(400)
             ->shouldReceive('getReasonPhrase')
