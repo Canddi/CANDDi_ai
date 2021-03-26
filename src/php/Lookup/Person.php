@@ -59,12 +59,12 @@ class Person
                     ]
                 );
 
-                $intStatusCode = intval($response->getStatusCode());
-                if (200 > $intStatusCode || 299 < $intStatusCode) {
-                    throw new \Exception(
-                        $intStatusCode.'-'.$response->getReasonPhrase()
-                    );
-                }
+            $intStatusCode = intval($response->getStatusCode());
+            if (200 > $intStatusCode || 299 < $intStatusCode) {
+                throw new \Exception(
+                    $intStatusCode.'-'.$response->getReasonPhrase()
+                );
+            }
 
             $arrResponse = json_decode(
                 (string)$response->getBody(), true
@@ -97,9 +97,26 @@ class Person
         ];
 
         try {
-            $arrResponse = $this->_callEndpoint(
-                $strURL,
-                $arrQuery
+            $guzzleConnection = self::_getGuzzle($this->_strURL, $this->_strAccessToken);
+
+            $response                   = $guzzleConnection
+                ->request(
+                    'GET',
+                    $strURL,
+                    [
+                        'query'         => $arrQuery
+                    ]
+                );
+
+            $intStatusCode = intval($response->getStatusCode());
+            if (200 > $intStatusCode || 299 < $intStatusCode) {
+                throw new \Exception(
+                    $intStatusCode.'-'.$response->getReasonPhrase()
+                );
+            }
+
+            $arrResponse = json_decode(
+                (string)$response->getBody(), true
             );
         } catch(\Exception $e) {
             throw new \Exception(
