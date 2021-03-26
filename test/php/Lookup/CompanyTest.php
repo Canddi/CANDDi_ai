@@ -199,18 +199,18 @@ class CompanyTest
 
         $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
             ->shouldReceive('getStatusCode')
-            ->times(4)
+            ->times(2)
             ->withNoArgs()
             ->andReturn(400)
             ->shouldReceive('getReasonPhrase')
-            ->times(3)
+            ->times(2)
             ->withNoArgs()
             ->andReturn('Bad Request')
             ->mock();
 
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
-            ->times(3)
+            ->times(2)
             ->with(
                 'GET',
                 \Mockery::type('string'),
