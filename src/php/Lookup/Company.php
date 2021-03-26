@@ -21,7 +21,6 @@ class Company
     const c_URL_CompanyName = 'lookup/companyname/%s';
     const c_URL_Host    = 'lookup/hostname/%s';
     const c_URL_IP      = 'lookup/ip/%s';
-    const c_URL_Name    = 'lookup/company/%s';
 
     private function cleanseForURL($str){
         return str_replace('/', '%2F', $str);
@@ -179,38 +178,6 @@ class Company
         } catch(\Exception $e) {
             throw new \Exception(
                 "Service:Company:IP returned error for ($mixedIPAddress) ".
-                " on Account ($strAccountURL), Contact ($guidContactId) ".
-                $e->getMessage()
-            );
-        }
-
-        return new Response\Company($arrResponse);
-    }
-
-    public function lookupName(
-        $strCompanyName,
-        $strAccountURL = null,
-        $guidContactId = null,
-        $strCallbackUrl = null,
-        $arrCallbackOptions = []
-    )
-    {
-        $strURL             = sprintf(self::c_URL_Name, $this->cleanseForURL($strCompanyName));
-        $arrQuery           = [
-            'accounturl'    => $strAccountURL,
-            'contactid'     => $guidContactId,
-            'cburl'         => $strCallbackUrl,
-            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
-        ];
-
-        try {
-            $arrResponse    = $this->_callEndpoint(
-                $strURL,
-                $arrQuery
-            );
-        } catch(\Exception $e) {
-            throw new \Exception(
-                "Service:Company:Name returned error for ($strCompanyName) ".
                 " on Account ($strAccountURL), Contact ($guidContactId) ".
                 $e->getMessage()
             );
