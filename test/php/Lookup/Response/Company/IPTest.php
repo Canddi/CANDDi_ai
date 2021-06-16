@@ -16,6 +16,7 @@ class IPTest
             "IPRange"     => 0,
             "CompanyName"     => "1410143447-canddi.com",
             "IPAddress"   => "84.13.20.215",
+            "IsCloudHost"   =>  null,
             "Location"    => [
                 "Lat"   => 53.4606,
                 "Lng"   => -2.2572,
@@ -67,6 +68,10 @@ class IPTest
         $this->assertEquals(
             $this->_getTestData()['Location']['CountryCode'],
             $CompanyIP->getCountryCode()
+        );
+        $this->assertEquals(
+            $this->_getTestData['IsCloudHost'],
+            $CompanyIP->getIsCloudHost()
         );
     }
 }
