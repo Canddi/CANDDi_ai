@@ -15,6 +15,7 @@ class IP
     const KEY_LAT = "Lat";
     const KEY_LNG = "Lng";
     const KEY_COUNTRYCODE = "CountryCode";
+    const KEY_ISCLOUDHOST = "IsCloudHost";
 
     use NS_traitArrayValue;
 
@@ -54,6 +55,18 @@ class IP
         return $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_IPADDRESS],
+            null
+        );
+    }
+    /**
+     * @return  string|null     string - The cloud domain this IP belongs to (eg. amazon.com)
+     *                          null   - IP was not detected as belonging to any cloud host
+     */
+    public function getIsCloudHost()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_ISCLOUDHOST],
             null
         );
     }
