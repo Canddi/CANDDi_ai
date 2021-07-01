@@ -120,8 +120,8 @@ trait TraitSingleton
         if (!self::$_guzzleConnection) {
             $arrDefaults                = [
                 'base_uri'              => $strBaseUri,
-                'timeout'               => 5,
-                'connect_timeout'       => 5,
+                'timeout'               => 10,
+                'connect_timeout'       => 10,
                 'headers'               => [
                     'Accept'            => 'application/json',
                     'Accept-Encoding'   => 'gzip, deflate',
