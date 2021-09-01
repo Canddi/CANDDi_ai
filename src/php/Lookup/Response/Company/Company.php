@@ -273,14 +273,6 @@ class Company
 
         return new Legal($arrLegal);
     }
-    public function getLegalName()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_LEGALNAME],
-            null
-        );
-    }
     /**
      * @return  CanddiAi\Lookup\Response\Company\Location|null
      */

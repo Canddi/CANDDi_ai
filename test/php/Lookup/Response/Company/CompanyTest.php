@@ -156,10 +156,6 @@ class CompanyTest
             $this->_getTestData()['Location']['Lat'],
             $innerCompany->getLat()
         );
-        $this->assertEquals(
-            $this->_getTestData()['LegalName'],
-            $innerCompany->getLegalName()
-        );
         $this->assertInstanceOf(
             Location::class,
             $innerCompany->getLocation()
