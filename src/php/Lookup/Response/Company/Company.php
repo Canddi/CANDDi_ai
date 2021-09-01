@@ -6,21 +6,16 @@ use CanddiAi\Traits\GetArrayValue as NS_traitArrayValue;
 
 class Company
 {
-    const KEY_EMAIL = 'Email';
-    const KEY_LEGAL = 'Legal';
-    const KEY_PHONE = 'Phone';
-    const KEY_SECTORS = 'Sectors';
-    const KEY_KEYWORDS = 'Keywords';
-    const KEY_DATEDOMAINLASTEDITED = 'DateDomainLastEdited';
-    const KEY_DATEDOMAINREGISTERED = 'DateDomainRegistered';
-    const KEY_COMPANYEMAILPLATFORMS = 'CompanyEmailPlatforms';
-    const KEY_PEOPLE = 'People';
     const KEY_ALEXARANK = "AlexaRank";
     const KEY_CITY = "City";
+    const KEY_COMPANYEMAILPLATFORMS = 'CompanyEmailPlatforms';
     const KEY_COMPANYNAME = "CompanyName";
     const KEY_COUNTRYCODE = "CountryCode";
     const KEY_CRN = "CRN";
+    const KEY_DATEDOMAINLASTEDITED = 'DateDomainLastEdited';
+    const KEY_DATEDOMAINREGISTERED = 'DateDomainRegistered';
     const KEY_DESCRIPTION = "Description";
+    const KEY_EMAIL = 'Email';
     const KEY_EMAILADDRESSES = "EmailAddresses";
     const KEY_EMPLOYEERANGE = "EmployeeRange";
     const KEY_EMPLOYEES = "Employees";
@@ -31,24 +26,29 @@ class Company
     const KEY_INDUSTRYNAICS = "IndustryNAICS";
     const KEY_INDUSTRYSECTOR = "IndustrySector";
     const KEY_INDUSTRYSIC = "IndustrySIC";
+    const KEY_KEYWORDS = 'Keywords';
     const KEY_LAT = "Lat";
-    const KEY_LNG = "Lng";
+    const KEY_LEGAL = 'Legal';
     const KEY_LEGALNAME = "LegalName";
+    const KEY_LNG = "Lng";
     const KEY_LOCATION = "Location";
     const KEY_LOGO = "Logo";
     const KEY_MARKETCAP = "MarketCap";
+    const KEY_PEOPLE = 'People';
+    const KEY_PHONE = 'Phone';
     const KEY_PHONENUMBERS = "PhoneNumbers";
     const KEY_POSTCODE = "PostCode";
     const KEY_RAISED = "Raised";
     const KEY_REGION = "Region";
     const KEY_REVENUE = "Revenue";
     const KEY_REVENUEESTIMATED = "RevenueEstimated";
+    const KEY_SECTORS = 'Sectors';
     const KEY_SIC = "SIC";
     const KEY_SOCIALMEDIA = "SocialMedia";
     const KEY_TAGS = "Tags";
     const KEY_VAT = "VAT";
-    const KEY_WEBSITEURL = "WebsiteURL";
     const KEY_WEBSITESCREENSHOT = "WebsiteScreenshot";
+    const KEY_WEBSITEURL = "WebsiteURL";
 
     use NS_traitArrayValue;
 
@@ -59,78 +59,6 @@ class Company
         $this->_arrResponse = $arrResponse;
     }
 
-    public function getEmail()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_EMAIL],
-            null
-        );
-    }
-    public function getLegal()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_LEGAL],
-            null
-        );
-    }
-    public function getPhone()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_PHONE],
-            null
-        );
-    }
-    public function getSectors()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_SECTORS],
-            null
-        );
-    }
-    public function getKeywords()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_KEYWORDS],
-            null
-        );
-    }
-    public function getDateDomainLastEdited()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_DATEDOMAINLASTEDITED],
-            null
-        );
-    }
-    public function getDateDomainRegistered()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_DATEDOMAINREGISTERED],
-            null
-        );
-    }
-    public function getCompanyEmailPlatforms()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_COMPANYEMAILPLATFORMS],
-            null
-        );
-    }
-    public function getPeople()
-    {
-        return $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_PEOPLE],
-            null
-        );
-    }
     public function getAlexaRank()
     {
         return $this->_getArrayValue(
@@ -157,6 +85,14 @@ class Company
             null
         );
     }
+    public function getCompanyEmailPlatforms()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_COMPANYEMAILPLATFORMS],
+            null
+        );
+    }
     public function getCountryCode()
     {
         $mdlLocation = $this->getLocation();
@@ -175,11 +111,35 @@ class Company
             null
         );
     }
+    public function getDateDomainLastEdited()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_DATEDOMAINLASTEDITED],
+            null
+        );
+    }
+    public function getDateDomainRegistered()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_DATEDOMAINREGISTERED],
+            null
+        );
+    }
     public function getDescription()
     {
         return $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_DESCRIPTION],
+            null
+        );
+    }
+    public function getEmail()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_EMAIL],
             null
         );
     }
@@ -263,6 +223,14 @@ class Company
             null
         );
     }
+    public function getKeywords()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_KEYWORDS],
+            null
+        );
+    }
     public function getLat()
     {
         $mdlLocation = $this->getLocation();
@@ -272,6 +240,14 @@ class Company
         }
 
         return $mdlLocation->getLat();
+    }
+    public function getLegal()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_LEGAL],
+            null
+        );
     }
     public function getLegalName()
     {
@@ -324,6 +300,22 @@ class Company
             null
         );
     }
+    public function getPeople()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_PEOPLE],
+            null
+        );
+    }
+    public function getPhone()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_PHONE],
+            null
+        );
+    }
     public function getPhoneNumbers()
     {
         return $this->_getArrayValue(
@@ -373,6 +365,14 @@ class Company
         return $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_REVENUEESTIMATED],
+            null
+        );
+    }
+    public function getSectors()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_SECTORS],
             null
         );
     }
