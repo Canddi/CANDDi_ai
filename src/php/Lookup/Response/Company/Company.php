@@ -87,11 +87,23 @@ class Company
     }
     public function getCompanyEmailPlatforms()
     {
-        return $this->_getArrayValue(
+        $arrEmailPlatforms = $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_COMPANYEMAILPLATFORMS],
             null
         );
+
+        if(empty($arrEmailPlatforms)) {
+            return [];
+        }
+
+        $arrReturn = [];
+
+        foreach($arrEmailPlatforms as $arrThisPlatform) {
+            $arrReturn[] = new EmailPlatform($arrThisPlatform);
+        }   
+
+        return $arrReturn;
     }
     public function getCountryCode()
     {
