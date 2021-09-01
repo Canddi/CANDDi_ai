@@ -324,13 +324,26 @@ class Company
             null
         );
     }
+    /**
+     * @return Array<Person>
+     */
     public function getPeople()
     {
-        return $this->_getArrayValue(
+        $arrPeople = $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_PEOPLE],
             null
         );
+
+        if(empty($arrPeople)) {
+            return [];
+        }
+
+        foreach($arrPeople as $arrPerson) {
+            $arrReturn[] = new Person($arrPerson);
+        }
+        
+        return $arrReturn;
     }
     public function getPhone()
     {
