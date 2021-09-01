@@ -6,6 +6,7 @@ use CanddiAi\Traits\GetArrayValue as NS_traitArrayValue;
 
 class Legal
 {
+    const KEY_LEGALNAME             = 'LegalName';
     const KEY_COMPANYTYPE           = 'CompanyType';
     const KEY_CRN                   = 'CRN';
     const KEY_INCORPORATIONDATE     = 'IncorporationDate';
@@ -41,6 +42,14 @@ class Legal
         return $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_INCORPORATIONDATE],
+            null
+        );
+    }
+    public function getLegalName()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_LEGALNAME],
             null
         );
     }
