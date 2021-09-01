@@ -85,6 +85,9 @@ class Company
             null
         );
     }
+    /**
+     * @return  Array<EmailPlatform>
+     */
     public function getCompanyEmailPlatforms()
     {
         $arrEmailPlatforms = $this->_getArrayValue(
@@ -253,13 +256,22 @@ class Company
 
         return $mdlLocation->getLat();
     }
+    /**
+     * @return Legal
+     */
     public function getLegal()
     {
-        return $this->_getArrayValue(
+        $arrLegal = $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_LEGAL],
             null
         );
+
+        if(empty($arrLegal)) {
+            return null;
+        }
+
+        return new Legal($arrLegal);
     }
     public function getLegalName()
     {
