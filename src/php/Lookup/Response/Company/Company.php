@@ -6,6 +6,15 @@ use CanddiAi\Traits\GetArrayValue as NS_traitArrayValue;
 
 class Company
 {
+    const KEY_EMAIL = 'Email';
+    const KEY_LEGAL = 'Legal';
+    const KEY_PHONE = 'Phone';
+    const KEY_SECTORS = 'Sectors';
+    const KEY_KEYWORDS = 'Keywords';
+    const KEY_DATEDOMAINLASTEDITED = 'DateDomainLastEdited';
+    const KEY_DATEDOMAINREGISTERED = 'DateDomainRegistered';
+    const KEY_COMPANYEMAILPLATFORMS = 'CompanyEmailPlatforms';
+    const KEY_PEOPLE = 'People';
     const KEY_ALEXARANK = "AlexaRank";
     const KEY_CITY = "City";
     const KEY_COMPANYNAME = "CompanyName";
@@ -50,6 +59,78 @@ class Company
         $this->_arrResponse = $arrResponse;
     }
 
+    public function getEmail()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_EMAIL],
+            null
+        );
+    }
+    public function getLegal()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_LEGAL],
+            null
+        );
+    }
+    public function getPhone()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_PHONE],
+            null
+        );
+    }
+    public function getSectors()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_SECTORS],
+            null
+        );
+    }
+    public function getKeywords()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_KEYWORDS],
+            null
+        );
+    }
+    public function getDateDomainLastEdited()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_DATEDOMAINLASTEDITED],
+            null
+        );
+    }
+    public function getDateDomainRegistered()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_DATEDOMAINREGISTERED],
+            null
+        );
+    }
+    public function getCompanyEmailPlatforms()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_COMPANYEMAILPLATFORMS],
+            null
+        );
+    }
+    public function getPeople()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_PEOPLE],
+            null
+        );
+    }
     public function getAlexaRank()
     {
         return $this->_getArrayValue(
