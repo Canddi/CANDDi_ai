@@ -56,22 +56,6 @@ class Company
     }
 
     /**
-     * @return Array
-     */
-    public function getPeople() {
-        $arrReturn = [];
-        if (array_key_exists('Company', $this->_arrResponse) && array_key_exists('People', $this->_arrResponse['Company'])) {
-            $arrPeople = $this->_arrResponse['Company']['People'];
-
-            foreach($arrPeople as $objPerson) {
-                $arrReturn[] = new CompanyPerson($objPerson);
-            }
-        }
-
-        return $arrReturn;
-    }
-
-    /**
      * @return  Array
      */
     public function getDebug()

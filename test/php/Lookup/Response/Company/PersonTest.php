@@ -2,10 +2,9 @@
 
 namespace CanddiAi\Lookup\Response\Company;
 
-class PersonTestLinkedIn
+class PersonTest
     extends \CanddiAi\TestCase
 {
-
     private function _getTestData()
     {
         return [
@@ -14,6 +13,9 @@ class PersonTestLinkedIn
             "FirstName" => "Timothy Edward",
             "LastName" => "Langley",
             "Phones" => ['+4412345678'],
+            "Email" => "tim@canddi.com",
+            "JobRole" => "Founder & CEO",
+            "PersonalDescription" => "Tim",
             "Emails" => [
                 "tim@canddi.com",
                 "tim@timlangley.me.uk"
@@ -31,8 +33,37 @@ class PersonTestLinkedIn
                 ]
             ],
             "LegalRole" => "Director",
-            "Position" => ""
+            "Position" => "",
+            "YearsAtCompany" => 13,
+            "YearsInRole" => 13,
+            "YearsExperience" => 25
         ];
+    }
+    public function testCreateAndGetters()
+    {
+        
+        $testData = $this->_getTestData();
+        $response = new Person($testData);
+        
+        $this->assertEquals($testData[Person::KEY_PERSONID], $response->getPersonId());
+        $this->assertEquals($testData[Person::KEY_NAME], $response->getName());
+        $this->assertEquals($testData[Person::KEY_FORENAME], $response->getFirstName());
+        $this->assertEquals($testData[Person::KEY_SURNAME], $response->getLastName());
+        $this->assertEquals($testData[Person::KEY_EMAIL], $response->getEmail());
+        $this->assertEquals($testData[Person::KEY_JOBROLE], $response->getJobRole());
+        $this->assertEquals($testData[Person::KEY_PERSONALDESCRIPTION], $response->getPersonalDescription());
+        $this->assertEquals($testData[Person::KEY_EMAILS], $response->getEmailAddresses());
+        $this->assertEquals($testData[Person::KEY_PHONES], $response->getPhoneNumbers());
+        $this->assertEquals($testData[Person::KEY_LEGAL_ROLE], $response->getLegalRole());
+        $this->assertEquals($testData[Person::KEY_YEARSATCOMPANY], $response->getYearsAtCompany());
+        $this->assertEquals($testData[Person::KEY_YEARSINROLE], $response->getYearsInRole());
+        $this->assertEquals($testData[Person::KEY_YEARSEXPERIENCE], $response->getYearsExperience());
+
+        $this->assertTrue(is_array($response->getSocialProfiles()));
+        $this->assertEquals(count($testData[Person::KEY_SOCIAL]), count($response->getSocialProfiles()));
+        foreach($response->getSocialProfiles() as $mdlSocialProfile) {
+            $this->assertInstanceOf(SocialMedia::class, $mdlSocialProfile);
+        }
     }
     public function testGetFirstName()
     {

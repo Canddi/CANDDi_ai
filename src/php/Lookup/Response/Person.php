@@ -13,10 +13,12 @@ use CanddiAi\Lookup\Response\Company\Company as ResponseCompany;
 
 class Person
 {
+    const KEY_BIRTHDATE = 'BirthDate';
     const KEY_NAME = 'Name';
     const KEY_FORENAME = 'FirstName';
     const KEY_MIDDLE = 'MiddleName';
     const KEY_SURNAME = 'LastName';
+    const KEY_GENDER = 'Gender';
     const KEY_EMAILS = 'EmailAddresses';
     const KEY_PHONES = 'PhoneNumbers';
     const KEY_ROLE = 'Employment';
@@ -61,6 +63,15 @@ class Person
         return $this->_mdlCompanyResponse;
     }
 
+    public function getBirthDate()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_BIRTHDATE],
+            null
+        );
+    }
+
     public function getEmailAddresses()
     {
         $arrEmails  = $this->_getArrayValue(
@@ -92,6 +103,14 @@ class Person
                 self::KEY_NAME,
                 self::KEY_SURNAME
             ],
+            null
+        );
+    }
+    public function getGender()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_GENDER],
             null
         );
     }
