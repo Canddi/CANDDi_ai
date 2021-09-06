@@ -7,10 +7,8 @@ use CanddiAi\Traits\GetArrayValue as NS_traitArrayValue;
 class Company
 {
     const KEY_ALEXARANK = "AlexaRank";
-    const KEY_CITY = "City";
     const KEY_COMPANYEMAILPLATFORMS = 'CompanyEmailPlatforms';
     const KEY_COMPANYNAME = "CompanyName";
-    const KEY_COUNTRYCODE = "CountryCode";
     const KEY_CRN = "CRN";
     const KEY_DATEDOMAINLASTEDITED = 'DateDomainLastEdited';
     const KEY_DATEDOMAINREGISTERED = 'DateDomainRegistered';
