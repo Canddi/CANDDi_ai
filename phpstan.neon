@@ -1,7 +1,16 @@
 parameters:
-  autoload_files:
-    - src/vendor/autoload.php
   excludes_analyse:
-    - src/vendor
+    - ./vendor
 
   ignoreErrors:
+    # Ignore errors about function return type typehinting
+    - '#Method (?:[\w_]+\\)*[\w_]+::[\w_]+\(\)+ has no return typehint specified\.#'
+    - '#Method (?:[\w_]+\\)*[\w_]+::[\w_]+\(\)+ return type has no value type specified in iterable type (?:(?:array)|(?:Common\\Iterator\\Models\\MySql)|(?:iterable))\.#'
+    - '#Method (?:[\w_]+\\)*[\w_]+::[\w_]+\(\)+ has parameter \$[\w]+ with no value type specified in iterable type (?:(?:array)|(?:Common\\Iterator\\Models\\MySql)|(?:iterable))\.#'
+
+    # Ignore errors about class variables not being typehinted, and about mixed parameters and resource parameters
+    - '#Property (?:[\w_]+\\)*[\w_]+::\$[\w_]+ has no typehint specified\.#'
+    - '#Method (?:[\w_]+\\)*[\w_]+::[\w_]+\(\)+ has parameter \$[\w]+ with no typehint specified\.#'
+
+    # Ignore errors about typehint only partially matching
+    - '#Parameter \#[\d]+ \$[\w]+ of (?:(?:function [\w_]+)|(?:(?:static )?method (?:[\w_]+\\)*[\w_]+::[\w_]+\(\))|(?:class [\w_]+ constructor)) expects (?:(?:[\w_]+\\)*[\w_]+(?:<[\w\d\-\|, ]+>)?\|)*(?:((?:[\w_]+\\)*[\w_]+)(?:<[\w\d\-\|, ]+>)?)(?:\|(?:[\w_]+\\)*[\w_]+(?:<[\w\d\-\|, <>]+>)?)*, (?:(?:[\w_]+\\)*[\w_]+(?:<[\w\d\-\|, ]+>)?\|)*(?:\1(?:<[\w\d\-\|, <>]+>)?)(?:\|(?:[\w_]+\\)*[\w_]+(?:<[\w\d\-\|, ]+>)?)* given\.#'

@@ -79,7 +79,7 @@ class IP
         );
     }
     /**
-     * @return  CanddiAi\Lookup\Response\Company\Location|null
+     * @return  \CanddiAi\Lookup\Response\Company\Location|null
      */
     public function getLocation()
     {

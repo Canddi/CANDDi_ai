@@ -30,9 +30,8 @@ class Company
      * Calls https://ip.candd.ai/lookup/companyname/[companyname]
      * end point and returns an array of data
      *
-     * @param   string $strHostname
-     * @param   optional string $strAccountURL
-     * @param   optional string $guidContactId
+     * @param   string|null $strAccountURL
+     * @param   string|null $guidContactId
      *
      * @return  Response\Company
      *
@@ -88,9 +87,9 @@ class Company
      * Calls https://ip.candd.ai/lookup/host/[hostname]
      * end point and returns an array of data
      *
-     * @param   string $strHostname
-     * @param   optional string $strAccountURL
-     * @param   optional string $guidContactId
+     * @param   string $strHostName
+     * @param   string|null $strAccountURL
+     * @param   string|null $guidContactId
      *
      * @return  Response\Company
      *
@@ -148,8 +147,8 @@ class Company
      * end point and returns an array of data
      *
      * @param   string $mixedIPAddress (either dot notation or integer)
-     * @param   optional string $strAccountURL
-     * @param   optional string $guidContactId
+     * @param   string|null $strAccountURL
+     * @param   string|null $guidContactId
      *
      * @return  Response\Company
      *

@@ -54,7 +54,7 @@ class Legal
         );
     }
     /**
-     * @return Location
+     * @return Location|null
      */
     public function getRegisteredLocation()
     {

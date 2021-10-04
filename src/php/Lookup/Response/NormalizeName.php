@@ -26,7 +26,7 @@ class NormalizeName
     /**
      * Gets the first name
      *
-     * @return str || null
+     * @return string|null
      * @author Jessica Tallon
      **/
     public function getFirstName()
@@ -41,7 +41,7 @@ class NormalizeName
     /**
      * Gets the last name
      *
-     * @return str || null
+     * @return string|null
      * @author Jessica Tallon
      **/
     public function getLastName()

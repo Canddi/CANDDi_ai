@@ -41,14 +41,14 @@ class Company
         }
     }
     /**
-     * @return  CanddiAi\Lookup\Response\Company\Company|null
+     * @return  \CanddiAi\Lookup\Response\Company\Company|null
      */
     public function getCompany()
     {
         return $this->_mdlCompany;
     }
     /**
-     * @return  CanddiAi\Lookup\Response\Company\IP|null
+     * @return  \CanddiAi\Lookup\Response\Company\IP|null
      */
     public function getIP()
     {
