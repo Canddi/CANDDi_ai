@@ -255,7 +255,7 @@ class Company
         return $mdlLocation->getLat();
     }
     /**
-     * @return Legal
+     * @return Legal|null
      */
     public function getLegal()
     {
@@ -272,7 +272,7 @@ class Company
         return new Legal($arrLegal);
     }
     /**
-     * @return  CanddiAi\Lookup\Response\Company\Location|null
+     * @return  Location|null
      */
     public function getLocation()
     {
@@ -329,6 +329,7 @@ class Company
             return [];
         }
 
+        $arrReturn = [];
         foreach($arrPeople as $arrPerson) {
             $arrReturn[] = new Person($arrPerson);
         }
@@ -412,7 +413,7 @@ class Company
         );
     }
     /**
-     * @return  Array<CanddiAi\Lookup\Response\Company\SocialMedia>|null
+     * @return  Array<SocialMedia>|null
      */
     public function getSocialMedia()
     {

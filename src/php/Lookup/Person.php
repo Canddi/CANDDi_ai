@@ -25,8 +25,8 @@ class Person
      * end point and returns an array of data
      *
      * @param   string $strEmailAddress - Email Address to call with
-     * @param   optional string $strAccountURL
-     * @param   optional string $guidContactId
+     * @param   string|null $strAccountURL
+     * @param   string|null $guidContactId
      *
      * @return  Response\Person
      *

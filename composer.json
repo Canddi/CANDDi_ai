@@ -16,7 +16,8 @@
         "webmozart/assert"              : "1.2.0",
         "friendsofphp/php-cs-fixer"     : "^2.13",
         "zendframework/zendframework1"  : "1.12.18",
-        "zircote/swagger-php"           : "^2.0"
+        "zircote/swagger-php"           : "^2.0",
+        "phpstan/phpstan"               : "^0.12.81"
     },
     "config"                            : {
         "preferred-install"             : "dist"

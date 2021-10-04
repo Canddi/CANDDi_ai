@@ -41,12 +41,12 @@ trait TraitSingleton
 
     final protected function __clone()
     {
-        throw new Exception('Cannot clone');
+        throw new \Exception('Cannot clone');
     }
 
     /**
      *  Implements the singleton pattern
-     *  @return:$this       - this is a fluent interface
+     *  @return $this       - this is a fluent interface
     **/
     protected static $_locater;
 
@@ -82,7 +82,7 @@ trait TraitSingleton
     }
     /**
      * This method is used for testing
-     *  @param: $locator    - this is mainly for testing
+     *  @param static $locator    - this is mainly for testing
      *                      - it allows a mock version of the
      *                          Common_Gateway to be injected
     **/
@@ -107,7 +107,7 @@ trait TraitSingleton
      *      This injects in a GuzzleConnection so we can
      *      mock this
      *
-     * @param GuzzleHttp\Client $guzzleConnection
+     * @param \GuzzleHttp\Client $guzzleConnection
      **/
     public static function injectGuzzle(
         Client $guzzleConnection

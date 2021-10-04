@@ -14,7 +14,7 @@ interface InterfaceSingleton
 {
     /**
      *  Implements the singleton pattern
-     *  @return:$this       - this is a fluent interface
+     *  @return $this       - this is a fluent interface
     **/
     public static function getInstance(
         $strURL     = null,
@@ -23,7 +23,7 @@ interface InterfaceSingleton
 
     /**
      * This method is used for testing
-     *  @param: $locator    - this is mainly for testing
+     *  @param static $locator    - this is mainly for testing
      *                      - it allows a mock version of the
      *                          Common_Gateway to be injected
     **/

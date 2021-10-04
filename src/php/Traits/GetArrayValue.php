@@ -14,11 +14,11 @@ trait GetArrayValue
      * Trying to find the SubKey value (and returning mixedDefault otherwise)
      *
      *
-     * @param   $arrData        Array of Data ["Contact" => ["Name" => "Tim"]]
-     * @param   $arrKeys        Array of Keys to Lookup ie ["Contact","Name"]
-     * @param   $mixedDefault   Default return value if not existss
+     * @param array $arrData        Array of Data ["Contact" => ["Name" => "Tim"]]
+     * @param array $arrKeys        Array of Keys to Lookup ie ["Contact","Name"]
+     * @param mixed $mixedDefault   Default return value if not existss
      *
-     * @return  mixedValue OR mixedDefault
+     * @return  mixed OR mixedDefault
      **/
     protected function _getArrayValue(
         Array $arrData,
