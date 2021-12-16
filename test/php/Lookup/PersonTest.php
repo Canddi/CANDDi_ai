@@ -765,7 +765,31 @@ class PersonTest
                       }
                     ],
                     \"Hostname\": \"canddi.com\"
-                  }
+                  },
+                  \"JobSummary\": [
+                    {
+                      \"CompanyHostname\": \"angloscientific.com\",
+                      \"CompanyName\": \"\",
+                      \"LegalRole\": \"\",
+                      \"JobRole\": \"MBA intern Venture Capitalist\",
+                      \"NormalJobRole\": \"mba intern venture capitalist\",
+                      \"PersonalDescription\": \"\",
+                      \"YearsAtCompany\": 15,
+                      \"YearsInRole\": 0,
+                      \"YearsExperience\": 0
+                    },
+                    {
+                      \"CompanyHostname\": \"canddi.com\",
+                      \"CompanyName\": \"\",
+                      \"LegalRole\": \"Director\",
+                      \"JobRole\": \"CEO and Founder\",
+                      \"NormalJobRole\": \"ceo\",
+                      \"PersonalDescription\": \"CEO and Founder CANDDiI created the original CANDDi software and set out the technology roadmap to continue the platform's development. Today I define the vision, lead the fundraising, and drive the t\",
+                      \"YearsAtCompany\": 13,
+                      \"YearsInRole\": 13,
+                      \"YearsExperience\": 25
+                    }
+                  ]
               }")
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
@@ -935,10 +959,38 @@ class PersonTest
                   }
                 ],
                 \"Hostname\": \"canddi.com\"
-              }
+              },
+              \"JobSummary\": [
+                {
+                  \"CompanyHostname\": \"angloscientific.com\",
+                  \"CompanyName\": \"\",
+                  \"LegalRole\": \"\",
+                  \"JobRole\": \"MBA intern Venture Capitalist\",
+                  \"NormalJobRole\": \"mba intern venture capitalist\",
+                  \"PersonalDescription\": \"\",
+                  \"YearsAtCompany\": 15,
+                  \"YearsInRole\": 0,
+                  \"YearsExperience\": 0
+                },
+                {
+                  \"CompanyHostname\": \"canddi.com\",
+                  \"CompanyName\": \"\",
+                  \"LegalRole\": \"Director\",
+                  \"JobRole\": \"CEO and Founder\",
+                  \"NormalJobRole\": \"ceo\",
+                  \"PersonalDescription\": \"CEO and Founder CANDDiI created the original CANDDi software and set out the technology roadmap to continue the platform's development. Today I define the vision, lead the fundraising, and drive the t\",
+                  \"YearsAtCompany\": 13,
+                  \"YearsInRole\": 13,
+                  \"YearsExperience\": 25
+                }
+              ]
           }
         ", true));
         $this->assertEquals($expectedPersonResponse, $actualPersonResponse);
+        $modelJobSummary = $actualPersonResponse->getJobSummary();
+        $this->assertInstanceOf(Response\Item\JobSummary::class, $modelJobSummary);
+        $this->assertEquals('CEO and Founder', $modelJobSummary->getJobRole());
+        $this->assertEquals('ceo', $modelJobSummary->getNormalJobRole());
     }
     public function testLookupEmail_PersonAndCompany()
     {
@@ -1376,5 +1428,8 @@ class PersonTest
         $this->assertInstanceOf(Response\Company\Company::class, $actualPersonResponse->getCompany());
         $this->assertEquals('Tim', $actualPersonResponse->getFirstName());
         $this->assertEquals('Langley', $actualPersonResponse->getLastName());
+        $modelJobSummary = $actualPersonResponse->getJobSummary();
+        $this->assertNull($modelJobSummary->getJobRole());
+        $this->assertNull($modelJobSummary->getNormalJobRole());
     }
 }
