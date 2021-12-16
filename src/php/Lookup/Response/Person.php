@@ -27,11 +27,13 @@ class Person
     const KEY_SOCIAL = 'SocialMedia';
     const KEY_BIO = 'Bio';
     const KEY_REPROCESS = 'Reprocess';
+    const KEY_JOB_SUMMARY = 'JobSummary';
 
     use NS_traitArrayValue;
 
     private $_arrResponse;
     private $_mdlCompanyResponse;
+    private $_mdlJobSummary;
 
     public function __construct(Array $arrResponse)
     {
@@ -44,6 +46,22 @@ class Person
             $this->_mdlCompanyResponse = new ResponseCompany($arrResponse['Company']);
         } else {
             $this->_mdlCompanyResponse = new ResponseCompany([]);
+        }
+
+        $strHostname = $this->getCompany()->getHostname();
+        if (!empty($strHostname)) {
+            $arrJobSummaries = $arrResponse[self::KEY_JOB_SUMMARY] ?? [];
+            foreach ($arrJobSummaries as $arrJobSummary) {
+                $mdlJobSummary = new Item\JobSummary($arrJobSummary);
+                if ($strHostname === $mdlJobSummary->getCompanyHostname()) {
+                    $this->_mdlJobSummary = $mdlJobSummary;
+                    break;
+                }
+            }
+        }
+
+        if (is_null($this->_mdlJobSummary)) {
+            $this->_mdlJobSummary = new Item\JobSummary([]);
         }
     }
 
@@ -61,6 +79,11 @@ class Person
     public function getCompany()
     {
         return $this->_mdlCompanyResponse;
+    }
+
+    public function getJobSummary()
+    {
+        return $this->_mdlJobSummary;
     }
 
     public function getBirthDate()
