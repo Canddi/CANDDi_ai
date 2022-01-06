@@ -11,6 +11,7 @@ class Legal
     const KEY_CRN                   = 'CRN';
     const KEY_INCORPORATIONDATE     = 'IncorporationDate';
     const KEY_REGISTEREDLOCATION    = 'RegisteredLocation';
+    const KEY_FINANCIAL             = 'Financial';
 
     use NS_traitArrayValue;
 
@@ -64,10 +65,25 @@ class Legal
             null
         );
 
-        if(empty($arrLocation)) {
+        if (empty($arrLocation)) {
             return null;
         }
 
         return new Location($arrLocation);
+    }
+    /**
+     * @return Financial|null
+     */
+    public function getFinancial()
+    {
+        $arrFinancial = $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_FINANCIAL],
+            null
+        );
+        if (empty($arrFinancial)) {
+            return null;
+        }
+        return new Financial($arrFinancial);
     }
 }
