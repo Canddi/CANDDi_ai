@@ -21,15 +21,42 @@ class LegalTest
                 "City" => "Manchester",
                 "CountryCode" => "GB",
                 "Region" => "ENG"
+            ],
+            "Financial" => [
+                "CreditWorthy" => 1,
+                "NegativeIndicator" => 0,
+                "FilingDate" => 1629244800,
+                "AnnualReturnDate" => 1615593600,
+                "AccDueDate" => 1672444800,
+                "InternationalScore" => "B",
+                "InternationalScoreDate" => 1629590400,
+                "MadeUptoDate" => 1617148800,
+                "Currency" => "GBP",
+                "ConsolidatedAcs" => 0,
+                "AccountsFormat" => 1,
+                "Turnover" => 939343,
+                "TurnoverRange" => "The range",
+                "PreTaxProfit" => 127500,
+                "ProfitAfterTax" => 167309,
+                "Cash" => 122353,
+                "TotalCurrentAssets" => 443684,
+                "TotalAssets" => 482542,
+                "TotalLiabilities" => 182827,
+                "ShareholderFunds" => 299715,
+                "NetWorth" => 299715,
+                "NumberOfEmployees" => 20,
+                "CurrentRatio" => 4.05,
+                "Auditors" => null,
+                "AccountantName" => "POMEGRATE CONSULTING LIMITED"
             ]
         ];
     }
     public function testCreateAndGetters()
     {
-        
+
         $testData = $this->_getTestData();
         $response = new Legal($testData);
-        
+
         $this->assertEquals($testData[Legal::KEY_LEGALNAME], $response->getLegalName());
         $this->assertEquals($testData[Legal::KEY_CRN], $response->getCRN());
         $this->assertEquals($testData[Legal::KEY_INCORPORATIONDATE], $response->getIncorporationDate());
@@ -40,5 +67,12 @@ class LegalTest
         $this->assertInstanceOf(Location::class, $registeredLocation);
         $this->assertEquals($locationTestData[Location::KEY_LAT], $registeredLocation->getLat());
         $this->assertEquals($locationTestData[Location::KEY_LNG], $registeredLocation->getLng());
+
+        $financial = $response->getFinancial();
+        $locationTestData = $testData[Legal::KEY_FINANCIAL];
+        $this->assertInstanceOf(Financial::class, $financial);
+        $this->assertEquals($locationTestData[Financial::KEY_TURNOVER], $financial->getTurnover());
+        $this->assertEquals($locationTestData[Financial::KEY_TURNOVER_RANGE], $financial->getTurnoverRange());
+        $this->assertEquals($locationTestData[Financial::KEY_CURRENCY], $financial->getCurrency());
     }
 }
