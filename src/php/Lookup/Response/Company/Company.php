@@ -77,6 +77,13 @@ class Company
     }
     public function getCompanyName()
     {
+        $mdlLegal = $this->getLegal();
+        if(!is_null($mdlLegal)) {
+            $strLegalName = $mdlLegal->getLegalName();
+            if(!is_null($strLegalName)) {
+                return $strLegalName;
+            }
+        }
         return $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_COMPANYNAME],
