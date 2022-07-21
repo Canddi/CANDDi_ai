@@ -415,7 +415,7 @@ class CompanyTest
             $innerCompany->getCity()
         );
         $this->assertEquals(
-            $this->_getTestData()['CompanyName'],
+            $this->_getTestData()['Legal']['LegalName'],
             $innerCompany->getCompanyName()
         );
         $this->assertEquals(
@@ -538,5 +538,17 @@ class CompanyTest
                 $mdlSocial
             );
         }
+    }
+
+    public function testCompanyNameWithNoLegal()
+    {
+        $arrData = [
+            "CompanyName" => "CANDDi (Campaign and Digital Intelligence Limited)",
+        ];
+        $innerCompany = new Company($arrData);
+        $this->assertEquals(
+            $arrData['CompanyName'],
+            $innerCompany->getCompanyName()
+        );
     }
 }
