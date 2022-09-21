@@ -826,6 +826,54 @@ class CompanyTest
         ]);
         $this->assertEquals($expectedCompanyResponse, $actualCompanyResponse);
     }
+    public function testLookupHost_WithIP()
+    {
+        $strBaseUri = 'baseuri.com';
+        $strAccessToken = md5(1);
+        $strHost = 'canddi.com';
+        $strAccountURL = 'anAccount';
+        $guidContactId = md5(1);
+        $intIP = 1028;
+        $strURL             = sprintf(Company::c_URL_Host, $strHost);
+        $arrQuery           = [
+            'accounturl'    => $strAccountURL,
+            'contactid'     => $guidContactId,
+            'cburl'         => '',
+            'cboptions'     => '{}',
+            'ip'            => $intIP
+        ];
+        $companyInstance = Company::getInstance($strBaseUri, $strAccessToken);
+        $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
+            ->shouldReceive('getStatusCode')
+            ->once()
+            ->withNoArgs()
+            ->andReturn(201)
+            ->shouldReceive('getBody')
+            ->once()
+            ->withNoArgs()
+            ->andReturn("{
+                \"Reprocess\" : true
+            }")
+            ->mock();
+        $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
+            ->shouldReceive('request')
+            ->once()
+            ->with(
+                'GET',
+                $strURL,
+                [
+                    'query'         => $arrQuery
+                ]
+            )
+            ->andReturn($mockResponse)
+            ->mock();
+        Company::injectGuzzle($mockGuzzle);
+        $actualCompanyResponse = $companyInstance->lookupHost($strHost, $strAccountURL, $guidContactId, null, [], $intIP);
+        $expectedCompanyResponse = new Response\Company([
+            'Reprocess' => true
+        ]);
+        $this->assertEquals($expectedCompanyResponse, $actualCompanyResponse);
+    }
     public function testLookupHost_HasCompany()
     {
         $strBaseUri = 'baseuri.com';

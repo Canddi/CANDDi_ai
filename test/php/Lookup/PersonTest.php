@@ -50,6 +50,52 @@ class PersonTest
         $expectedPersonResponse = new Response\Person([]);
         $this->assertEquals($expectedPersonResponse, $actualPersonResponse);
     }
+    public function testLookupEmail_WithIP()
+    {
+        $strBaseUri = 'baseuri.com';
+        $strAccessToken = md5(1);
+        $strEmail = 'tim@canddi.com';
+        $strAccountURL = 'anAccount';
+        $strCallbackUrl = 'callbackurl';
+        $arrCallbackOptions = [123, 456];
+        $intIP = 1028;
+        $guidContactId = md5(1);
+        $strURL             = sprintf(Person::c_URL_Person, $strEmail);
+        $arrQuery           = [
+            'accounturl'    => $strAccountURL,
+            'contactid'     => $guidContactId,
+            'cburl'         => $strCallbackUrl,
+            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT)),
+            'ip'            => $intIP
+        ];
+        $companyInstance = Person::getInstance($strBaseUri, $strAccessToken);
+        $mockResponse = \Mockery::mock('GuzzleHttp\Psr7\Response')
+            ->shouldReceive('getStatusCode')
+            ->once()
+            ->withNoArgs()
+            ->andReturn(200)
+            ->shouldReceive('getBody')
+            ->once()
+            ->withNoArgs()
+            ->andReturn('[]')
+            ->mock();
+        $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
+            ->shouldReceive('request')
+            ->once()
+            ->with(
+                'GET',
+                $strURL,
+                [
+                    'query'         => $arrQuery
+                ]
+            )
+            ->andReturn($mockResponse)
+            ->mock();
+        Person::injectGuzzle($mockGuzzle);
+        $actualPersonResponse = $companyInstance->lookupEmail($strEmail, $strAccountURL, $guidContactId, $strCallbackUrl, $arrCallbackOptions, $intIP);
+        $expectedPersonResponse = new Response\Person([]);
+        $this->assertEquals($expectedPersonResponse, $actualPersonResponse);
+    }
     public function testLookups_Fail()
     {
         $strBaseUri = 'baseuri.com';
