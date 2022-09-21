@@ -99,7 +99,8 @@ class Company
         $strAccountURL = null,
         $guidContactId = null,
         $strCallbackUrl = null,
-        $arrCallbackOptions = []
+        $arrCallbackOptions = [],
+        $intIP = null
     )
     {
         $strURL             = sprintf(self::c_URL_Host, $this->cleanseForURL($strHostName));
@@ -109,6 +110,10 @@ class Company
             'cburl'         => $strCallbackUrl,
             'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
         ];
+
+        if(!empty($intIP)) {
+            $arrQuery['ip'] = $intIP;
+        }
 
         try {
             $guzzleConnection = self::_getGuzzle($this->_strURL, $this->_strAccessToken);
