@@ -70,7 +70,7 @@ class IPTest
             $CompanyIP->getCountryCode()
         );
         $this->assertEquals(
-            $this->_getTestData['IsCloudHost'],
+            $this->_getTestData()['IsCloudHost'],
             $CompanyIP->getIsCloudHost()
         );
     }
