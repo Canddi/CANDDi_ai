@@ -14,6 +14,7 @@ class Location
     const KEY_LINE2 = "Line2";
     const KEY_POSTCODE = "PostCode";
     const KEY_REGION = "Region";
+    const KEY_TYPE = 'LocationType';
 
     use NS_traitArrayValue;
 
@@ -85,6 +86,14 @@ class Location
         return $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_REGION],
+            null
+        );
+    }
+    public function getType()
+    {
+        return $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_TYPE],
             null
         );
     }
