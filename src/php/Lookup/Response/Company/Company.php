@@ -30,6 +30,7 @@ class Company
     const KEY_LEGALNAME = "LegalName";
     const KEY_LNG = "Lng";
     const KEY_LOCATION = "Location";
+    const KEY_LOCATIONS = "Locations";
     const KEY_LOGO = "Logo";
     const KEY_MARKETCAP = "MarketCap";
     const KEY_PEOPLE = 'People';
@@ -109,10 +110,35 @@ class Company
 
         foreach($arrEmailPlatforms as $arrThisPlatform) {
             $arrReturn[] = new EmailPlatform($arrThisPlatform);
-        }   
+        }
 
         return $arrReturn;
     }
+
+    /**
+     * @return Array<Location>
+     */
+    public function getLocations()
+    {
+        $arrLocations = $this->_getArrayValue(
+            $this->_arrResponse,
+            [self::KEY_LOCATIONS],
+            null
+        );
+
+        if(empty($arrLocations)) {
+            return [];
+        }
+
+        $arrReturn = [];
+
+        foreach($arrLocations as $arrThisLocation) {
+            $arrReturn[] = new Location($arrThisLocation);
+        }
+
+        return $arrReturn;
+    }
+
     public function getCountryCode()
     {
         $mdlLocation = $this->getLocation();
@@ -340,7 +366,7 @@ class Company
         foreach($arrPeople as $arrPerson) {
             $arrReturn[] = new Person($arrPerson);
         }
-        
+
         return $arrReturn;
     }
     public function getPhone()
