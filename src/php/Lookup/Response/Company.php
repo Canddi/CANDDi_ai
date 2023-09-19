@@ -24,6 +24,9 @@ class Company
     const KEY_TYPE      = 'Type';
     const KEY_REPROCESS = 'Reprocess';
 
+    const TYPE_ISP          = 1;
+    const TYPE_MOBILE_ISP   = 2;
+
     use NS_traitArrayValue;
 
     private $_arrResponse;
@@ -89,13 +92,25 @@ class Company
         );
     }
     public function bIsISP() {
-        $intType = $this->_getArrayValue(
-            $this->_arrResponse,
-            [self::KEY_TYPE],
-            null
-        );
+        $intType = $this->getType();
 
-        if ($intType && $intType === 1) {
+        if (
+            !is_null($intType) &&
+            $intType === self::TYPE_ISP
+        ) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function bIsMobileISP() {
+        $intType = $this->getType();
+
+        if (
+            !is_null($intType) &&
+            $intType === self::TYPE_MOBILE_ISP
+        ) {
             return true;
         }
 

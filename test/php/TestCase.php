@@ -91,4 +91,12 @@ class TestCase extends \Zend_Test_PHPUnit_ControllerTestCase
         $refMethod->setAccessible(true);
         return $refMethod->invoke($obj, $arg, $arg2);
     }
+
+    protected function _mockResponseBody(string $strBody)
+    {
+        return \Mockery::mock('Psr\Http\Message\StreamInterface')
+            ->shouldReceive('__toString')
+            ->andReturn($strBody)
+            ->mock();
+    }
 }

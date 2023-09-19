@@ -28,8 +28,6 @@ class UserAgentTest
         $strBaseUri = 'baseuri.com';
         $strAccessToken = md5(1);
         $strUserAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36';
-        $strAccountURL = 'anAccount';
-        $guidContactId = md5(1);
         $arrQuery = [
             'accounturl' => null,
             'contactid' => null
@@ -44,7 +42,7 @@ class UserAgentTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn(JSON_encode($arrUserAgentData))
+            ->andReturn($this->_mockResponseBody(JSON_encode($arrUserAgentData)))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
