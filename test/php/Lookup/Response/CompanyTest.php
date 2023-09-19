@@ -150,8 +150,45 @@ class CompanyTest
             $respCompany->bIsISP()
         );
 
+        $this->assertEquals(
+            false,
+            $respCompany->bIsMobileISP()
+        );
+
         $this->assertTrue(
             $respCompany->bIsReprocessing()
+        );
+    }
+    public function testCheckingISPTypes()
+    {
+        $arrTestData = $this->_getTestData();
+
+        $arrTestData[Company::KEY_TYPE] = Company::TYPE_ISP;
+
+        $respCompany = new Company($arrTestData);
+
+        $this->assertEquals(
+            true,
+            $respCompany->bIsISP()
+        );
+
+        $this->assertEquals(
+            false,
+            $respCompany->bIsMobileISP()
+        );
+
+        $arrTestData[Company::KEY_TYPE] = Company::TYPE_MOBILE_ISP;
+
+        $respCompany = new Company($arrTestData);
+
+        $this->assertEquals(
+            true,
+            $respCompany->bIsMobileISP()
+        );
+
+        $this->assertEquals(
+            false,
+            $respCompany->bIsISP()
         );
     }
     public function testDefaultProcessing()
