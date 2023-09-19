@@ -29,7 +29,7 @@ class CompanyTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn('[]')
+            ->andReturn($this->_mockResponseBody('[]'))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -76,7 +76,7 @@ class CompanyTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn('[]')
+            ->andReturn($this->_mockResponseBody('[]'))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -117,7 +117,7 @@ class CompanyTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn('[]')
+            ->andReturn($this->_mockResponseBody('[]'))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -160,7 +160,7 @@ class CompanyTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn('[]')
+            ->andReturn($this->_mockResponseBody('[]'))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -275,9 +275,9 @@ class CompanyTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn("{
+            ->andReturn($this->_mockResponseBody("{
                 \"Reprocess\" : true
-            }")
+            }"))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -321,7 +321,7 @@ class CompanyTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn("{
+            ->andReturn($this->_mockResponseBody("{
                 \"Hostname\": \"orckid.co.uk\",
                 \"Type\": 0,
                 \"IP\": {
@@ -344,7 +344,7 @@ class CompanyTest
                     \"Region\": \"ENG\"
                   }
                 }
-              }")
+              }"))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -413,7 +413,7 @@ class CompanyTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn("{
+            ->andReturn($this->_mockResponseBody("{
                 \"Hostname\": \"orckid.co.uk\",
                 \"Type\": 0,
                 \"Company\": {
@@ -586,7 +586,7 @@ class CompanyTest
                     \"Region\": \"ENG\"
                   }
                 }
-              }")
+              }"))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -803,9 +803,9 @@ class CompanyTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn("{
+            ->andReturn($this->_mockResponseBody("{
                 \"Reprocess\" : true
-            }")
+            }"))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -851,9 +851,9 @@ class CompanyTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn("{
+            ->andReturn($this->_mockResponseBody("{
                 \"Reprocess\" : true
-            }")
+            }"))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -897,7 +897,7 @@ class CompanyTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn("{
+            ->andReturn($this->_mockResponseBody("{
                 \"Company\": {
                     \"VAT\": \"GB107133945\",
                     \"Email\": \"hello@canddi.com\",
@@ -1049,7 +1049,7 @@ class CompanyTest
                     \"Hostname\": \"canddi.com\"
                 },
                 \"Hostname\": \"canddi.com\"
-            }")
+            }"))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')

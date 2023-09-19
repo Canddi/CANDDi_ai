@@ -38,7 +38,7 @@ class NormalizeNameTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn(JSON_encode($responseBody))
+            ->andReturn($this->_mockResponseBody(JSON_encode($responseBody)))
             ->mock();
 
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
@@ -71,18 +71,6 @@ class NormalizeNameTest
         $strURL = sprintf(NormalizeName::c_URL_NORMALIZE, $strName);
 
         $normalizeNameInstance = NormalizeName::getInstance($strBaseUri, $strAccessToken);
-
-        $responseBody = [
-            "status" => "200",
-            "requestId" => "20072030-ba42-4b6b-982e-2b0bc3ce923a",
-            "likelihood" => 1,
-            "nameDetails" => [
-                "givenName" => "Logan",
-                "familyName" => "White",
-                "fullName" => "Logan White"
-            ],
-            "region" => "USA"
-        ];
 
         $this->setExpectedException(\Exception::class, 'NotFound: No names found for fakename');
 

@@ -31,7 +31,7 @@ class PersonTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn('[]')
+            ->andReturn($this->_mockResponseBody('[]'))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -77,7 +77,7 @@ class PersonTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn('[]')
+            ->andReturn($this->_mockResponseBody('[]'))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -179,7 +179,7 @@ class PersonTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn('[]')
+            ->andReturn($this->_mockResponseBody('[]'))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -228,7 +228,7 @@ class PersonTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn("{
+            ->andReturn($this->_mockResponseBody("{
               \"Person\": {
                   \"Name\": {
                       \"FirstName\": \"Tim\",
@@ -396,7 +396,7 @@ class PersonTest
                       }
                   ]
               }
-          }")
+          }"))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -613,9 +613,9 @@ class PersonTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn("{
+            ->andReturn($this->_mockResponseBody("{
                 \"Reprocess\" : true
-            }")
+            }"))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -659,7 +659,7 @@ class PersonTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn("{
+            ->andReturn($this->_mockResponseBody("{
                 \"Hostname\": \"orckid.co.uk\",
                 \"Type\": 0,
                 \"Company\": {
@@ -836,7 +836,7 @@ class PersonTest
                       \"YearsExperience\": 25
                     }
                   ]
-              }")
+              }"))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
@@ -1061,7 +1061,7 @@ class PersonTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn("{
+            ->andReturn($this->_mockResponseBody("{
                 \"Hostname\": \"orckid.co.uk\",
                 \"Type\": 0,
                 \"Company\": {
@@ -1257,7 +1257,7 @@ class PersonTest
                     ],
                     \"Email\": \"tim\"
                 }
-              }")
+              }"))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')

@@ -35,7 +35,7 @@ class AddressTest
             ->shouldReceive('getBody')
             ->once()
             ->withNoArgs()
-            ->andReturn(JSON_encode($arrAddressData))
+            ->andReturn($this->_mockResponseBody(JSON_encode($arrAddressData)))
             ->mock();
         $mockGuzzle = \Mockery::mock('GuzzleHttp\Client')
             ->shouldReceive('request')
