@@ -77,7 +77,8 @@ trait TraitSingleton
 
     private function setAccessToken(
         $strAccessToken = null
-    ) {
+    )
+    {
         $this->_strAccessToken = $strAccessToken;
     }
     /**
@@ -138,7 +139,10 @@ trait TraitSingleton
         Array $arrQuery                 = []
     )
     {
-        $guzzleConnection = self::_getGuzzle($this->_strURL, $this->_strAccessToken);
+        $guzzleConnection = self::_getGuzzle(
+            $this->_strURL,
+            $this->_strAccessToken
+        );
 
         $response                   = $guzzleConnection
             ->request(

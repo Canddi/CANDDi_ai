@@ -508,7 +508,7 @@ class CompanyTest
             count($this->_getTestData()[Company::KEY_PEOPLE]),
             count($arrPeople)
         );
-        foreach($arrPeople as $mdlPerson) {
+        foreach ($arrPeople as $mdlPerson) {
             $this->assertInstanceOf(
                 Person::class,
                 $mdlPerson
@@ -520,7 +520,7 @@ class CompanyTest
             count($this->_getTestData()[Company::KEY_COMPANYEMAILPLATFORMS]),
             count($arrEmailPlatforms)
         );
-        foreach($arrEmailPlatforms as $mdlEmailPlatform) {
+        foreach ($arrEmailPlatforms as $mdlEmailPlatform) {
             $this->assertInstanceOf(
                 EmailPlatform::class,
                 $mdlEmailPlatform
@@ -532,7 +532,7 @@ class CompanyTest
             5,
             count($arrSocialMedia)
         );
-        foreach($arrSocialMedia as $mdlSocial) {
+        foreach ($arrSocialMedia as $mdlSocial) {
             $this->assertInstanceOf(
                 SocialMedia::class,
                 $mdlSocial

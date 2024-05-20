@@ -45,15 +45,21 @@ class Person
             'accounturl'    => $strAccountURL,
             'contactid'     => $guidContactId,
             'cburl'         => $strCallbackUrl,
-            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
+            'cboptions'     => str_replace(
+                '"',
+                '\\"',
+                json_encode($arrCallbackOptions, JSON_FORCE_OBJECT)
+            )
         ];
 
-        if(!empty($intIP)) {
+        if (!empty($intIP)) {
             $arrQuery['ip'] = $intIP;
         }
 
         try {
-            $guzzleConnection = self::_getGuzzle($this->_strURL, $this->_strAccessToken);
+            $guzzleConnection = self::_getGuzzle(
+                $this->_strURL, $this->_strAccessToken
+            );
 
             $response                   = $guzzleConnection
                 ->request(
@@ -98,11 +104,17 @@ class Person
             'accounturl'    => $strAccountURL,
             'contactid'     => $guidContactId,
             'cburl'         => $strCallbackUrl,
-            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
+            'cboptions'     => str_replace(
+                '"',
+                '\\"',
+                json_encode($arrCallbackOptions, JSON_FORCE_OBJECT)
+            )
         ];
 
         try {
-            $guzzleConnection = self::_getGuzzle($this->_strURL, $this->_strAccessToken);
+            $guzzleConnection = self::_getGuzzle(
+                $this->_strURL, $this->_strAccessToken
+            );
 
             $response                   = $guzzleConnection
                 ->request(
@@ -125,9 +137,9 @@ class Person
             );
         } catch(\Exception $e) {
             throw new \Exception(
-                "Service:Person:LinkedIn returned error for ($strLinkedInUsername) ".
-                " on Account ($strAccountURL), Contact ($guidContactId) ".
-                $e->getMessage()
+                "Service:Person:LinkedIn returned error for (" .
+                "$strLinkedInUsername) on Account ($strAccountURL), Contact (" .
+                "$guidContactId) " . $e->getMessage()
             );
         }
 

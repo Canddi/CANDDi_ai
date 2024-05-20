@@ -22,7 +22,8 @@ class Company
     const c_URL_Host    = 'lookup/hostname/%s';
     const c_URL_IP      = 'lookup/ip/%s';
 
-    private function cleanseForURL($str){
+    private function cleanseForURL($str)
+    {
         return str_replace('/', '%2F', $str);
     }
 
@@ -44,15 +45,23 @@ class Company
         $arrCallbackOptions = []
     )
     {
-        $strURL             = sprintf(self::c_URL_CompanyName, $this->cleanseForURL($strCompanyName));
+        $strURL             = sprintf(
+            self::c_URL_CompanyName, $this->cleanseForURL($strCompanyName)
+        );
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
             'contactid'     => $guidContactId,
             'cburl'         => $strCallbackUrl,
-            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
+            'cboptions'     => str_replace(
+                '"',
+                '\\"',
+                json_encode($arrCallbackOptions, JSON_FORCE_OBJECT)
+            )
         ];
         try {
-            $guzzleConnection = self::_getGuzzle($this->_strURL, $this->_strAccessToken);
+            $guzzleConnection = self::_getGuzzle(
+                $this->_strURL, $this->_strAccessToken
+            );
 
             $response                   = $guzzleConnection
                 ->request(
@@ -75,9 +84,9 @@ class Company
             );
         } catch(\Exception $e) {
             throw new \Exception(
-                "Service:Company:CompanyName returned error for ($strCompanyName) ".
-                " on Account ($strAccountURL), Contact ($guidContactId) ".
-                $e->getMessage()
+                "Service:Company:CompanyName returned error for (" .
+                "$strCompanyName) on Account ($strAccountURL), Contact (" .
+                "$guidContactId) " . $e->getMessage()
             );
         }
 
@@ -103,20 +112,28 @@ class Company
         $intIP = null
     )
     {
-        $strURL             = sprintf(self::c_URL_Host, $this->cleanseForURL($strHostName));
+        $strURL             = sprintf(
+            self::c_URL_Host, $this->cleanseForURL($strHostName)
+        );
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
             'contactid'     => $guidContactId,
             'cburl'         => $strCallbackUrl,
-            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
+            'cboptions'     => str_replace(
+                '"',
+                '\\"',
+                json_encode($arrCallbackOptions, JSON_FORCE_OBJECT)
+            )
         ];
 
-        if(!empty($intIP)) {
+        if (!empty($intIP)) {
             $arrQuery['ip'] = $intIP;
         }
 
         try {
-            $guzzleConnection = self::_getGuzzle($this->_strURL, $this->_strAccessToken);
+            $guzzleConnection = self::_getGuzzle(
+                $this->_strURL, $this->_strAccessToken
+            );
 
             $response                   = $guzzleConnection
                 ->request(
@@ -166,16 +183,24 @@ class Company
         $arrCallbackOptions = []
     )
     {
-        $strURL             = sprintf(self::c_URL_IP, $this->cleanseForURL($mixedIPAddress));
+        $strURL             = sprintf(
+            self::c_URL_IP, $this->cleanseForURL($mixedIPAddress)
+        );
         $arrQuery           = [
             'accounturl'    => $strAccountURL,
             'contactid'     => $guidContactId,
             'cburl'         => $strCallbackUrl,
-            'cboptions'     => str_replace('"', '\\"', json_encode($arrCallbackOptions,JSON_FORCE_OBJECT))
+            'cboptions'     => str_replace(
+                '"',
+                '\\"',
+                json_encode($arrCallbackOptions, JSON_FORCE_OBJECT)
+            )
         ];
 
         try {
-            $guzzleConnection = self::_getGuzzle($this->_strURL, $this->_strAccessToken);
+            $guzzleConnection = self::_getGuzzle(
+                $this->_strURL, $this->_strAccessToken
+            );
 
             $response                   = $guzzleConnection
                 ->request(

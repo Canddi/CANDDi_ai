@@ -38,12 +38,14 @@ class Person
     public function __construct(Array $arrResponse)
     {
         $this->_arrResponse = [];
-        if(array_key_exists('Person', $arrResponse)) {
+        if (array_key_exists('Person', $arrResponse)) {
             $this->_arrResponse = $arrResponse['Person'];
         }
 
-        if(array_key_exists('Company', $arrResponse)) {
-            $this->_mdlCompanyResponse = new ResponseCompany($arrResponse['Company']);
+        if (array_key_exists('Company', $arrResponse)) {
+            $this->_mdlCompanyResponse = new ResponseCompany(
+                $arrResponse['Company']
+            );
         } else {
             $this->_mdlCompanyResponse = new ResponseCompany([]);
         }
@@ -68,7 +70,8 @@ class Person
     /**
      * @return  bool
      */
-    public function bIsReprocessing() {
+    public function bIsReprocessing()
+    {
         return $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_REPROCESS],
