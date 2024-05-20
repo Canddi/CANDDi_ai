@@ -79,9 +79,9 @@ class Company
     public function getCompanyName()
     {
         $mdlLegal = $this->getLegal();
-        if(!is_null($mdlLegal)) {
+        if (!is_null($mdlLegal)) {
             $strLegalName = $mdlLegal->getLegalName();
-            if(!is_null($strLegalName)) {
+            if (!is_null($strLegalName)) {
                 return $strLegalName;
             }
         }
@@ -102,13 +102,13 @@ class Company
             null
         );
 
-        if(empty($arrEmailPlatforms)) {
+        if (empty($arrEmailPlatforms)) {
             return [];
         }
 
         $arrReturn = [];
 
-        foreach($arrEmailPlatforms as $arrThisPlatform) {
+        foreach ($arrEmailPlatforms as $arrThisPlatform) {
             $arrReturn[] = new EmailPlatform($arrThisPlatform);
         }
 
@@ -126,13 +126,13 @@ class Company
             null
         );
 
-        if(empty($arrLocations)) {
+        if (empty($arrLocations)) {
             return [];
         }
 
         $arrReturn = [];
 
-        foreach($arrLocations as $arrThisLocation) {
+        foreach ($arrLocations as $arrThisLocation) {
             $arrReturn[] = new Location($arrThisLocation);
         }
 
@@ -298,7 +298,7 @@ class Company
             null
         );
 
-        if(empty($arrLegal)) {
+        if (empty($arrLegal)) {
             return null;
         }
 
@@ -315,7 +315,7 @@ class Company
             null
         );
 
-        if(is_null($arrLocation)) {
+        if (is_null($arrLocation)) {
             return null;
         }
 
@@ -358,12 +358,12 @@ class Company
             null
         );
 
-        if(empty($arrPeople)) {
+        if (empty($arrPeople)) {
             return [];
         }
 
         $arrReturn = [];
-        foreach($arrPeople as $arrPerson) {
+        foreach ($arrPeople as $arrPerson) {
             $arrReturn[] = new Person($arrPerson);
         }
 
@@ -456,13 +456,13 @@ class Company
             null
         );
 
-        if(is_null($arrSocialMedia)) {
+        if (is_null($arrSocialMedia)) {
             return null;
         }
 
         $arrReturn = [];
 
-        foreach($arrSocialMedia as $arrThisSocial) {
+        foreach ($arrSocialMedia as $arrThisSocial) {
             $arrReturn[] = new SocialMedia($arrThisSocial);
         }
 

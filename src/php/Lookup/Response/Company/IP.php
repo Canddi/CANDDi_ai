@@ -59,8 +59,9 @@ class IP
         );
     }
     /**
-     * @return  string|null     string - The cloud domain this IP belongs to (eg. amazon.com)
-     *                          null   - IP was not detected as belonging to any cloud host
+     * @return  string|null
+     *  string - The cloud domain this IP belongs to (eg. amazon.com)
+     *  null   - IP was not detected as belonging to any cloud host
      */
     public function getIsCloudHost()
     {
@@ -89,7 +90,7 @@ class IP
             null
         );
 
-        if(is_null($arrLocation)) {
+        if (is_null($arrLocation)) {
             return null;
         }
 

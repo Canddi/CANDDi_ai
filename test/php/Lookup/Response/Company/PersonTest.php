@@ -41,10 +41,10 @@ class PersonTest
     }
     public function testCreateAndGetters()
     {
-        
+
         $testData = $this->_getTestData();
         $response = new Person($testData);
-        
+
         $this->assertEquals($testData[Person::KEY_PERSONID], $response->getPersonId());
         $this->assertEquals($testData[Person::KEY_NAME], $response->getName());
         $this->assertEquals($testData[Person::KEY_FORENAME], $response->getFirstName());
@@ -61,7 +61,7 @@ class PersonTest
 
         $this->assertTrue(is_array($response->getSocialProfiles()));
         $this->assertEquals(count($testData[Person::KEY_SOCIAL]), count($response->getSocialProfiles()));
-        foreach($response->getSocialProfiles() as $mdlSocialProfile) {
+        foreach ($response->getSocialProfiles() as $mdlSocialProfile) {
             $this->assertInstanceOf(SocialMedia::class, $mdlSocialProfile);
         }
     }

@@ -36,10 +36,10 @@ class Company
     public function __construct(Array $arrResponse)
     {
         $this->_arrResponse = $arrResponse;
-        if(array_key_exists('Company', $arrResponse)) {
+        if (array_key_exists('Company', $arrResponse)) {
             $this->_mdlCompany = new InnerCompany($arrResponse['Company']);
         }
-        if(array_key_exists('IP', $arrResponse)) {
+        if (array_key_exists('IP', $arrResponse)) {
             $this->_mdlIP = new CompanyIP($arrResponse['IP']);
         }
     }
@@ -91,7 +91,8 @@ class Company
             null
         );
     }
-    public function bIsISP() {
+    public function bIsISP()
+    {
         $intType = $this->getType();
 
         if (
@@ -104,7 +105,8 @@ class Company
         return false;
     }
 
-    public function bIsMobileISP() {
+    public function bIsMobileISP()
+    {
         $intType = $this->getType();
 
         if (
@@ -120,7 +122,8 @@ class Company
     /**
      * @return  bool
      */
-    public function bIsReprocessing() {
+    public function bIsReprocessing()
+    {
         return $this->_getArrayValue(
             $this->_arrResponse,
             [self::KEY_REPROCESS],
