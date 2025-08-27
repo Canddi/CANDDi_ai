@@ -11,7 +11,7 @@ class NormalizeNameTest
     {
         $strName = 'Logan White';
 
-        $strBaseUri = 'https://ip.canddi.ai';
+        $strBaseUri = 'https://ip.go-corporate-data.com';
         $strAccessToken = md5(1);
 
         $strURL = sprintf(NormalizeName::c_URL_NORMALIZE, $strName);
