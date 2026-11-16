@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    bootstrap="test/localbootstrap.php"
+    colors="true"
+    processIsolation="true"
+    failOnRisky="true"
+    beStrictAboutCoverageMetadata="true"
+    cacheDirectory=".phpunit.cache"
+>
+    <testsuites>
+        <testsuite name="Unit Tests">
+            <directory>test/php/</directory>
+        </testsuite>
+    </testsuites>
+
+    <logging>
+        <junit outputFile="reports/unit.xml"/>
+        <testdoxHtml outputFile="reports/testdox.html"/>
+    </logging>
+
+    <source>
+        <include>
+            <directory>src/php/</directory>
+        </include>
+    </source>
+
+    <coverage
+        includeUncoveredFiles="true"
+    >
+        <report>
+            <html outputDirectory="reports/coverage"/>
+            <text outputFile="php://stdout"/>
+        </report>
+    </coverage>
+</phpunit>
